@@ -1,0 +1,12 @@
+web:
+    build: .
+    ports: 
+        - 8051:8080
+#    entrypoint: '/etc/init.d/jenkins start && tail -f /var/log/jenkins/jenkins.log'
+#    restart: always
+    environment:
+        - TZ=Asia/Shanghai
+    volumes:
+        - /home/subversion/:/home/subversion/
+
+
