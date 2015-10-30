@@ -2,11 +2,11 @@ web:
     build: .
     ports: 
         - 8051:8080
-#    entrypoint: '/etc/init.d/jenkins start && tail -f /var/log/jenkins/jenkins.log'
+        - 45000:50000
+    container_name: jenkins
 #    restart: always
     environment:
         - TZ=Asia/Shanghai
+        - JAVA_OPTS=-Dhudson.footerURL=http://www.timekey.com.cn/
     volumes:
         - /home/subversion/:/home/subversion/
-
-
