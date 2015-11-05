@@ -7,7 +7,7 @@ jenkins:
     restart: always
     environment:
         - TZ=Asia/Shanghai
-        - JAVA_OPTS=-Dhudson.footerURL=http://www.timekey.com.cn/
+        - JAVA_OPTS=-Dhudson.footerURL=http://www.timekey.com.cn/ -Xms512m -Xmx768m -XX:MaxNewSize=256m -XX:MaxPermSize=128m
     volumes:
         - /home/subversion/:/home/subversion/
         - /home/jenkins_home/:/var/jenkins_home/  # 注意权限问题，建议777，不然造成无法启动问题。
@@ -22,6 +22,9 @@ sonar_web:
     links:
         - sonar_db:postgres
     restart: always
+    volumes:
+        - /home/sonar/web/data/:/opt/sonarqube/data/
+        - /home/sonar/web/extensions/:/opt/sonarqube/extensions/
     environment:
         - SONARQUBE_JDBC_URL=jdbc:postgresql://postgres:5432/sonar
         - TZ=Asia/Shanghai
@@ -31,6 +34,8 @@ sonar_db:
     restart: always
     ports:
         - 9432:5432
+    volumes:
+        - /home/sonar/db/data/:/var/lib/postgresql/data/ #注意本地目录权限只能700
     environment:
         - TZ=Asia/Shanghai
         - POSTGRES_USER=sonar
