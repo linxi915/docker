@@ -7,7 +7,7 @@ jenkins:
     restart: always
     environment:
         - TZ=Asia/Shanghai
-        - JAVA_OPTS=-Dhudson.footerURL=http://www.timekey.com.cn/ -Xms512m -Xmx768m -XX:MaxNewSize=256m -XX:MaxPermSize=128m
+        - JAVA_OPTS=-Xms512m -Xmx768m -XX:MaxNewSize=256m -XX:MaxPermSize=128m
     volumes:
         - /home/subversion/:/home/subversion/
         - /home/jenkins_home/:/var/jenkins_home/  # 注意权限问题，建议777，不然造成无法启动问题。
