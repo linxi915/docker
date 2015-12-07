@@ -10,3 +10,4 @@ web:
         - JAVA_OPTS=-Dhudson.footerURL=http://www.timekey.com.cn/
     volumes:
         - /home/subversion/:/home/subversion/
+        - /home/git/:/home/git/

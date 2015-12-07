@@ -1,0 +1,10 @@
+app:
+    image: kennylee26/redmine-git
+    container_name: 'redmine-git'
+    ports:
+        - "8001:80"
+    restart: always
+    volumes:
+        - /home/git/:/home/git/
+    environment:
+        - TZ=Asia/Shanghai

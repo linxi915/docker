@@ -26,4 +26,6 @@ timekey_registry:
         - REGISTRY_AUTH_TOKEN_SERVICE="Docker registry"
         - REGISTRY_AUTH_TOKEN_ISSUER="Auth Service"
         - REGISTRY_AUTH_TOKEN_ROOTCERTBUNDLE=/ssl/server.pem
+        - REGISTRY_HTTP_TLS_CERTIFICATE=/ssl/server.pem
+        - REGISTRY_HTTP_TLS_KEY=/ssl/server.key
 
