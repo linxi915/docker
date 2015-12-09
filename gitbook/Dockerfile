@@ -2,7 +2,8 @@
 # NAME: kennylee26/gitbook
 
 # Pull base image.
-FROM kennylee26/node:5.1.1
+FROM index.alauda.cn/kenny/node
+#FROM kennylee26/node:5.1.1
 
 ENV GIT_BOOK_VERSION="2.6.4"
 ENV BOOKDIR /gitbook
