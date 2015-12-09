@@ -1,31 +1,11 @@
-docker_auth:
-  image: cesanta/docker_auth
-  container_name: 'docker_auth'
-  ports:
-    - "5001:5001"
-  volumes:
-    - /home/tkadmin/kennylee/compose/registry/auth_server/config:/config:ro
-    - /var/log/docker_auth:/logs
-    - /home/tkadmin/kennylee/compose/registry/auth_server/ssl:/ssl
-  command: /config/auth_config.yml
-  restart: always
-
-timekey_registry:
+app:
     image: index.alauda.cn/kenny/docker-registry-v2-1-1
-    container_name: 'timekey_registry'
+    container_name: 'registry'
     ports:
         - 5000:5000
     volumes:
-        - /home/tkadmin/kennylee/compose/registry/auth_server/ssl:/ssl
         - /opt/data/registry2:/var/lib/registry
     restart: always
     environment:
         - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/var/lib/registry
-        - REGISTRY_AUTH=token
-        - REGISTRY_AUTH_TOKEN_REALM=https://192.168.1.96:5001/auth
-        - REGISTRY_AUTH_TOKEN_SERVICE="Docker registry"
-        - REGISTRY_AUTH_TOKEN_ISSUER="Auth Service"
-        - REGISTRY_AUTH_TOKEN_ROOTCERTBUNDLE=/ssl/server.pem
-        - REGISTRY_HTTP_TLS_CERTIFICATE=/ssl/server.pem
-        - REGISTRY_HTTP_TLS_KEY=/ssl/server.key
-
+        - TZ=Asia/Shanghai
