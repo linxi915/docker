@@ -1,0 +1,11 @@
+bind:
+    image: sameersbn/bind:latest
+    container_name: bind
+    dns: 127.0.0.1
+    environment:
+        - ROOT_PASSWORD=8aso2QQUDTpz
+    ports:
+        - 10000:10000
+        - 53:53/udp
+    volumes:
+        - /srv/docker/bind:/data
