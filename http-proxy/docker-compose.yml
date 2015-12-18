@@ -1,0 +1,8 @@
+app:
+    build: .
+    container_name: http-proxy
+    environment:
+        - TZ=Asia/Shanghai
+    ports:
+        - 8888:8888
+    restart: always

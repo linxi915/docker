@@ -4,6 +4,9 @@
 # Pull base image.
 FROM node:5.1.1
 
+# 维护者信息
+MAINTAINER kennylee26 <kennylee26@gmail.com>
+
 # resp
 RUN curl http://mirrors.163.com/.help/sources.list.jessie>/etc/apt/sources.list
 RUN npm install -g cnpm --registry=https://registry.npm.taobao.org

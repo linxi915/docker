@@ -1,0 +1,31 @@
+web:
+    build: nginx
+    ports:
+        - "3022:80"
+    volumes: 
+        - /home/gitbook/html/:/usr/share/nginx/html
+    environment:
+        - TZ=Asia/Shanghai
+    restart: always
+ftp:
+    build: ftp
+    container_name: "gitbook-ftp"
+    ports:
+        - "3021:21"
+        - "30001:30001"  #由于部署的服务器的docker版本比较低，要那么纠结的写法。
+        - "30002:30002"
+        - "30003:30003"
+        - "30004:30004"
+        - "30005:30005"
+        - "30006:30006"
+        - "30007:30007"
+        - "30008:30008"
+        - "30009:30009"
+        - "30000:30000"
+    volumes:
+        - /home/gitbook/html/:/usr/share/nginx/html
+        - /home/gitbook/pure-ftpd:/etc/pure-ftpd
+    restart: always
+    privileged: true
+    environment:
+        - TZ=Asia/Shanghai
