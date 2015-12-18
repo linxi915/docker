@@ -24,7 +24,9 @@ pure-pw useradd ftp -u ftpuser -d /usr/share/nginx/html
 pure-pw mkdb
 ```
 
-重启服务
+重启服务，即可。
+
+注意，ftp连接时不要选择被动模式！
 
 --------
 
