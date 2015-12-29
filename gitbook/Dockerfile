@@ -11,7 +11,10 @@ ENV BOOKDIR /gitbook
 # Basic Requirements
 RUN \
   apt-get update && \
-  apt-get install -y calibre
+  apt-get install -y calibre 
+
+# install fonts
+RUN apt-get install -y fonts-wqy-microhei
 
 RUN cnpm install gitbook-cli -g && \
     cnpm install svgexport -g
