@@ -1,0 +1,14 @@
+app:
+    image: kennylee26/pureftpd
+    container_name: "pureftpd"
+    ports:
+        - "21:21"
+        - "30000-30009:30000-30009"
+    # 注意先创建这些本地目录
+    volumes:
+        - /home/data/ftp/files:/home/ftpusers
+        - /home/data/ftp/pure-ftpd:/etc/pure-ftpd
+    restart: always
+    privileged: true
+    environment:
+        - TZ=Asia/Shanghai
