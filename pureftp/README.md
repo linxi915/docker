@@ -18,11 +18,11 @@ password: ftp
 * build  
 	docker build -t kennylee26/pureftpd .
 * run  
-	docker run -d --name=pureftpd -p 21:21 -p 30000-30009:30000-30009 kennylee26/pureftpd
+	docker run -d --net=host --name=pureftpd kennylee26/pureftpd
 	
 注意事项:
 
-1. ftp连接时最好不要选择被动模式！
+1. 如果有windows用户，必须设置net=host才能访问。原因未知....
 
 --------
 

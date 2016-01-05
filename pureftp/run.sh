@@ -9,4 +9,4 @@ if [ ! -f /etc/pure-ftpd/pureftpd.pdb ]; then
     pure-pw mkdb
 fi
 
-bash -c '/usr/sbin/pure-ftpd -c 30 -C 5 -9 utf8 -l puredb:/etc/pure-ftpd/pureftpd.pdb -x -E -j -R'
+bash -c '/usr/sbin/pure-ftpd --passiveportrange 30000:30009 --maxclientsnumber 30 --maxclientsperip 5 --clientcharset utf8 --login puredb:/etc/pure-ftpd/pureftpd.pdb --prohibitdotfileswrite --noanonymous --createhomedir --nochmod'

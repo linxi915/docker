@@ -1,0 +1,26 @@
+ftp:
+    image: kennylee26/pureftpd
+    container_name: "pureftpd"
+    net: "host" # none but net=host, windows user can be work.
+    # Please create these folders at before.
+    volumes:
+        - /home/data/ftp/files:/home/ftpusers
+        - /home/data/ftp/pure-ftpd:/etc/pure-ftpd
+    restart: always
+    environment:
+        - TZ=Asia/Shanghai
+samba:
+    image: vimagick/samba
+    container_name: "samba"
+    ports:
+        - "137:137/udp"
+        - "138:138/udp"
+        - "139:139/tcp"
+        - "445:445/tcp"
+    volumes:
+        # use absolute path in run
+        - smb.conf:/etc/samba/smb.conf
+        - /home/data/ftp/files/ftp:/share
+    restart: always
+    environment:
+        - TZ=Asia/Shanghai
