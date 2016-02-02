@@ -1,0 +1,7 @@
+app:
+    build: .
+    container_name: fs_server
+    environment:
+        - TZ=Asia/Shanghai
+    restart: always
+    net: host #因为没说明server的监听说明，十分纠结，虽然怀疑会随机监听48000-50000的端口，但为了一劳永逸，暂时偷懒host

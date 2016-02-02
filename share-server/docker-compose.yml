@@ -1,6 +1,6 @@
 ftp:
     image: kennylee26/pureftpd
-    container_name: "pureftpd"
+    container_name: "share-pureftpd"
     net: "host" # none but net=host, windows user can be work.
     # Please create these folders at before.
     volumes:
@@ -11,7 +11,7 @@ ftp:
         - TZ=Asia/Shanghai
 samba:
     image: vimagick/samba
-    container_name: "samba"
+    container_name: "share-samba"
     ports:
         - "137:137/udp"
         - "138:138/udp"
@@ -24,3 +24,13 @@ samba:
     restart: always
     environment:
         - TZ=Asia/Shanghai
+http:
+    image: nginx:1.9.8
+    container_name: "share-http"
+    ports:
+        - "8001:80"
+    volumes: 
+        - /home/data/ftp/files/ftp:/usr/share/nginx/html
+    environment:
+        - TZ=Asia/Shanghai
+    restart: always

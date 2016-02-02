@@ -8,3 +8,7 @@
 2. samba仅支持下载。
 
 注意 docker-compose.yml 文件中的一些本地路径映射的配置，根据实际情况来修改。
+
+--------
+
+FTP配置信息，参见：http://download.pureftpd.org/pub/pure-ftpd/doc/README

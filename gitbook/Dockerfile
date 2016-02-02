@@ -21,6 +21,8 @@ RUN cnpm install gitbook-cli -g && \
 
 RUN gitbook versions:install  $GIT_BOOK_VERSION
 
+# install recommend plugins
+
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
