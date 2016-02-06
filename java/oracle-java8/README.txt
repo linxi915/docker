@@ -1,1 +1,2 @@
-sudo docker build -t kennylee26/java:oracle-java8 .
+sudo docker build -t kennylee26/java8 .
+
