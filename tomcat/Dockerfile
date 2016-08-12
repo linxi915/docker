@@ -11,18 +11,18 @@ MAINTAINER kennylee26 <kennylee26@gmail.com>
 
 RUN apt-get update && \
     apt-get install -yq --no-install-recommends wget pwgen ca-certificates && \
-    apt-get install -yq python-pip python-dev && \
+    apt-get install -yq python-pip python-dev mysql-client libmysqlclient-dev && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+RUN pip install MySQL-python beautifulsoup4
+
 ENV TOMCAT_MAJOR_VERSION 8
-ENV TOMCAT_MINOR_VERSION 8.5.4
 ENV CATALINA_HOME /opt/tomcat
 
 # INSTALL TOMCAT
-RUN wget https://archive.apache.org/dist/tomcat/tomcat-${TOMCAT_MAJOR_VERSION}/v${TOMCAT_MINOR_VERSION}/bin/apache-tomcat-${TOMCAT_MINOR_VERSION}.tar.gz && \
-    wget -O- https://archive.apache.org/dist/tomcat/tomcat-${TOMCAT_MAJOR_VERSION}/v${TOMCAT_MINOR_VERSION}/bin/apache-tomcat-${TOMCAT_MINOR_VERSION}.tar.gz.md5 | md5sum -c - && \
-    tar zxf apache-tomcat-*.tar.gz && \
+RUN curl -sSL http://git.oschina.net/kennylee/python-tools/raw/master/tomcat_download.py | python - ${TOMCAT_MAJOR_VERSION}
+RUN tar zxf apache-tomcat-*.tar.gz && \
     rm apache-tomcat-*.tar.gz && \
     mv apache-tomcat* ${CATALINA_HOME}
 
