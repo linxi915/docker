@@ -6,7 +6,7 @@
 # Command format: Instruction [arguments command] ..
 
 # 第一行必须指定基于的基础镜像
-FROM jenkins:1.625.1
+FROM jenkinsci/jenkins:2.31
 
 # 维护者信息
 MAINTAINER kennylee26 <kennylee26@gmail.com>
