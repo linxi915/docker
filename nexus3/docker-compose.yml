@@ -1,0 +1,14 @@
+version: '2'
+services:
+    app:
+        image: registry.alauda.cn/kenny/docker-nexus3:3.1.0
+        ports: 
+            - 8081:8081
+        container_name: nexus3
+        restart: always
+        environment:
+            - TZ=Asia/Shanghai
+            - JAVA_MAX_HEAP=1200m
+            - JAVA_MIN_HEAP=1200m
+        volumes:
+            - ./data/:/nexus-data/:z

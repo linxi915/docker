@@ -1,0 +1,15 @@
+version: '2'
+services:
+    app:
+        image: registry.alauda.cn/kenny/docker-jenkinsci:2.19.3
+        ports: 
+            - 8051:8080
+            - 45000:50000
+        container_name: jenkins
+        restart: always
+        environment:
+            - TZ=Asia/Shanghai
+            - JAVA_OPTS=-Xms512m -Xmx768m -XX:MaxNewSize=256m -XX:MaxPermSize=128m -Dhudson.footerURL=http://www.timekey.com.cn/
+            - JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+        volumes:
+            - ./data/:/var/jenkins_home/:z

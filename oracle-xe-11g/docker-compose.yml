@@ -1,0 +1,15 @@
+version: '2'
+services:
+    app:
+        image: registry.alauda.cn/kenny/wnameless-oracle-xe-11g
+        ports: 
+            - "1521:1521"
+            - "1522:22"
+        container_name: oracle-xe-11g
+        restart: always
+        environment:
+            - TZ=Asia/Shanghai
+            - ORACLE_ALLOW_REMOTE=true
+        shm_size: 2g
+        volumes:
+            - ./data/:/u01/data/:z

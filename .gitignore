@@ -46,3 +46,4 @@ src/main/webapp/WEB-INF/classes/
 tasks.xml
 
 src/main/resources/rebel.xml
+data/
