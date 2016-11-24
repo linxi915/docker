@@ -6,13 +6,13 @@
 # Command format: Instruction [arguments command] ..
 
 # 第一行必须指定基于的基础镜像
-FROM jenkinsci/jenkins:2.31
+FROM registry.alauda.cn/kenny/docker-jenkinsci:2.19.3
 
 # 维护者信息
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
 USER root
-RUN curl http://mirrors.163.com/.help/sources.list.jessie>/etc/apt/sources.list
+ADD ./sources.list.jessie /etc/apt/sources.list
 RUN apt-get -y update
 # recommend
 RUN apt-get install -y \

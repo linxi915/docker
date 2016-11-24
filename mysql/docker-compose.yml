@@ -1,0 +1,14 @@
+version: '2'
+services:
+    app:
+        image: registry.alauda.cn/kenny/mysql
+        ports: 
+            - 3306:3306
+        container_name: mysql
+        restart: always
+        environment:
+            - TZ=Asia/Shanghai
+            - MYSQL_ROOT_PASSWORD=111111
+        volumes:
+            - ./data/:/var/lib/mysql/:z
+

@@ -1,7 +1,7 @@
 version: '2'
 services:
     app:
-        image: registry.alauda.cn/kenny/docker-jenkinsci:2.19.3
+        image: timekey/jenkins:2.3.1
         ports: 
             - 8051:8080
             - 45000:50000

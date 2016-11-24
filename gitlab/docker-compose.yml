@@ -1,15 +1,16 @@
 version: '2'
 services:
   app:
+    image: gitlab/gitlab-ce:latest    
     container_name: gitlab
-    image: gitlab/gitlab-ce:latest
     ports:
-    - "10080:80"
-    - "10022:22"
+        - "10080:80"
+        - "10022:22"
+    restart: always
     volumes:
-    - /Users/kennylee/docker-data/gitlab/data:/var/opt/gitlab:z
-    - /Users/kennylee/docker-data/gitlab/logs:/var/log/gitlab:z
-    - /Users/kennylee/docker-data/gitlab/config:/etc/gitlab:z
+        - ./data/gitlab/data:/var/opt/gitlab:z
+        - ./data/gitlab/logs:/var/log/gitlab:z
+        - ./data/gitlab/config:/etc/gitlab:z
     environment:
-    - TZ=Asia/Shanghai
+        - TZ=Asia/Shanghai
 
