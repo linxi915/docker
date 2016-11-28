@@ -1,0 +1,14 @@
+version: '2'
+services:
+  app:
+    image: kennylee26/gollum  
+    container_name: gollum
+    ports:
+        - "4567:80"
+    restart: always
+    volumes:
+        - ./data:/wiki:z
+    environment:
+        - TZ=Asia/Shanghai
+
+
