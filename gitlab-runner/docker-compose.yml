@@ -1,11 +1,17 @@
 version: '2'
 services:
     runner:
-        image: gitlab/gitlab-runner:latest
+        build: .
         container_name: gitlab-runner
         restart: always
         volumes:
-            - ./data/config:/etc/gitlab-runner:z
+            - ./data:/home/gitlab_ci_multi_runner/data:z
             - /var/run/docker.sock:/var/run/docker.sock
         environment:
             - TZ=Asia/Shanghai
+            - CI_SERVER_URL=http://192.168.3.231:10080/ci
+            - RUNNER_TOKEN=ziz3YmA9fqaQ4K1wVmAU
+            - RUNNER_DESCRIPTION=new-docker-executor
+            - RUNNER_EXECUTOR=shell
+        extra_hosts:
+            - "gitlab.foo.com:192.168.3.231"

@@ -4,13 +4,18 @@ services:
         #image: gitlab/gitlab-ce:latest
         image: index.alauda.cn/kenny/gitlab-ce:8.13.6-ce.0
         container_name: gitlab
+        hostname: gitlab.foo.com
         ports:
-            - "10080:80"
-            - "10022:22"
+            - "10080:10080"
+            - "2224:2224"
         restart: always
         volumes:
             - ./data/gitlab/data:/var/opt/gitlab:z
             - ./data/gitlab/logs:/var/log/gitlab:z
             - ./data/gitlab/config:/etc/gitlab:z
         environment:
-            - TZ=Asia/Shanghai
+            TZ: Asia/Shanghai
+            GITLAB_OMNIBUS_CONFIG: |
+                external_url 'http://gitlab.foo.com:10080'
+                gitlab_rails['gitlab_shell_ssh_port'] = 2224
+

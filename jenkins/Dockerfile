@@ -12,7 +12,7 @@ FROM registry.alauda.cn/kenny/docker-jenkinsci:2.19.3
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
 USER root
-ADD ./sources.list.jessie /etc/apt/sources.list
+RUN sed -i 's/archive.ubuntu.com/mirrors.163.com/g' /etc/apt/sources.list
 RUN apt-get -y update
 # recommend
 RUN apt-get install -y \
