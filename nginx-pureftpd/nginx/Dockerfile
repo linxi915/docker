@@ -6,7 +6,7 @@
 # Command format: Instruction [arguments command] ..
 
 # 第一行必须指定基于的基础镜像
-FROM nginx:1.9.8
+FROM registry.alauda.cn/kenny/docker-nginx
 
 # 维护者信息
 MAINTAINER kennylee26 <kennylee26@gmail.com>
