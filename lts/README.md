@@ -10,7 +10,7 @@
 
 * [lts-center](./lts-center)
 
-    管理系统，包括 `zookeeper`、`myql`、`jobtracker` 和 `admin` (尝试了好久把admin迁移到springboot...无奈没成功，暂时放弃。)
+    管理系统，包括 `zookeeper`、`mysql`、`jobtracker` 和 `admin` (尝试了好久把admin迁移到springboot...无奈没成功，暂时放弃。)
 
     命令参考
 
