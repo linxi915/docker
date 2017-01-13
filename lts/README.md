@@ -12,10 +12,13 @@
 
     管理系统，包括 `zookeeper`、`myql`、`jobtracker` 和 `admin` (尝试了好久把admin迁移到springboot...无奈没成功，暂时放弃。)
 
-    启用命令
+    命令参考
 
     ```
+    // 启用
     docker-compose up -d
+    // 查看控制台
+    docker-compose logs -f
     ```
 
     目录说明

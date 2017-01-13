@@ -1,4 +1,4 @@
-FROM kennylee26/tomcat:tomcat8-jdk8
+FROM kennylee26/tomcat
 
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
