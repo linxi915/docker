@@ -3,6 +3,7 @@
 ### build
 
 ```
+docker build -t kennylee26/sshd-tomcat8-jdk7 .
 ```
 
 说明：

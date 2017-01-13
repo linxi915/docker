@@ -1,0 +1,9 @@
+version: '2'
+services:
+    app:
+        build: .
+        ports: 
+            - "2022:22"
+        restart: always
+        environment:
+            - TZ=Asia/Shanghai

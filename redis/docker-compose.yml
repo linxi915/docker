@@ -1,0 +1,15 @@
+version: '2'
+services:
+    app:
+        image: registry.alauda.cn/kenny/redis
+        container_name: "redis-server"
+        ports:
+            - "6379:6379"
+        volumes:
+            - ./data:/data:z
+            - ./conf/redis.conf:/usr/local/etc/redis/redis.conf
+        environment:
+            - TZ=Asia/Shanghai
+        restart: always
+        command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
+

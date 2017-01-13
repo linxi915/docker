@@ -12,8 +12,17 @@ MAINTAINER kennylee26 <kennylee26@gmail.com>
 RUN apt-get update && \
     apt-get install -yq --no-install-recommends wget pwgen ca-certificates && \
     apt-get install -yq python-pip python-dev mysql-client libmysqlclient-dev && \
+    apt-get install -yq language-pack-zh-hans && \    
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+
+RUN locale
+ENV LANG=zh_CN.UTF-8;\
+    LANGUAGE=zh_CN:zh:en_US:en;\
+    LC_ALL=zh_CN.UTF-8;\
+    TZ="Asia/Shanghai";\
+    TERM=xterm
+RUN echo "Asia/Shanghai"  | sudo tee /etc/timezone && sudo dpkg-reconfigure --frontend noninteractive tzdata
 
 RUN pip install MySQL-python beautifulsoup4
 
@@ -46,8 +55,5 @@ WORKDIR ${CATALINA_HOME}
 COPY docker-entrypoint.py /entrypoint.py
 
 EXPOSE 8080
-
-ENV LANG C.UTF-8
-ENV TZ "Asia/Shanghai"
 
 CMD ["python", "/entrypoint.py"]

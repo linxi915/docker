@@ -1,0 +1,43 @@
+version: '2'
+services:
+    zoo1:
+        image: zookeeper:3.4.9
+        container_name: lts-zoo1
+        restart: unless-stopped
+        ports:
+            - "5181:2181"
+        volumes:
+            - ./data/zoo1/data/:/data/:z
+            - ./data/zoo1/datalog/:/datalog/:z
+        environment:
+            - ZOO_MY_ID=1
+            - TZ=Asia/Shanghai
+    db:
+        image: registry.alauda.cn/kenny/mysql
+        container_name: lts-mysql
+        ports: 
+            - "5306:3306"
+        restart: unless-stopped
+        volumes:
+            - ./data/mysql/:/var/lib/mysql/:rw
+            - ./lts-mysql/database/schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+        environment:
+            - TZ=Asia/Shanghai
+            - MYSQL_ROOT_PASSWORD=111111
+    admin: 
+        extends:
+            file: ./lts-admin/docker-compose.yml
+            service: admin
+        restart: unless-stopped  
+        depends_on:
+            - zoo1
+            - db
+    jobtracker: 
+        extends:
+            file: ./lts-jobtracker/docker-compose.yml
+            service: jobtracker
+        restart: unless-stopped  
+        depends_on:
+            - zoo1
+            - db
+
