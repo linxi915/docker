@@ -1,0 +1,12 @@
+version: '2'
+services:
+    jobtracker: 
+        build: ./
+        volumes: 
+            - ./config/application.yml:/data/application.yml:ro
+        network_mode: 'host'
+        entrypoint: 
+            - java 
+            - -jar 
+            - /data/lts-tasktracker.jar
+            - --spring.config.location=/data/application.yml

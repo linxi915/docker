@@ -1,4 +1,4 @@
-FROM kennylee26/java8
+FROM registry.cn-hangzhou.aliyuncs.com/kennylee/java:oracle-java8
 
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
