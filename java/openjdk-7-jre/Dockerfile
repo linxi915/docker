@@ -1,12 +1,4 @@
-#
-# OpenJDK Java 7 JRE Dockerfile
-#
-# https://github.com/dockerfile/java
-# https://github.com/dockerfile/java/tree/master/openjdk-7-jre
-#
-
-# Pull base image.
-FROM kennylee26/ubuntu 
+FROM registry.cn-hangzhou.aliyuncs.com/kennylee/ubuntu:xenial
 
 # Install Java.
 RUN \
@@ -19,6 +11,7 @@ WORKDIR /data
 
 # Define commonly used JAVA_HOME variable
 ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
+ENV JAVA_OPTS "-server -Xms128m -Xmx1024m -XX:PermSize=64M -XX:MaxPermSize=192M"
 
 # Define default command.
 CMD ["bash"]

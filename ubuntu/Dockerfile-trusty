@@ -3,7 +3,7 @@
 # Base Docker Image http://dockerfile.github.io/#/ubuntu
 # Authoer: kennylee26
 
-FROM ubuntu:xenial
+FROM ubuntu:trusty
 
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
@@ -24,7 +24,7 @@ ENV LANG=zh_CN.UTF-8;\
     TZ="Asia/Shanghai";\
     TERM=xterm
 
-RUN ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
+RUN echo "Asia/Shanghai"  > /etc/timezone && \
         dpkg-reconfigure --frontend noninteractive tzdata
 
 # Set environment variables.

@@ -3,15 +3,15 @@ FROM registry.cn-hangzhou.aliyuncs.com/kennylee/ubuntu:xenial
 # Install Java.
 RUN \
   apt-get update && \
-  apt-get install -y openjdk-7-jdk && \
+  apt-get install -y openjdk-8-jdk --fix-missing && \
   rm -rf /var/lib/apt/lists/*
 
 # Define working directory.
 WORKDIR /data
 
 # Define commonly used JAVA_HOME variable
-ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
-ENV JAVA_OPTS "-server -Xms128m -Xmx1024m -XX:PermSize=64M -XX:MaxPermSize=192M"
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
+ENV JAVA_OPTS "-server -Xms128m -Xmx1024m"
 
 # Define default command.
 CMD ["bash"]
