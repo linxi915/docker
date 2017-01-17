@@ -2,7 +2,7 @@
 #
 # Authoer: kennylee26
 
-FROM ubuntu:xenial
+FROM registry.cn-hangzhou.aliyuncs.com/kennylee/python
 
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
