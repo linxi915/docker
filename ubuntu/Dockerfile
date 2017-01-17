@@ -14,7 +14,7 @@ RUN \
   sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
   apt-get update && \
   apt-get -y upgrade && \
-  apt-get install -y curl sudo git unzip vim wget && \
+  apt-get install -y curl git unzip vim wget && \
   apt-get install -y language-pack-zh-hans && \ 
   rm -rf /var/lib/apt/lists/*
 
