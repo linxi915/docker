@@ -1,13 +1,5 @@
-# Tomcat
-#
-# VERSION 0.0.1
-# Authoer: kennylee26
-# Command format: Instruction [arguments command] ..
-
-# 第一行必须指定基于的基础镜像
 FROM registry.alauda.cn/kenny/tomcat:tomcat8-jdk7
 
-# 维护者信息
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
 # Install.
