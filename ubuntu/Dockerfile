@@ -1,33 +1,32 @@
 # Ubuntu
 #
-# VERSION 0.0.1
 # Base Docker Image http://dockerfile.github.io/#/ubuntu
 # Authoer: kennylee26
-# NAME: kennylee26/ubuntu
-# Command format: Instruction [arguments command] ..
 
-# 第一行必须指定基于的基础镜像
-FROM ubuntu:14.04
+FROM ubuntu:xenial
 
-# 维护者信息
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
-RUN sed -i 's/archive.ubuntu.com/mirrors.163.com/g' /etc/apt/sources.list
+RUN sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list
 
 # Install.
 RUN \
   sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
   apt-get update && \
   apt-get -y upgrade && \
-  apt-get install -y build-essential && \
-  apt-get install -y software-properties-common && \
-  apt-get install -y byobu curl git htop man unzip vim wget && \
+  apt-get install -y curl sudo git unzip vim wget && \
+  apt-get install -y language-pack-zh-hans && \ 
   rm -rf /var/lib/apt/lists/*
 
-# Add files.
-ADD root/.bashrc /root/.bashrc
-ADD root/.gitconfig /root/.gitconfig
-ADD root/.scripts /root/.scripts
+RUN locale
+ENV LANG=zh_CN.UTF-8;\
+    LANGUAGE=zh_CN:zh:en_US:en;\
+    LC_ALL=zh_CN.UTF-8;\
+    TZ="Asia/Shanghai";\
+    TERM=xterm
+
+RUN ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
+        dpkg-reconfigure --frontend noninteractive tzdata
 
 # Set environment variables.
 ENV HOME /root
