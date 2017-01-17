@@ -1,12 +1,4 @@
-# Tomcat
-#
-# VERSION 0.0.1
-# Authoer: kennylee26
-# NAME: kennylee26/tomcat:tomcat8-jdk7
-# Command format: Instruction [arguments command] ..
-
-# 第一行必须指定基于的基础镜像
-FROM registry.alauda.cn/kenny/docker-java7
+FROM registry.cn-hangzhou.aliyuncs.com/kennylee/java:openjdk-7-jre
 
 # 维护者信息
 MAINTAINER kennylee26 <kennylee26@gmail.com>
@@ -17,7 +9,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 ENV TOMCAT_MAJOR_VERSION 8
-ENV TOMCAT_MINOR_VERSION 8.0.39
+ENV TOMCAT_MINOR_VERSION 8.5.9
 ENV CATALINA_HOME /opt/tomcat
 
 # INSTALL TOMCAT
@@ -44,7 +36,7 @@ RUN rm -rf ${CATALINA_HOME}/webapps/examples && \
 
 WORKDIR ${CATALINA_HOME}
 
-ADD run.sh /run.sh
+COPY run.sh /run.sh
 RUN chmod +x /*.sh
 
 EXPOSE 8080
