@@ -9,21 +9,20 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 ENV TOMCAT_MAJOR_VERSION 8
-ENV TOMCAT_MINOR_VERSION 8.5.9
 ENV CATALINA_HOME /opt/tomcat
 
+RUN curl -s -o /tmp/v.html  http://mirror.bit.edu.cn/apache/tomcat/tomcat-${TOMCAT_MAJOR_VERSION}/
+
 # INSTALL TOMCAT
-RUN wget https://archive.apache.org/dist/tomcat/tomcat-${TOMCAT_MAJOR_VERSION}/v${TOMCAT_MINOR_VERSION}/bin/apache-tomcat-${TOMCAT_MINOR_VERSION}.tar.gz && \
-    wget -O- https://archive.apache.org/dist/tomcat/tomcat-${TOMCAT_MAJOR_VERSION}/v${TOMCAT_MINOR_VERSION}/bin/apache-tomcat-${TOMCAT_MINOR_VERSION}.tar.gz.md5 | md5sum -c - && \
+RUN wget http://mirror.bit.edu.cn/apache/tomcat/tomcat-${TOMCAT_MAJOR_VERSION}/v`cat /tmp/v.html | grep "<a href=\"v"| sed -e "s/<[^>]*>//g" | awk 'END{print $1}' | sed 's:^.\(.*\).$:\1:'`/bin/apache-tomcat-`cat /tmp/v.html | grep "<a href=\"v"| sed -e "s/<[^>]*>//g" | awk 'END{print $1}' | sed 's:^.\(.*\).$:\1:'`.tar.gz && \
     tar zxf apache-tomcat-*.tar.gz && \
     rm apache-tomcat-*.tar.gz && \
-    mv apache-tomcat* ${CATALINA_HOME}
+    mv apache-tomcat* ${CATALINA_HOME} && \
+    rm /tmp/v.html    
 
 # set config
 COPY server.xml /tmp/
 RUN cp -f /tmp/server.xml ${CATALINA_HOME}/conf/
-# Add admin/admin user
-# COPY tomcat-users.xml /opt/tomcat/conf/
 
 # Add service
 COPY tomcat /etc/init.d/
