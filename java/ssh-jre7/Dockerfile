@@ -1,12 +1,4 @@
-#
-# OpenJDK Java 7 JRE Dockerfile
-#
-# https://github.com/dockerfile/java
-# https://github.com/dockerfile/java/tree/master/openjdk-7-jre
-#
-
-# Pull base image.
-FROM registry.alauda.cn/kenny/docker-ubuntu
+FROM registry.cn-hangzhou.aliyuncs.com/kennylee/ubuntu:trusty
 
 # Install Java.
 RUN \

@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/kennylee/ubuntu:xenial
+FROM registry.cn-hangzhou.aliyuncs.com/kennylee/ubuntu:trusty
 
 # Install Java.
 RUN \
