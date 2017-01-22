@@ -1,6 +1,5 @@
 FROM registry.cn-hangzhou.aliyuncs.com/kennylee/java:openjdk-8-jre
 
-# 维护者信息
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
 RUN apt-get update && \
@@ -8,21 +7,14 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-ENV TOMCAT_MAJOR_VERSION 8
+ENV TOMCAT_MAJOR_VERSION '8'
 ENV CATALINA_HOME /opt/tomcat
 
-RUN curl -s -o /tmp/v.html  http://mirror.bit.edu.cn/apache/tomcat/tomcat-${TOMCAT_MAJOR_VERSION}/
-
 # INSTALL TOMCAT
-RUN wget http://mirror.bit.edu.cn/apache/tomcat/tomcat-${TOMCAT_MAJOR_VERSION}/v`cat /tmp/v.html | grep "<a href=\"v"| sed -e "s/<[^>]*>//g" | awk 'END{print $1}' | sed 's:^.\(.*\).$:\1:'`/bin/apache-tomcat-`cat /tmp/v.html | grep "<a href=\"v"| sed -e "s/<[^>]*>//g" | awk 'END{print $1}' | sed 's:^.\(.*\).$:\1:'`.tar.gz && \
+RUN curl -sSL http://git.oschina.net/kennylee/shell/raw/master/tomcat_download.sh | bash -s ${TOMCAT_MAJOR_VERSION} && \
     tar zxf apache-tomcat-*.tar.gz && \
     rm apache-tomcat-*.tar.gz && \
-    mv apache-tomcat* ${CATALINA_HOME} && \
-    rm /tmp/v.html    
-
-# set config
-COPY server.xml /tmp/
-RUN cp -f /tmp/server.xml ${CATALINA_HOME}/conf/
+    mv apache-tomcat* ${CATALINA_HOME}
 
 # Add service
 COPY tomcat /etc/init.d/

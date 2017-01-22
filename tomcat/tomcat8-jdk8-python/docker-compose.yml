@@ -1,4 +1,12 @@
-web:
-    build: .
-    ports:
-        - 8080:8080
+version: '2'
+services:
+    app:
+        build: .
+        ports:
+            - "8080:8080"
+        volumes:
+            - ./app/webapps/:/opt/tomcat/webapps/:z
+            - ./config/server.xml:/opt/tomcat/conf/server.xml:ro
+            - ./data/logs/:/opt/tomcat/logs/:z
+        restart: always
+

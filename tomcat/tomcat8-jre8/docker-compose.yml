@@ -5,8 +5,8 @@ services:
         ports:
             - "8080:8080"
         volumes:
-            - ./data/webapps/:/opt/tomcat/webapps/:z
-        environment:
-            - TZ=Asia/Shanghai
+            - ./app/webapps/:/opt/tomcat/webapps/:z
+            - ./config/server.xml:/opt/tomcat/conf/server.xml:ro
+            - ./data/logs/:/opt/tomcat/logs/:z
         restart: always
 

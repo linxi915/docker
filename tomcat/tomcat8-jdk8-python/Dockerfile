@@ -20,10 +20,6 @@ RUN tar zxf apache-tomcat-*.tar.gz && \
     rm apache-tomcat-*.tar.gz && \
     mv apache-tomcat* ${CATALINA_HOME}
 
-# set config
-COPY server.xml /tmp/
-RUN cp -f /tmp/server.xml ${CATALINA_HOME}/conf/
-
 # Add service
 COPY tomcat /etc/init.d/
 RUN chmod +x /etc/init.d/tomcat
