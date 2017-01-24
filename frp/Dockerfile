@@ -11,7 +11,7 @@ RUN chmod +x ./*.sh
 RUN bash ./frp_download.sh && \
     mkdir frp && \
     tar zxf frp_*.tar.gz -C frp --strip-components 1 && \
-    rm frp_*.tar.gz
+    rm frp_*.tar.gz frp_download.sh
 
 # Define default command.
 CMD ["bash"]
