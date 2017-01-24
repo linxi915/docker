@@ -3,10 +3,7 @@ services:
     app:
         image: registry.cn-hangzhou.aliyuncs.com/kennylee/frp
         container_name: frps
-        ports:
-            - "7000:7000"
-            - "8080:8080"
-            - "7500:7500"
+        network_mode: "host"
         volumes:
             - ./frps.ini:/data/frp/frps.ini:z
         restart: always
