@@ -1,0 +1,12 @@
+version: '2'
+services:
+    app:
+        image: registry.cn-hangzhou.aliyuncs.com/kennylee/frp
+        volumes:
+            - ./frpc.ini:/data/frp/frpc.ini:z
+        restart: always
+        entrypoint:
+            - ./frp/frpc
+            - -c
+            - /data/frp/frpc.ini
+
