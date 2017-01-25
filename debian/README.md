@@ -6,7 +6,7 @@
 * 安装的基础工具
 
 	* curl git unzip vim 
-    * kde-l10n-zhcn (中文包)
+	* kde-l10n-zhcn (中文包)
 
 * 中国时区和中文本环境。
 
