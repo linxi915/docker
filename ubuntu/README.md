@@ -4,8 +4,8 @@
 
 主要修改如下:
 
-* 修改apt-get使用aliyun的源
-* 一般tag安装的基础工具
+* 修改apt-get使用163的源
+* 安装的基础工具
 
 	* curl、git、unzip、vim
 	* language-pack-zh-hans (中文包)

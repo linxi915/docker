@@ -17,7 +17,7 @@ RUN gem sources -a https://ruby.taobao.org/
 # recommend lib
 RUN apt-get update && \
     apt-get install -y \
-      curl git unzip vim wget
+        git unzip vim wget
 
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
