@@ -13,7 +13,7 @@ RUN echo "deb http://mirrors.163.com/debian/ jessie main non-free contrib\n\
     deb http://ftp.cn.debian.org/debian jessie main" > /etc/apt/sources.list
 
 RUN apt-get update && \
-    apt-get install -y curl git unzip vim && \
+    apt-get install -y curl git unzip vim wget && \
     apt-get install -y locales kde-l10n-zhcn && \ 
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
