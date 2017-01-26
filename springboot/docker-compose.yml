@@ -1,14 +1,11 @@
 version: '2'
 services:
     app: 
-        image: registry.cn-hangzhou.aliyuncs.com/kennylee/java:openjdk-8-jre
+        build: .
         volumes: 
-            - ./app/app.jar:/data/app.jar
+            - ./app/:/data/app/
             - ./config/application.yml:/data/application.yml:ro
         ports: 
             - "8080:8080"
-        entrypoint: 
-            - java 
-            - -jar 
-            - /data/app.jar
+        command: 
             - --spring.config.location=/data/application.yml
