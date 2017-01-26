@@ -2,7 +2,7 @@
 
 主要修改如下:
 
-* 修改apt-get使用163的源
+* 修改apt-get使用163的软件源
 * 安装的基础工具
 
 	* curl git unzip vim 
