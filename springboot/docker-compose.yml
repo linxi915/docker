@@ -1,7 +1,7 @@
 version: '2'
 services:
     app: 
-        build: .
+        build: ./image-build/
         volumes: 
             - ./app/:/data/app/
             - ./config/application.yml:/data/application.yml:ro
