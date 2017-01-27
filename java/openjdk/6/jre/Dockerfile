@@ -1,9 +1,11 @@
 FROM registry.cn-hangzhou.aliyuncs.com/kennylee/ubuntu:trusty
 
+MAINTAINER kennylee26 <kennylee26@gmail.com>
+
 # Install Java.
 RUN \
   apt-get update && \
-  apt-get install -y openjdk-6-jdk && \
+  apt-get install -y openjdk-6-jre && \
   rm -rf /var/lib/apt/lists/*
 
 # Define working directory.

@@ -1,9 +1,11 @@
 FROM registry.cn-hangzhou.aliyuncs.com/kennylee/ubuntu:xenial
 
+MAINTAINER kennylee26 <kennylee26@gmail.com>
+
 # Install Java.
 RUN \
   apt-get update && \
-  apt-get install -y openjdk-8-jdk --fix-missing && \
+  apt-get install -y openjdk-8-jre && \
   rm -rf /var/lib/apt/lists/*
 
 # Define working directory.
