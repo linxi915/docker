@@ -14,14 +14,15 @@ RUN locale
 
 # Set environment variables.
 ENV HOME /root
-ENV LANG="en_US.UTF-8;"\
-    LANGUAGE="zh_CN:zh:en_US:en;"\
-    LC_ALL="en_US.UTF-8;"\
-    TZ="Asia/Shanghai";\
-    TERM="xterm"
+ENV LANG=en_US.UTF-8\
+    LANGUAGE=zh_CN:zh:en_US:en\
+    LC_ALL=en_US.UTF-8\
+    TZ=Asia/Shanghai\
+    TERM=xterm
 
 RUN unlink /etc/localtime
-RUN ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+RUN ln -sf /usr/share/zoneinfo/$TZ /etc/localtime && \
+        echo $TZ > /etc/timezone        
 
 # Define working directory.
 WORKDIR $HOME

@@ -24,13 +24,14 @@ RUN locale && locale-gen "zh_CN.UTF-8"
        
 # Set environment variables.
 ENV HOME /root
-ENV LANG="zh_CN.UTF-8;"\
-    LANGUAGE="zh_CN:zh:en_US:en;"\
-    LC_ALL="zh_CN.UTF-8;"\
-    TZ="Asia/Shanghai";\
-    TERM="xterm"
+ENV LANG=zh_CN.UTF-8\
+    LANGUAGE=zh_CN:zh:en_US:en\
+    LC_ALL=zh_CN.UTF-8\
+    TZ=Asia/Shanghai\
+    TERM=xterm
 
-RUN ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
+RUN ln -fs /usr/share/zoneinfo/$TZ /etc/localtime && \
+            echo $TZ > /etc/timezone && \        
             dpkg-reconfigure --frontend noninteractive tzdata && \
             dpkg-reconfigure --frontend noninteractive locales
 

@@ -3,7 +3,7 @@
 # Base Docker Image http://dockerfile.github.io/#/ubuntu
 # Authoer: kennylee26
 
-FROM ubuntu:trusty
+FROM ubuntu:xenial
 
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
@@ -18,20 +18,21 @@ RUN \
   rm -rf /var/lib/apt/lists/*
 
 RUN locale
-ENV LANG="zh_CN.UTF-8;"\
-    LANGUAGE="zh_CN:zh:en_US:en;"\
-    LC_ALL="zh_CN.UTF-8;"\
-    TZ="Asia/Shanghai";\
-    TERM="xterm"
-
-RUN echo "Asia/Shanghai"  > /etc/timezone && \
-        dpkg-reconfigure --frontend noninteractive tzdata
 
 # Set environment variables.
 ENV HOME /root
+ENV LANG=zh_CN.UTF-8\
+    LANGUAGE=zh_CN:zh:en_US:en\
+    LC_ALL=zh_CN.UTF-8\
+    TZ=Asia/Shanghai\
+    TERM=xterm
+
+RUN ln -fs /usr/share/zoneinfo/$TZ /etc/localtime && \
+        echo $TZ > /etc/timezone && \
+        dpkg-reconfigure --frontend noninteractive tzdata
 
 # Define working directory.
-WORKDIR /root
+WORKDIR $HOME
 
 # Define default command.
 CMD ["bash"]
