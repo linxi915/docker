@@ -17,3 +17,47 @@ Frp官方资源地址:
 
 4. 必要时，需要根据实际环境进行配置修改，例如 `docker-compose` 中的端口，或 `.ini` 文件。
 
+## Docker-compose使用参考
+
+### frps
+
+```
+version: '2'
+services:
+    app:
+        image: registry.cn-hangzhou.aliyuncs.com/kennylee/frp
+        container_name: frps
+        ports:
+            - "7000:7000"
+            - "7500:7500"
+            - "8080:8080"
+        volumes:
+            - ./frps.ini:/data/frp/frps.ini:z
+        restart: always
+        entrypoint:
+            - ./frp/frps
+            - -c
+            - /data/frp/frps.ini
+```
+
+注意本地创建 `frps.ini` 配置文件
+
+### frpc
+
+```
+version: '2'
+services:
+    app:
+        image: registry.cn-hangzhou.aliyuncs.com/kennylee/frp
+        network_mode: "host"
+        volumes:
+            - ./frpc.ini:/data/frp/frpc.ini:z
+        restart: always
+        entrypoint:
+            - ./frp/frpc
+            - -c
+            - /data/frp/frpc.ini
+```
+
+注意本地创建 `frpc.ini` 配置文件
+

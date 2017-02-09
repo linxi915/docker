@@ -1,6 +1,6 @@
 # Jetbrains License Server
 
-Jetbrains全系列的证书验证服务器。
+Jetbrains全系列的证书验证服务器，镜像大小不到10M。
 
 版本为 v1.0.1，目前(2017-02-09)实测支持到Jetbrains的2016.3.4版本系列IDE。
 
@@ -11,7 +11,7 @@ Jetbrains全系列的证书验证服务器。
 1. 启动服务器
 
 ```
-docker-compose up -d
+docker run -d -p 9999:9999 registry.cn-hangzhou.aliyuncs.com/kennylee/jetbrains-license-server
 ```
 
 2. 打开想要认证Jetbrains的IDE，例如，Idea，Webstorm等。
