@@ -13,4 +13,4 @@ RUN chmod +x $HOME/JetBrainsLicenseServer_linux_64
 EXPOSE 9999
 
 # Define default command.
-CMD ["./JetBrainsLicenseServer_linux_64 --host=0.0.0.0 -p 9999"]
+CMD ["/root/JetBrainsLicenseServer_linux_64 --host=0.0.0.0 -p 9999"]

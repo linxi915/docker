@@ -2,7 +2,9 @@
 
 Jetbrains全系列的证书验证服务器。
 
-目前版本为 v1.0.1，实测支持到Jetbrains的2016.3.4版本系列IDE。
+版本为 v1.0.1，目前(2017-02-09)实测支持到Jetbrains的2016.3.4版本系列IDE。
+
+作者官网 http://jetbrains.tencent.click/
 
 ## 使用说明
 
