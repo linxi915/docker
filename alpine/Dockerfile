@@ -2,6 +2,10 @@ FROM alpine:3.4
 
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
+# 使用中科大源
+RUN echo "http://mirrors.ustc.edu.cn/alpine/v3.4/main/ \n\
+http://mirrors.ustc.edu.cn/alpine/v3.4/community" > /etc/apk/repositories
+
 # Install base packages
 RUN apk --no-cache update && \
     apk --no-cache upgrade && \
