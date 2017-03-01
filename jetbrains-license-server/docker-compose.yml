@@ -4,3 +4,4 @@ services:
         image: registry.cn-hangzhou.aliyuncs.com/kennylee/jetbrains-license-server
         ports: 
             - "9999:9999"
+        restart: unless-stopped
