@@ -39,9 +39,6 @@ RUN ln -fs /usr/share/zoneinfo/$TZ /etc/localtime && \
 WORKDIR $HOME
 
 # add cnpm for taobao registry
-RUN alias cnpm="npm --registry=https://registry.npm.taobao.org \
---cache=$HOME/.npm/.cache/cnpm \
---disturl=https://npm.taobao.org/dist \
---userconfig=$HOME/.cnpmrc"
+RUN echo '\n#alias for cnpm\nalias cnpm="npm --registry=https://registry.npm.taobao.org --cache=$HOME/.npm/.cache/cnpm --disturl=https://npm.taobao.org/dist --userconfig=$HOME/.cnpmrc"' >> ~/.bashrc
 
 CMD [ "node" ]
