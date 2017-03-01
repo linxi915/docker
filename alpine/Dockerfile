@@ -2,9 +2,8 @@ FROM alpine:3.4
 
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
-# 使用中科大源
-RUN echo "http://mirrors.ustc.edu.cn/alpine/v3.4/main/ \n\
-http://mirrors.ustc.edu.cn/alpine/v3.4/community" > /etc/apk/repositories
+# 使用阿里云镜像
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 
 # Install base packages
 RUN apk --no-cache update && \

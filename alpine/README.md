@@ -2,7 +2,7 @@
 
 主要修改如下:
 
-* 使用中科大源
+* 使用阿里云源
 * 安装的基础工具 curl bash tzdata tar unzip 
 * 中国时区
 * 默认bash
