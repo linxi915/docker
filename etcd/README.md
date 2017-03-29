@@ -19,6 +19,8 @@ Github: https://github.com/coreos/etcd
 * 安装的基础工具 curl bash tzdata tar unzip 
 * 中国时区
 
+更多使用方法可参考 https://github.com/coreos/etcd/releases/
+
 参考构建命令
 
 ```
