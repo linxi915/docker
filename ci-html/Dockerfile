@@ -5,6 +5,8 @@ MAINTAINER kennylee26 <kennylee26@gmail.com>
 RUN apk update && apk upgrade && \
     apk add --no-cache git openssh
 
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
+
 ENV HOME /root
 ENV local_repo=$HOME/html_repo\
     repo_remote=http://sys:11111111@192.168.3.231:10080/zgbj/gkxt.git\

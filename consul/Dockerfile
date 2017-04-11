@@ -1,4 +1,4 @@
-# see also
+# see also https://github.com/hashicorp/docker-consul
 FROM consul
 
 MAINTAINER kennylee26 <kennylee26@gmail.com>
