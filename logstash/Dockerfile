@@ -22,6 +22,6 @@ RUN ln -fs /usr/share/zoneinfo/$TZ /etc/localtime && \
 
 USER logstash
 
-RUN logstash-plugin install gelf
+RUN logstash-plugin install logstash-input-gelf
 
 
