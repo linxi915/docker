@@ -1,12 +1,12 @@
-FROM registry.alauda.cn/kenny/tomcat:tomcat8-jdk7
+FROM registry.cn-hangzhou.aliyuncs.com/kennylee/tomcat:tomcat8-jre7
 
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
 # Install.
 RUN \
   apt-get update && \
-  apt-get -y upgrade && \
   apt-get install -y openssh-server && \
+  apt-get install -y inetutils-ping net-tools dnsutils supervisor && \
   rm -rf /var/lib/apt/lists/*
 
 RUN mkdir /var/run/sshd
@@ -14,6 +14,8 @@ RUN mkdir /var/run/sshd
 # Add root password
 RUN echo 'root:111111' | chpasswd
 
+RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+# old version sshd
 RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
 # SSH login fix. Otherwise user is kicked off after login
@@ -28,8 +30,8 @@ RUN echo "export JAVA_HOME=${JAVA_HOME}" >> ${HOME}/.bashrc
 RUN echo "export JAVA_OPTS=\"${JAVA_OPTS}\"" >> ${HOME}/.bashrc
 RUN echo "export CATALINA_HOME=${CATALINA_HOME}" >> ${HOME}/.bashrc
 
-COPY run.sh /run.sh
-RUN chmod +x /*.sh
+RUN sed -i "s@\/usr\/lib\/jvm\/java-7-oracle@${JAVA_HOME}@" /etc/init.d/tomcat
+RUN sed -i "s@-server -Xms128m -Xmx1024m -XX\:PermSize=64M -XX\:MaxPermSize=192M@${JAVA_OPTS}@" /etc/init.d/tomcat
 
 # Define working directory.
 WORKDIR ${HOME}
@@ -38,4 +40,10 @@ WORKDIR ${HOME}
 EXPOSE 22
 EXPOSE 8080
 
-CMD ["/run.sh"]
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY supervisord_wrapper.sh /supervisord_wrapper.sh
+
+RUN chmod +x /*.sh
+
+# Define default command.
+CMD ["/usr/bin/supervisord"]
