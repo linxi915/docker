@@ -4,7 +4,7 @@ var http = require("http"),
 const PORT = 7788, projectName = 'gkxt';
 const repo = {
     url: 'http://sys:11111111@192.168.3.231:10080/zgbj/gkxt.git', // git repository
-    branch: 'master',
+    branch: 'feature_testci',
     localPath: '/tmp/',
     buildCommand: './gradlew clean dist -x test',
     distPath: '/root/tomcat/webapps/'
