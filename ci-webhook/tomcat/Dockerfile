@@ -14,5 +14,7 @@ RUN apt-get clean && \
 RUN npm install -g cnpm child_process pm2 --registry=https://registry.npm.taobao.org
 
 RUN cd /root && git clone https://git.oschina.net/kennylee/ci-webhook.git ci-webhook
+RUN cd ci-webhook && npm install 
+COPY server.js /root/ci-webhook/server.js
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
