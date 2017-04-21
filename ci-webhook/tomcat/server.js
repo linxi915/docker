@@ -1,27 +1,14 @@
 var http = require("http"),
     exec = require('child_process').exec;
 
-const PORT = 7788, projectName = 'gkxt';
-const repo = {
-    url: 'http://sys:11111111@192.168.3.231:10080/zgbj/gkxt.git', // git repository
-    branch: 'feature_testci',
-    localPath: '/tmp/',
-    buildCommand: './gradlew clean dist -x test',
-    distPath: '/root/tomcat/webapps/'
-};
+const PORT = 7788;
 
 http.createServer(function (request, response) {
     if (request.url.search(/deploy\/?$/i) > 0) {
         var commands = [
-            'rm -rf ' + repo.localPath + projectName,
-            'cd ' + repo.localPath,
-            'git clone ' + repo.url + ' ' + projectName,
-            'cd ' + projectName,
-            'git checkout ' + repo.branch,
-            repo.buildCommand,
-            'rm -rf ' + repo.distPath + "*",
-            'unzip ./build/dist/*.zip -d ' + repo.distPath,
-            'service tomcat restart'
+            'supervisorctl stop tomcat',
+            'sleep 3s',
+            'supervisorctl start tomcat'
         ].join(' && ');
         var buildProcess = exec(commands, function (err, out, code) {
             if (err instanceof Error) {
