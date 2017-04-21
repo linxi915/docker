@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/kennylee/java:openjdk-7-jre
+FROM registry.cn-hangzhou.aliyuncs.com/kennylee/java:openjdk-7-jdk
 
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
