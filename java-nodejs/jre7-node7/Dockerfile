@@ -6,8 +6,10 @@ RUN apt-get update && \
     apt-get install -y python-software-properties software-properties-common
 
 RUN curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
-RUN apt-get install nodejs && \
-    apt-get install -y inetutils-ping net-tools dnsutils supervisor        
+RUN apt-get install -y nodejs && \
+    apt-get install -y inetutils-ping net-tools dnsutils supervisor && \
+    apt-get install -y python-pip && \
+    pip install supervisor-stdout
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
