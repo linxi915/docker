@@ -1,4 +1,4 @@
-FROM  registry.cn-hangzhou.aliyuncs.com/kennylee/java-nodejs:jre7-nodejs7
+FROM  registry.cn-hangzhou.aliyuncs.com/kennylee/java-nodejs:jdk7-nodejs7
 
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
@@ -28,6 +28,9 @@ RUN rm -rf ${CATALINA_HOME}/webapps/examples && \
 WORKDIR ${CATALINA_HOME}
 
 EXPOSE 8080
+
+RUN sed -i "s@\/usr\/lib\/jvm\/java-7-oracle@${JAVA_HOME}@" /etc/init.d/tomcat
+RUN sed -i "s@-server -Xms128m -Xmx1024m -XX\:PermSize=64M -XX\:MaxPermSize=192M@${JAVA_OPTS}@" /etc/init.d/tomcat
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY supervisord_wrapper.sh /supervisord_wrapper.sh

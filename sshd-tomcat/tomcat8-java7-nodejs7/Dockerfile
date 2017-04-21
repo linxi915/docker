@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/kennylee/tomcat:tomcat8-jre7-nodejs7
+FROM registry.cn-hangzhou.aliyuncs.com/kennylee/tomcat:tomcat8-jdk7-nodejs7
 
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
@@ -29,9 +29,6 @@ RUN echo "export JAVA_HOME=${JAVA_HOME}" >> ${HOME}/.bashrc
 RUN echo "export JAVA_OPTS=\"${JAVA_OPTS}\"" >> ${HOME}/.bashrc
 RUN echo "export CATALINA_HOME=${CATALINA_HOME}" >> ${HOME}/.bashrc
 
-RUN sed -i "s@\/usr\/lib\/jvm\/java-7-oracle@${JAVA_HOME}@" /etc/init.d/tomcat
-RUN sed -i "s@-server -Xms128m -Xmx1024m -XX\:PermSize=64M -XX\:MaxPermSize=192M@${JAVA_OPTS}@" /etc/init.d/tomcat
-
 # Define working directory.
 WORKDIR ${HOME}
 
@@ -41,5 +38,3 @@ EXPOSE 8080
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-# Define default command.
-CMD ["/usr/bin/supervisord"]
