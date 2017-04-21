@@ -6,7 +6,6 @@ MAINTAINER kennylee26 <kennylee26@gmail.com>
 RUN \
   apt-get update && \
   apt-get install -y openssh-server && \
-  apt-get install -y inetutils-ping net-tools dnsutils supervisor && \
   rm -rf /var/lib/apt/lists/*
 
 RUN mkdir /var/run/sshd
