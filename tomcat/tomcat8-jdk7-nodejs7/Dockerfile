@@ -1,4 +1,4 @@
-FROM  registry.cn-hangzhou.aliyuncs.com/kennylee/java-nodejs:jdk7-nodejs7
+FROM  registry.cn-hangzhou.aliyuncs.com/kennylee/java-nodejs:java7-nodejs7
 
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
