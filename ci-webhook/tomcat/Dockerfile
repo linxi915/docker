@@ -18,3 +18,6 @@ RUN cd ci-webhook && npm install
 COPY server.js /root/ci-webhook/server.js
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+# Define default command.
+CMD ["/usr/bin/supervisord"]
