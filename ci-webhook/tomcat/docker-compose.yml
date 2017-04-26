@@ -5,6 +5,8 @@ services:
         volumes:
             - ./server.js:/root/ci-webhook/server.js:z
             - ./supervisord.conf:/etc/supervisor/conf.d/supervisord.conf:z
+            - ./data/gradle/:/root/.gradle/
+            - ./data/webapps/:/opt/tomcat/webapps/:z
         ports: 
             - "8080:8080"
             - "7788:7788"

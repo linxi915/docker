@@ -15,4 +15,4 @@ RUN cd /tmp/ && git clone $REPO_URL $PROJECT_NAME
 COPY deploy.sh /deploy.sh
 RUN chmod +x /deploy.sh
 
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
