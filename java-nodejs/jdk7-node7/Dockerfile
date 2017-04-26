@@ -16,8 +16,8 @@ RUN apt-get clean && \
 # add cnpm for taobao registry
 RUN npm install -g cnpm pm2 --registry=https://registry.npm.taobao.org
 
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY supervisor/supervisord.conf /etc/supervisor/supervisord.conf
+COPY supervisor/conf.d/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Define default command.
-CMD ["/usr/bin/supervisord"]
-
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]

@@ -40,10 +40,11 @@ WORKDIR ${HOME}
 EXPOSE 22
 EXPOSE 8080
 
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY supervisord_wrapper.sh /supervisord_wrapper.sh
-
 RUN chmod +x /*.sh
 
+COPY supervisor/supervisord.conf /etc/supervisor/supervisord.conf
+COPY supervisor/conf.d/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
 # Define default command.
-CMD ["/usr/bin/supervisord"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]

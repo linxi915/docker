@@ -38,4 +38,5 @@ COPY supervisord_wrapper.sh /supervisord_wrapper.sh
 RUN chmod +x /*.sh
 
 # Define default command.
-CMD ["/usr/bin/supervisord"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
+
