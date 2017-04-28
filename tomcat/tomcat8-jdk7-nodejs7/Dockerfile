@@ -21,7 +21,7 @@ COPY tomcat /etc/init.d/
 RUN chmod +x /etc/init.d/tomcat
 
 # Add User
-RUN useradd -b $CATALINA_HOME -M -s /bin/bash tomcat \
+RUN useradd -b "${CATALINA_HOME}" -M -s /bin/bash tomcat \
     && echo tomcat:tomcat | chpasswd \
     && chown tomcat:tomcat -R $CATALINA_HOME
 
