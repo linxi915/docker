@@ -1,0 +1,43 @@
+version: '2'
+    
+networks:
+    &network wlsnet:
+        driver: bridge
+
+services:
+    &admin adminserver:
+        image: &image kennylee26/weblogic-domain
+        container_name: wlsadmin
+        volumes:
+            - './app/:/u01/oracle/app/'
+            - './container-scripts/:/u01/oracle/my-scripts/'
+        ports:
+            - "8001:8001"
+        networks:
+            - *network 
+    server1:
+        image: *image
+        command: createServer.sh
+        volumes:
+            - './libs/:/u01/oracle/user_projects/domains/base_domain/lib/'
+        ports:
+            - "7001:7001"
+        networks:
+            - *network 
+        env_file:
+            - app.env
+        depends_on:
+            - *admin
+    server2:
+        image: *image
+        command: createServer.sh
+        volumes:
+            - './libs/:/u01/oracle/user_projects/domains/base_domain/lib/'
+        ports:
+            - "7002:7001"
+        networks:
+            - *network
+        env_file:
+            - app.env
+        depends_on:
+            - *admin

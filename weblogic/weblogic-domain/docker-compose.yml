@@ -1,0 +1,30 @@
+version: '2'
+    
+networks:
+    &network wlsnet:
+        driver: bridge
+
+services:
+    &admin adminserver:
+        image: &image kennylee26/weblogic-domain
+        container_name: wlsadmin
+        ports:
+            - "8001:8001"
+        networks:
+            - *network 
+    managedserver:
+        image: *image
+        command: createServer.sh
+        ports:
+            - "7001:7001"
+        networks:
+            - *network 
+        depends_on:
+            - *admin
+#    nodemanager:
+#        image: *image
+#        command: createMachine.sh
+#        networks:
+#            - *network 
+#        depends_on:
+#            - *admin
