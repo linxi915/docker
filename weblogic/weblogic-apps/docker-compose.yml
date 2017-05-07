@@ -6,7 +6,7 @@ networks:
 
 services:
     &admin adminserver:
-        image: &image kennylee26/weblogic-domain
+        image: &image registry.cn-hangzhou.aliyuncs.com/kennylee/weblogic-domain:12.2.1.2.0-jre8
         container_name: wlsadmin
         volumes:
             - './app/:/u01/oracle/app/'
