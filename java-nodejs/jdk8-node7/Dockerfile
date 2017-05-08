@@ -5,7 +5,7 @@ MAINTAINER kennylee26 <kennylee26@gmail.com>
 RUN apt-get update && \
     apt-get install -y python-software-properties software-properties-common
 
-RUN curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
+RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
 RUN apt-get install -y nodejs && \
     apt-get install -y inetutils-ping net-tools dnsutils supervisor && \
     apt-get install -y python-pip && \
