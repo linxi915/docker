@@ -11,14 +11,18 @@ services:
         volumes:
             - './app/:/u01/oracle/app/'
             - './container-scripts/:/u01/oracle/my-scripts/'
+            - './libs/:/u01/oracle/user_projects/domains/base_domain/lib/'
         ports:
             - "8001:8001"
         networks:
             - *network 
+        env_file:
+            - admin.env
     server1:
         image: *image
         command: createServer.sh
         volumes:
+            - './app/:/u01/oracle/app/'
             - './libs/:/u01/oracle/user_projects/domains/base_domain/lib/'
         ports:
             - "7001:7001"
@@ -32,6 +36,7 @@ services:
         image: *image
         command: createServer.sh
         volumes:
+            - './app/:/u01/oracle/app/'
             - './libs/:/u01/oracle/user_projects/domains/base_domain/lib/'
         ports:
             - "7002:7001"
