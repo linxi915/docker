@@ -16,7 +16,6 @@ RUN apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 573BFD6B3D8FBC64107
 						nginx-module-xslt \
 						nginx-module-geoip \
 						nginx-module-image-filter \
-						nginx-module-upsteam \                        
 						nginx-module-perl \
 						nginx-module-njs \
 						gettext-base \
