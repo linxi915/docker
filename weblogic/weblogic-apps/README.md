@@ -1,5 +1,7 @@
 # weblogic-apps
 
+weblogic，在线部署的例子，部署比较灵活，但比较不稳定。没离线的好用，可参考 `weblogic-appdeploy` 文件夹例子。
+
 实现weblogic的应用集群，一个 `AdminServer` 和N个应用的container环境。使用命令行和 `AdminServer` 进行实现。
 
 ## 使用方法
