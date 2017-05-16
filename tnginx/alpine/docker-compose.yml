@@ -6,8 +6,8 @@ networks:
 
 services:
     http:
-        image: kennylee26/tnginx:2.2.0
-        container_name: "nginx"
+        image: registry.cn-hangzhou.aliyuncs.com/kennylee/tnginx:2.2.0
+        container_name: "tnginx"
         ports:
             - "80:80"
         volumes:
