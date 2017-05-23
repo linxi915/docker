@@ -49,8 +49,7 @@ RUN sed -Ei 's/^(bind-address|log)/#&/' /etc/mysql/my.cnf \
 	&& echo 'skip-host-cache\nskip-name-resolve' | awk '{ print } $1 == "[mysqld]" && c == 0 { c = 1; system("cat") }' /etc/mysql/my.cnf > /tmp/my.cnf \
 	&& mv /tmp/my.cnf /etc/mysql/my.cnf
 
-#不需要帮我默认制作数据卷啊
-#VOLUME /var/lib/mysql
+VOLUME /var/lib/mysql
 
 COPY docker-entrypoint.sh /entrypoint.sh
 RUN chmod +x /*.sh
