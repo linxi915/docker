@@ -48,7 +48,8 @@ RUN mkdir /data && chown redis:redis /data
 VOLUME /data
 WORKDIR /data
 
-COPY docker-entrypoint.sh /usr/local/bin/
+COPY docker-entrypoint.sh /
+RUN chmod +x /*.sh
 ENTRYPOINT ["docker-entrypoint.sh"]
 
 EXPOSE 6379
