@@ -47,7 +47,7 @@ When you combine this with using volumes-from things begin to get a bit more pow
 # NFS Server
 docker run -d -v /tmp ubuntu --name foo bash -c "echo foo &gt; /tmp/foo"
 docker run -d --name nfs-server --privileged --volumes-from foo cpuguy83/nfs-server /tmp
-docker inspect --format '{{ .NetworkSettings.IPAddress }}' nfs-server
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'  nfs-server
 10.0.1.100
 ```
 

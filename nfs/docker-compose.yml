@@ -1,0 +1,16 @@
+version: '2'
+
+networks:
+    &network nfs:
+        driver: bridge
+
+services:
+    nfs-server:
+        image: registry.cn-hangzhou.aliyuncs.com/kennylee/nfs
+        container_name: "nfs-server"
+        volumes:
+            - /tmp/:/tmp/
+        privileged: true
+        command: /tmp/
+        networks:
+            - *network
