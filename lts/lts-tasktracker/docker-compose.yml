@@ -6,7 +6,5 @@ services:
             - ./config/application.yml:/data/application.yml:ro
         network_mode: 'host'
         entrypoint: 
-            - java 
-            - -jar 
-            - /data/lts-tasktracker.jar
-            - --spring.config.location=/data/application.yml
+            - /entrypoint.sh
+            - --spring.config.location=/data/application.yml   
