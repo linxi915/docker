@@ -11,8 +11,6 @@ RUN \
   apt-get install -y python3 python-dev python-pip python-virtualenv && \
   rm -rf /var/lib/apt/lists/*
 
-RUN pip install pydns
-
 # Define working directory.
 WORKDIR /data
 
