@@ -21,7 +21,7 @@ def randomName():
 cluster_name = os.environ.get("CLUSTER_NAME", "DockerCluster")
 
 # ManagedServer details
-msinternal = socket.gethostbyname(hostname)
+msinternal = os.environ.get('MS_LISTEN_ADDRESS', socket.gethostbyname(hostname))
 msname = os.environ.get('MS_NAME', 'ManagedServer-%s@%s' % (randomName(), hostname))
 mshost = os.environ.get('MS_HOST', msinternal)
 msport = os.environ.get('MS_PORT', '7001')
