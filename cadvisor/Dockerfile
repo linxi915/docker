@@ -1,4 +1,4 @@
-FROM golang:latest
+FROM registry.cn-hangzhou.aliyuncs.com/kennylee/golang:latest
 MAINTAINER vmarmol@google.com
 
 RUN apt-get install -y git dmsetup
