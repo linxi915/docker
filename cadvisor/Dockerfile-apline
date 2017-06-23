@@ -18,7 +18,7 @@ RUN apk --no-cache add ca-certificates wget device-mapper && \
 
 # Grab cadvisor from the staging directory.
 #ADD cadvisor /usr/bin/cadvisor
-RUN curl -o /usr/bin/cadvisor https://github.com/google/cadvisor/releases/download/v${CADVISOR_VERSION}/cadvisor
+RUN wget -q -O /usr/bin/cadvisor https://github.com/google/cadvisor/releases/download/v${CADVISOR_VERSION}/cadvisor
 
 EXPOSE 8080
 ENTRYPOINT ["/usr/bin/cadvisor", "-logtostderr"]
