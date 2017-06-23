@@ -13,7 +13,7 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.163.com/g' /etc/apt/sources.list
 RUN \
   apt-get update && \
   apt-get -y upgrade && \
-  apt-get install -y curl git unzip vim wget && \
+  apt-get install -y curl git unzip vim wget iputils-ping && \
   apt-get install -y language-pack-zh-hans && \ 
   rm -rf /var/lib/apt/lists/*
 
