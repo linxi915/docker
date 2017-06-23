@@ -1,7 +1,9 @@
+# https://github.com/google/cadvisor/tree/master/deploy
 FROM registry.cn-hangzhou.aliyuncs.com/kennylee/alpine:3.4
 MAINTAINER dengnan@google.com vmarmol@google.com vishnuk@google.com jimmidyson@gmail.com stclair@google.com
 
 ENV GLIBC_VERSION "2.23-r3"
+ENV CADVISOR_VERSION="0.26.1"
 
 RUN apk --no-cache add ca-certificates wget device-mapper && \
     apk --no-cache add zfs --repository http://dl-3.alpinelinux.org/alpine/edge/main/ && \
@@ -15,7 +17,8 @@ RUN apk --no-cache add ca-certificates wget device-mapper && \
     rm -rf /var/cache/apk/*
 
 # Grab cadvisor from the staging directory.
-ADD cadvisor /usr/bin/cadvisor
+#ADD cadvisor /usr/bin/cadvisor
+RUN curl -o /usr/bin/cadvisor https://github.com/google/cadvisor/releases/download/v${CADVISOR_VERSION}/cadvisor
 
 EXPOSE 8080
 ENTRYPOINT ["/usr/bin/cadvisor", "-logtostderr"]
