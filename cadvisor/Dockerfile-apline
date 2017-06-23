@@ -20,5 +20,7 @@ RUN apk --no-cache add ca-certificates wget device-mapper && \
 #ADD cadvisor /usr/bin/cadvisor
 RUN wget -q -O /usr/bin/cadvisor https://github.com/google/cadvisor/releases/download/v${CADVISOR_VERSION}/cadvisor
 
+RUN chmod +x /usr/bin/cadvisor
+
 EXPOSE 8080
 ENTRYPOINT ["/usr/bin/cadvisor", "-logtostderr"]

@@ -14,7 +14,7 @@ sudo docker run \
   --restart=always \
   --detach=true \
   --name=cadvisor \
-  registry.cn-hangzhou.aliyuncs.com/kennylee/cadvisor
+  registry.cn-hangzhou.aliyuncs.com/kennylee/cadvisor:apline
 ```
   
 cAdvisor is now running (in the background) on http://localhost:8080. The setup includes directories with Docker state cAdvisor needs to observe.
