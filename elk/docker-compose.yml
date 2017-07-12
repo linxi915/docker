@@ -27,6 +27,7 @@ services:
             - elk
         volumes:
             - ./data/elasticsearch:/usr/share/elasticsearch/data:rw
+            #- ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     logstash:
         build: logstash/indexer/
         container_name: logstash_indexer
