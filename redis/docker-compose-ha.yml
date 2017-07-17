@@ -1,0 +1,54 @@
+version: '3'
+
+networks:
+    &network network:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: 172.16.238.0/16
+
+services:
+    &master redis-master:
+        image: &image registry.cn-hangzhou.aliyuncs.com/kennylee/redis:3.2
+        container_name: "master"
+        ports:
+            - "6379:6379"
+        volumes:
+            - ./conf-ha/redis-master.conf:/usr/local/etc/redis/redis.conf
+        restart: on-failure
+        command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
+        networks:
+            *network :
+                ipv4_address: 172.16.238.10
+    redis-slave-1:
+        image: *image
+        container_name: "slave"
+        ports:
+            - "6380:6379"
+        volumes:
+            - ./conf-ha/redis-slave1.conf:/usr/local/etc/redis/redis.conf
+        restart: on-failure
+        command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
+        networks:
+            *network :
+                ipv4_address: 172.16.238.11
+        depends_on:
+            - *master
+    redis-sentinel:
+        image: *image
+        container_name: "sentinel"
+        ports:
+            - "26379:26379"
+        volumes:
+            - ./conf-ha/sentinel.conf:/usr/local/etc/redis/sentinel.conf
+        restart: on-failure
+        command: [ "redis-sentinel", "/usr/local/etc/redis/sentinel.conf" ]
+        networks:
+            *network :
+                ipv4_address: 172.16.238.20
+        depends_on:
+            - *master
+
+
+
