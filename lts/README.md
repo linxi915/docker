@@ -51,7 +51,11 @@
     配置说明
 
     * 基本配置信息参考 [LTS](http://git.oschina.net/hugui/light-task-scheduler)，而配置文件都可以在宿主目录找到。
-    * 由于在docker环境，而lts默认绑定的是容器内的ip，还好lts支持手动指定 `bind-ip` 。所以需要手动配置各自部署的服务器宿主的IP，影响的文件有 `lts-admin/config/lts-monitor.cfg`、`lts-jobtracker/config/application.yml `，以及**不在lts-center中，另外跑的tasktracker节点**。*（有空再找办法解决，至少让修改简单点，也许采取类似host的解决方案也可以）*
+    * docker的network配置为 `host`
+
+    	由于 `jobtrack` 等应用在docker环境。而外部启动 `tasktrack` 可能不在docker的同一个network中，而lts默认绑定的是容器内的ip，还好lts支持手动指定 `bind-ip`，暂时使用host模式。
+    	
+    	故此，`admin`，`jobtrack`和`tasktrack`等节点需要配置各自部署的服务器宿主的IP，影响的文件有 `lts-admin/config/lts-monitor.cfg`、`lts-jobtracker/config/application.yml `，以及**不在lts-center中，另外跑的tasktracker节点**。*（有空再找办法解决，至少让修改简单点，也许采取类似host的解决方案也可以）*
 
 * [lts-tasktracker](./lts-tasktracker)
 
