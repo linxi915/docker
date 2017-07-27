@@ -1,10 +1,25 @@
-version: '2'
+version: '3'
+
+networks:
+    &network ltsnetwork:
+        external:
+           name: lts
+
 services:
     jobtracker: 
         build: ./
         volumes: 
             - ./config/application.yml:/data/application.yml:ro
-        network_mode: 'host'
+        container_name: lts-tasktracker
+        environment:
+            JAVA_OPTS: -server -Xms128m -Xmx256m
         entrypoint: 
             - /entrypoint.sh
-            - --spring.config.location=/data/application.yml   
+            - --spring.config.location=/data/application.yml
+        networks:
+            - *network
+        logging:
+            driver: 'json-file'
+            options:
+                max-size: '30m'
+                max-file: '1'

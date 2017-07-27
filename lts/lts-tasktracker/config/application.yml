@@ -1,13 +1,13 @@
 lts:
   tasktracker:
     cluster-name: default_cluster
-    registry-address: zookeeper://192.168.3.232:5181
+    registry-address: zookeeper://zoo1:2181
     node-group: test_trade_TaskTracker
     configs:
       job:
         fail:
           store: mapdb
-    bind-ip: 192.168.3.206
+    bind-ip: 
 ---
 lts:
   tasktracker:

@@ -5,9 +5,6 @@ services:
         container_name: lts-jobtracker
         volumes: 
             - ./config/application.yml:/data/application.yml:ro
-        network_mode: 'host'
         entrypoint: 
-            - java 
-            - -jar 
-            - /data/lts-jobtracker.jar
-            - --spring.config.location=/data/application.yml
+            - /entrypoint.sh
+            - --spring.config.location=/data/application.yml  

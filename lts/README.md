@@ -6,6 +6,29 @@
 
 在容器内的应用，除了admin外，均使用springboot作为运行环境，均可参考 [lts-springboot](http://git.oschina.net/kennylee/lts-springboot)
 
+## Docker环境
+
+创建 `lts` 的网络
+
+```
+docker network create --driver bridge --subnet 172.19.1.0/16 lts
+```
+
+注意mysql的data目录的权限，建议 `777` 需要启动一次后，再设置。
+
+### 高可用
+
+保证至少一个 `tasktracker` 和 `jobtracker`，并且他们关联的 `mysql` 也是正常的情况下，调度程序可以正常使用！
+
+#### HA测试环境
+
+* 先启用 `lts-center` 的 docker-compose.yml
+* 然后 `docker-compose-ha-task.yml` 两个 `jobtracker`
+
+	```
+	docker-compose -p lts -f docker-compose-ha-task.yml up -d
+	```
+
 ## 项目说明
 
 综合自身实际和LTS的结构，目前比较常用的部署方式一个管理服务器和一个跑任务的服务器。所以目前也分为两个docker-compose目录。

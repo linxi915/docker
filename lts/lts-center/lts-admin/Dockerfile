@@ -7,5 +7,5 @@ COPY ./app/lts-admin/ ${CATALINA_HOME}/webapps/ROOT/
 EXPOSE 8085
 EXPOSE 8730
 
-CMD ["python", "/entrypoint.py"]
+CMD ["/run.sh"]
 
