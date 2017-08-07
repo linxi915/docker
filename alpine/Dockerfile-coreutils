@@ -1,0 +1,5 @@
+FROM registry.cn-hangzhou.aliyuncs.com/kennylee/alpine
+
+MAINTAINER kennylee26 <kennylee26@gmail.com>
+
+RUN apk add --update coreutils && rm -rf /var/cache/apk/*
