@@ -13,3 +13,8 @@
 docker build -t kennylee26/alpine .
 ```
 
+## 版本说明
+
+* `coreutils` 包含coreutils包的镜像，没有coreutils的话，date命令的格式化无法正常使用。
+
+
