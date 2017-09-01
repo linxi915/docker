@@ -1,9 +1,8 @@
 version: '3'
 
 services:
-    app:
+    cadvisor:
         image: registry.cn-hangzhou.aliyuncs.com/kennylee/cadvisor:apline
-        container-name: cadvisor
         volumes:
             - /:/rootfs:ro
             - /var/run:/var/run:rw
