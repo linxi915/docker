@@ -35,4 +35,8 @@ There is also an official Go client implementation in the client directory. See 
 
 see also https://hub.docker.com/r/google/cadvisor-canary/
 
+-----
+
+注意修改本地映射的 `--volume=/var/lib/docker/:/var/lib/docker:ro`
+
 

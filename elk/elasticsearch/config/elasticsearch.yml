@@ -24,3 +24,8 @@ xpack.monitoring.enabled: false
 xpack.ml.enabled: false
 xpack.graph.enabled: false
 xpack.watcher.enabled: false
+
+http.cors.enabled : true
+http.cors.allow-origin : "*"
+http.cors.allow-methods : OPTIONS, HEAD, GET, POST
+http.cors.allow-headers : X-Requested-With, Content-Type, Content-Length

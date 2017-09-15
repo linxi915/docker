@@ -10,24 +10,24 @@ networks:
 
 services:
     &master redis-master:
-        image: &image registry.cn-hangzhou.aliyuncs.com/kennylee/redis:3.2
+        build:
+            context: ./conf-ha/
+            dockerfile: Dockerfile-master
         container_name: "master"
         ports:
             - "6379:6379"
-        volumes:
-            - ./conf-ha/redis-master.conf:/usr/local/etc/redis/redis.conf
         restart: on-failure
         command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
         networks:
             *network :
                 ipv4_address: 172.16.238.10
     redis-slave-1:
-        image: *image
+        build:
+            context: ./conf-ha/
+            dockerfile: Dockerfile-slave
         container_name: "slave"
         ports:
             - "6380:6379"
-        volumes:
-            - ./conf-ha/redis-slave1.conf:/usr/local/etc/redis/redis.conf
         restart: on-failure
         command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
         networks:
@@ -35,20 +35,64 @@ services:
                 ipv4_address: 172.16.238.11
         depends_on:
             - *master
-    redis-sentinel:
-        image: *image
-        container_name: "sentinel"
+    redis-sentinel-1:
+        build:
+            context: ./conf-ha/
+            dockerfile: Dockerfile-sentinel
+        container_name: "s1"
         ports:
             - "26379:26379"
-        volumes:
-            - ./conf-ha/sentinel.conf:/usr/local/etc/redis/sentinel.conf
         restart: on-failure
         command: [ "redis-sentinel", "/usr/local/etc/redis/sentinel.conf" ]
         networks:
             *network :
-                ipv4_address: 172.16.238.20
+                ipv4_address: 172.16.238.21
         depends_on:
             - *master
+    redis-sentinel-2:
+        build:
+            context: ./conf-ha/
+            dockerfile: Dockerfile-sentinel
+        container_name: "s2"
+        ports:
+            - "26380:26379"
+        restart: on-failure
+        command: [ "redis-sentinel", "/usr/local/etc/redis/sentinel.conf" ]
+        networks:
+            *network :
+                ipv4_address: 172.16.238.22
+        depends_on:
+            - *master
+    redis-sentinel-3:
+        build:
+            context: ./conf-ha/
+            dockerfile: Dockerfile-sentinel
+        container_name: "s3"
+        ports:
+            - "26381:26379"
+        restart: on-failure
+        command: [ "redis-sentinel", "/usr/local/etc/redis/sentinel.conf" ]
+        networks:
+            *network :
+                ipv4_address: 172.16.238.23
+        depends_on:
+            - *master
+    redis-sentinel-4:
+        build:
+            context: ./conf-ha/
+            dockerfile: Dockerfile-sentinel
+        container_name: "s4"
+        ports:
+            - "26382:26379"
+        restart: on-failure
+        command: [ "redis-sentinel", "/usr/local/etc/redis/sentinel.conf" ]
+        networks:
+            *network :
+                ipv4_address: 172.16.238.24
+        depends_on:
+            - *master
+
+
 
 
 
