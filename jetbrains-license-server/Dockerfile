@@ -10,7 +10,7 @@ WORKDIR $HOME
 COPY IntelliJIDEALicenseServer_linux_amd64 $HOME/JetBrainsLicenseServer_linux_64
 RUN chmod +x $HOME/JetBrainsLicenseServer_linux_64
 
-EXPOSE 9999
+EXPOSE 1017
 
 # Define default command.
-CMD ["./JetBrainsLicenseServer_linux_64", "--host=0.0.0.0", "--port=9999"]
+CMD ["./JetBrainsLicenseServer_linux_64", "-l", "0.0.0.0", "-p","1017", "-u", "foo"]

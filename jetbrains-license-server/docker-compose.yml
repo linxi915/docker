@@ -3,5 +3,5 @@ services:
     app: 
         image: registry.cn-hangzhou.aliyuncs.com/kennylee/jetbrains-license-server
         ports: 
-            - "9999:9999"
+            - "9999:1017"
         restart: unless-stopped
