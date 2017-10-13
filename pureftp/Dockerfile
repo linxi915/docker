@@ -4,15 +4,14 @@
 # Base image: https://github.com/stilliard/docker-pure-ftpd
 # Command format: Instruction [arguments command] ..
 
-# 第一行必须指定基于的基础镜像
 FROM stilliard/pure-ftpd
 
-# 维护者信息
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
 ENV FTP_USER_HOME=/home/ftpusers
 ENV FTP_USER=ftp
 ENV FTP_PWD=ftp
+ENV TZ=Asia/Shanghai
 
 RUN curl http://mirrors.163.com/.help/sources.list.jessie>/etc/apt/sources.list
     

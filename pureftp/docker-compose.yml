@@ -9,5 +9,3 @@ app:
         - /home/data/ftp/files:/home/ftpusers
         - /home/data/ftp/pure-ftpd:/etc/pure-ftpd
     restart: always
-    environment:
-        - TZ=Asia/Shanghai
