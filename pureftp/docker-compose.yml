@@ -1,10 +1,7 @@
 app:
-    image: kennylee26/pureftpd
+    image: registry.cn-hangzhou.aliyuncs.com/kennylee/pureftp
     container_name: "pureftpd"
-    net: "host" # none but net=host, windows user can be work.
-#    ports:
-#        - "21:21"
-    # Please create these folders before.
+    net: "host"
     volumes:
         - /home/data/ftp/files:/home/ftpusers
         - /home/data/ftp/pure-ftpd:/etc/pure-ftpd

@@ -1,38 +1,37 @@
-ftp:
-    image: kennylee26/pureftpd
-    container_name: "share-pureftpd"
-    net: "host" # none but net=host, windows user can be work.
-    # Please create these folders at before.
-    volumes:
-        - /home/data/ftp/files:/home/ftpusers
-        - /home/data/ftp/pure-ftpd:/etc/pure-ftpd
-    restart: always
-    environment:
-        - TZ=Asia/Shanghai
-samba:
-    image: vimagick/samba
-    container_name: "share-samba"
-    ports:
-        - "137:137/udp"
-        - "138:138/udp"
-        - "139:139/tcp"
-        - "445:445/tcp"
-    volumes:
-        # 换成绝对路径
-        - ${pwd}/smb.conf:/etc/samba/smb.conf
-        - /home/data/ftp/files/ftp:/share
-    restart: always
-    environment:
-        - TZ=Asia/Shanghai
-http:
-    image: nginx:1.9.8    
-    container_name: "share-http"
-    ports:
-        - "8001:80"
-    volumes: 
-        - /home/data/ftp/files/ftp:/usr/share/nginx/html
-        # 换成绝对路径        
-        - ${pwd}/nginx.conf:/etc/nginx/nginx.conf
-    environment:
-        - TZ=Asia/Shanghai
-    restart: always
+version: '2'
+
+services:
+    ftp:
+        image: registry.cn-hangzhou.aliyuncs.com/kennylee/pureftp
+        container_name: "share-pureftpd"
+        net: "host" # none but net=host, windows user can be work.
+        # Please create these folders at before.
+        volumes:
+            - /home/data/ftp/files:/home/ftpusers
+            - /home/data/ftp/pure-ftpd:/etc/pure-ftpd
+        restart: always
+    samba:
+        image: vimagick/samba
+        container_name: "share-samba"
+        ports:
+            - "137:137/udp"
+            - "138:138/udp"
+            - "139:139/tcp"
+            - "445:445/tcp"
+        volumes:
+            - ./smb.conf:/etc/samba/smb.conf
+            - /home/data/ftp/files/ftp:/share
+        restart: always
+        environment:
+            - TZ=Asia/Shanghai
+    http:
+        image: nginx:1.9.8    
+        container_name: "share-http"
+        ports:
+            - "8001:80"
+        volumes: 
+            - /home/data/ftp/files/ftp:/usr/share/nginx/html
+            - ./nginx.conf:/etc/nginx/nginx.conf
+        environment:
+            - TZ=Asia/Shanghai
+        restart: always
