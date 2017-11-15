@@ -13,3 +13,5 @@ RUN apk --no-cache update && \
     echo "Asia/Shanghai" > /etc/timezone && \
     echo -ne "Alpine Linux 3.6 image. (`uname -rsv`)\n" >> /root/.built && \
     rm -fr /tmp/* /var/cache/apk/*
+
+RUN mkdir -p /var/lib/postgresql/data
