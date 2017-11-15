@@ -11,3 +11,6 @@
 * 由于gitlab默认使用hostname为访问的路径，所以在docker环境下不适合，可指定`hostname`，然后再响应的ip映射。
 
 
+官方 dockerfile 地址: https://hub.docker.com/r/gitlab/gitlab-ce/~/dockerfile/
+
+
