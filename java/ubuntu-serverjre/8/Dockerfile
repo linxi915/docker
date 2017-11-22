@@ -4,9 +4,10 @@ MAINTAINER kennylee26 <kennylee26@gmail.com>
 
 # Java Version and other ENV
 ENV JAVA_VERSION_MAJOR=8 \
-    JAVA_VERSION_MINOR=121 \
-    JAVA_VERSION_BUILD=13 \
+    JAVA_VERSION_MINOR=151 \
+    JAVA_VERSION_BUILD=12 \
     JAVA_PACKAGE=server-jre \
+    JAVA_PACKAGE_DIR_SUFF=e758a0de34e24606bca991d704f6dcbf \
     JAVA_JCE=standard \
     JAVA_HOME=/opt/jdk \
     PATH=${PATH}:/opt/jdk/bin \
@@ -14,7 +15,7 @@ ENV JAVA_VERSION_MAJOR=8 \
 
 # Define working directory.
 RUN curl -jksSLH "Cookie: oraclelicense=accept-securebackup-cookie" -o /tmp/java.tar.gz \
-      http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-b${JAVA_VERSION_BUILD}/e9e7ea248e2c4826b92b3f075a80e441/${JAVA_PACKAGE}-${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-linux-x64.tar.gz && \
+      http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-b${JAVA_VERSION_BUILD}/$JAVA_PACKAGE_DIR_SUFF/${JAVA_PACKAGE}-${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-linux-x64.tar.gz && \
     gunzip /tmp/java.tar.gz && \
     tar -C /opt -xf /tmp/java.tar && \
     ln -s /opt/jdk1.${JAVA_VERSION_MAJOR}.0_${JAVA_VERSION_MINOR} /opt/jdk
