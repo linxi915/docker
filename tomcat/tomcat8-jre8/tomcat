@@ -12,7 +12,7 @@ DESC="Tomcat servlet engine"
 # 由于/etc/init.d/ 中的脚本无法获取到bash设置好的环境变量。最简单解决方法是写死在这。
 export JAVA_HOME="/opt/jdk"
 export CATALINA_HOME="/opt/tomcat"
-export JAVA_OPTS="-server -Xms128m -Xmx1024m"
+export JAVA_OPTS="-Djava.security.egd=file:///dev/urandom -server -Xms128m -Xmx1024m"
 
 if [ ! -f $CATALINA_HOME/bin/catalina.sh ]; then 
     echo "$NAME not valilable..."

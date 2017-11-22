@@ -9,6 +9,7 @@ RUN apt-get update && \
 
 ENV TOMCAT_MAJOR_VERSION '9'
 ENV CATALINA_HOME /opt/tomcat
+ENV JAVA_OPTS="-Djava.security.egd=file:///dev/urandom -server -Xms128m -Xmx1024m"
 
 # INSTALL TOMCAT
 RUN curl -sSL http://git.oschina.net/kennylee/shell/raw/master/tomcat_download.sh | bash -s ${TOMCAT_MAJOR_VERSION} && \
