@@ -7,14 +7,15 @@ FROM ubuntu:xenial
 
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
-RUN sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list
+RUN sed -i 's/archive.ubuntu.com/mirrors.163.com/g' /etc/apt/sources.list
 
 # Install.
 RUN \
   apt-get update && \
   apt-get -y upgrade && \
   apt-get install -y curl git unzip vim wget iputils-ping && \
-  apt-get install -y language-pack-zh-hans && \ 
+  apt-get install -y language-pack-zh-hans && \
+  apt-get install -y tzdata && \
   rm -rf /var/lib/apt/lists/*
 
 RUN locale

@@ -15,6 +15,7 @@ RUN \
   apt-get -y upgrade && \
   apt-get install -y curl git unzip vim wget iputils-ping && \
   apt-get install -y language-pack-zh-hans && \ 
+  apt-get install -y tzdata && \  
   rm -rf /var/lib/apt/lists/*
 
 RUN locale
