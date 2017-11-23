@@ -9,7 +9,7 @@ ENV MAVEN_SETING_FILE=/usr/share/maven/conf/settings.xml
 # Install base packages
 RUN apk --no-cache update && \
     apk --no-cache upgrade && \
-    apk --no-cache add tzdata unzip && \ 
+    apk --no-cache add tzdata unzip git && \ 
     ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     echo "Asia/Shanghai" > /etc/timezone && \
     rm -fr /tmp/* /var/cache/apk/*
