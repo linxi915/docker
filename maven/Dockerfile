@@ -6,6 +6,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 
 ENV MAVEN_SETING_FILE=/usr/share/maven/conf/settings.xml
 
+VOLUME /var/maven/repository
+
 # Install base packages
 RUN apk --no-cache update && \
     apk --no-cache upgrade && \
