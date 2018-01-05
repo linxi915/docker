@@ -2,9 +2,7 @@
 
 Jetbrains全系列的证书验证服务器，镜像大小不到10M。
 
-版本为 v1.0.4，目前(2017-09-26)实测支持到Jetbrains的2017.2版本系列IDE。
-
-作者官网 http://jetbrains.tencent.click/
+版本为 v1.0.5，目前(2017-12-01)实测支持到Jetbrains的2017.2.6版本系列IDE。
 
 ## 使用说明
 
