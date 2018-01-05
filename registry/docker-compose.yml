@@ -1,25 +1,11 @@
-app:
-    image: index.alauda.cn/kenny/docker-registry-v2-1-1
-    container_name: 'registry'
-    ports:
-        - 5000:5000
-    volumes:
-        - /opt/data/registry2:/var/lib/registry
-    restart: always
-    environment:
-        - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/var/lib/registry
-        - TZ=Asia/Shanghai
-ui:
-    image: konradkleine/docker-registry-frontend:v2
-    container_name: docker-registry-frontend
-    ports: 
-        - 5080:80
-    restart: always
-    links:
-        - app:registry
-    environment:
-        - TZ=Asia/Shanghai
-        - ENV_DOCKER_REGISTRY_HOST=registry
-        - ENV_DOCKER_REGISTRY_PORT=5000
-        - ENV_MODE_BROWSE_ONLY=true 
+version: '3'
+services:
+    app:
+        image: registry.cn-hangzhou.aliyuncs.com/kennylee/registry
+        container_name: 'docker-registry'
+        ports:
+            - 5000:5000
+        volumes:
+            - /home/data/registry:/var/lib/registry
+        restart: unless-stopped
 
