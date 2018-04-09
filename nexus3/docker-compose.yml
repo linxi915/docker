@@ -1,7 +1,7 @@
 version: '2'
 services:
     app:
-        image: registry.alauda.cn/kenny/docker-nexus3:3.1.0
+        image: registry.cn-hangzhou.aliyuncs.com/kennylee/nexus3:3.9.0-01
         ports: 
             - 8081:8081
         container_name: nexus3
