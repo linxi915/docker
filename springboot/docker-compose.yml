@@ -1,11 +1,18 @@
-version: '2'
+version: '3'
 services:
     app: 
-        build: ./image-build/
+        image: registry.cn-hangzhou.aliyuncs.com/kennylee/springboot:latest
         volumes: 
             - ./app/:/data/app/
-            - ./config/application.yml:/data/application.yml:ro
+            - ./config/application.yml:/data/config/application.yml:ro
+        environment:
+            JAVA_OPTS: ${LTS_TASKTRACKER_JAVA_OPTS}
         ports: 
             - "8080:8080"
         command: 
-            - --spring.config.location=/data/application.yml
+            - --spring.config.location=/data/config/application.yml
+        logging:
+            driver: 'json-file'
+            options:
+                max-size: '30m'
+                max-file: '20'
