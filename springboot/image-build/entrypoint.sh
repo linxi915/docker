@@ -6,12 +6,13 @@ APP_FILE=${BASE_PATH}app.jar
 
 if [ ${#ORI_APP_FILE} -gt 0 ]; then
     echo "create symbolic link for $ORI_APP_FILE"
-    if [ -f $APP_FILE ]; then
+    if [ -e $APP_FILE ]; then
         #echo "$APP_FILE was existed, remove that."
-        rm  $APP_FILE
+        rm -f $APP_FILE
     fi
     ln -s $ORI_APP_FILE $APP_FILE
 fi
 
 # if $APP_FILE not exist, let it throw error。
-java -jar $APP_FILE "$@"
+java $JAVA_OPTS -jar $APP_FILE "$@"
+

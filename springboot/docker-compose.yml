@@ -6,10 +6,11 @@ services:
             - ./app/:/data/app/
             - ./config/application.yml:/data/config/application.yml:ro
         environment:
-            JAVA_OPTS: ${LTS_TASKTRACKER_JAVA_OPTS}
+            JAVA_OPTS: -server -Xms128m -Xmx1g -Djava.security.egd=file:/dev/./urandom
         ports: 
             - "8080:8080"
-        command: 
+        entrypoint:
+            - /entrypoint.sh
             - --spring.config.location=/data/config/application.yml
         logging:
             driver: 'json-file'
