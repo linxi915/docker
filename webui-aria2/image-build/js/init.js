@@ -45,7 +45,8 @@ webui.config(function ($translateProvider, $locationProvider) {
       .translations('fa_IR', mergeTranslation(translations.fa_IR, translations.en_US))
       .translations('id_ID', mergeTranslation(translations.id_ID, translations.en_US))
       .useSanitizeValueStrategy('escapeParameters')
-      .determinePreferredLanguage();
+      .determinePreferredLanguage()
+      .fallbackLanguage("zh_CN");// add by kennylee
 
       $locationProvider.html5Mode({
         enabled: true,
