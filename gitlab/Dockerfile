@@ -10,5 +10,8 @@ RUN apt-get update && \
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+RUN rm /opt/gitlab/embedded/bin/git && \
+    ln -s /opt/gitlab/embedded/bin/git /usr/local/bin/git
+
 ENV TZ=Asia/Shanghai
 
