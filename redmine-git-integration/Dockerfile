@@ -11,6 +11,7 @@ MAINTAINER kennylee26 <kennylee26@gmail.com>
 
 ENV GIT_HOME /home/git/
 
+RUN add-apt-repository ppa:git-core/ppa -y
 RUN apt-get update && \
     apt-get install -y git apache2 apache2-utils perl libdbd-mysql-perl libapache2-mod-perl2
 
