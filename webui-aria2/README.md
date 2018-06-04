@@ -7,3 +7,4 @@
 ## 参考
 
 * [ziahamza/webui-aria2](https://github.com/ziahamza/webui-aria2)
+* [fsaimon/aria2.conf](https://github.com/fsaimon/aria2.conf)
