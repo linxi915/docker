@@ -47,3 +47,4 @@ tasks.xml
 
 src/main/resources/rebel.xml
 data/
+**.dat
