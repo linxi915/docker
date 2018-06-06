@@ -9,7 +9,7 @@ Frp官方资源地址:
 
 ## docker化说明
 
-1. 自动基于 https://github.com/fatedier/frp/releases 中的最新版本进行构建。
+1. 自动基于 https://github.com/fatedier/frp/releases 中的最新版本进行构建，即 `每次编译都会拉取最新的frp包` 升级非常简单。
 2. 再一次提醒，注意宿主机的防火墙的配置！！
 3. 关于network_mode
 
