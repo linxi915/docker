@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+    ftpd:
+        image: stilliard/pure-ftpd
+        container_name: "pure-ftpd"
+        ports:
+            - 30000-30009:30000-30009
+            - 21:21
+        environment:
+            - PUBLICHOST=localhost
+        volumes:
+            - ./data/files/:/home/ftpusers/
+        restart: on-failure
+        logging:
+            driver: 'json-file'
+            options:
+                max-size: '30m'
+                max-file: '1'
+

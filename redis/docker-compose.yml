@@ -9,6 +9,10 @@ services:
         volumes:
             #- ./data:/data:z
             - ./conf/redis.conf:/usr/local/etc/redis/redis.conf
-        restart: always
+        restart: on-failure
         command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
-
+        logging:
+            driver: 'json-file'
+            options:
+                max-size: '30m'
+                max-file: '1'
