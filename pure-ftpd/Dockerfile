@@ -3,4 +3,4 @@ FROM stilliard/pure-ftpd
 
 ENV PUBLICHOST localhost
 
-CMD /run.sh -c 30 -C 10 -l puredb:/etc/pure-ftpd/pureftpd.pdb -E -j -R -P $PUBLICHOST -p 30000:30059
+CMD /run.sh --maxclientsnumber 30 --maxclientsperip 10 --clientcharset utf8 --login puredb:/etc/pure-ftpd/pureftpd.pdb -E -j -R --passiveportrange 30000:30059

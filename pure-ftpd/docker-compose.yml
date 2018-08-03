@@ -2,7 +2,7 @@ version: '3'
 
 services:
     ftpd:
-        image: stilliard/pure-ftpd
+        image: registry.cn-hangzhou.aliyuncs.com/kennylee/pure-ftpd:stretch-latest
         container_name: "pure-ftpd"
         ports:
             - 30000-30009:30000-30009
