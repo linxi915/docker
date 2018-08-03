@@ -6,7 +6,7 @@ services:
         container_name: "ftpd_server"
         ports:
             - 30000-30009:30000-30009
-            - 21:21
+            - "21:21"
         environment:
             - PUBLICHOST=localhost
         volumes:
