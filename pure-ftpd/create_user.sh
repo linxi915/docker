@@ -1,7 +1,5 @@
 #!/bin/bash
 
-
-
 if [ ! -f /etc/pure-ftpd/pureftpd.pdb ]; then
     user=$FTP_USER_NAME
     pwd=$FTP_USER_PASS
