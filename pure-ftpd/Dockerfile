@@ -2,8 +2,9 @@
 FROM stilliard/pure-ftpd
 
 ENV PUBLICHOST localhost
-ENV FTP_USER=ftp
-ENV FTP_PWD=ftp
+ENV FTP_USER_HOME=/home/ftpusers \
+    FTP_USER_NAME=ftp \
+    FTP_USER_PASS=ftp
 
 COPY ./create_user.sh /create_user.sh
 RUN chmod +x /create_user.sh 
