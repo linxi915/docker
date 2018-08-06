@@ -5,13 +5,14 @@ services:
         image: registry.cn-hangzhou.aliyuncs.com/kennylee/pure-ftpd:stretch-latest
         container_name: "ftpd_server"
         ports:
-            - 30000-30009:30000-30009
+            - "30000-30059:30000-30059"
             - "21:21"
         environment:
             - PUBLICHOST=localhost
         volumes:
             - ./data/files/:/home/ftpusers/
         restart: on-failure
+        command: /run.sh --maxclientsnumber 30 --maxclientsperip 30 --clientcharset utf8 --login puredb:/etc/pure-ftpd/pureftpd.pdb -j -R --passiveportrange 30000:30059
         logging:
             driver: 'json-file'
             options:
