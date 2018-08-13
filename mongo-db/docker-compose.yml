@@ -1,0 +1,25 @@
+version: '3.5'
+
+services:
+    mongodb:
+        image: registry.cn-hangzhou.aliyuncs.com/kennylee/mongodb:4.1.1-xenial
+        container_name: "mongo-db"
+        ports:
+            - "27017:27017"
+        environment:
+            - MONGO_INITDB_ROOT_USERNAME=root
+            - MONGO_INITDB_ROOT_PASSWORD=111111
+        volumes:
+            - ./data/db/:/data/db
+        restart: on-failure
+        logging:
+            driver: 'json-file'
+            options:
+                max-size: '30m'
+                max-file: '1'
+        networks:
+            - mongo_net
+
+networks:
+    mongo_net:
+        name: mongo_net

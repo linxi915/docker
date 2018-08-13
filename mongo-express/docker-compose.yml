@@ -1,0 +1,28 @@
+version: '3.5'
+
+services:
+    mongo_express:
+        image: registry.cn-hangzhou.aliyuncs.com/kennylee/mongo-express
+        container_name: "mongo-express"
+        ports:
+            - "7601:8081"
+        environment:
+            - ME_CONFIG_MONGODB_SERVER=mongo-db
+            - ME_CONFIG_MONGODB_ADMINUSERNAME=root
+            - ME_CONFIG_MONGODB_ADMINPASSWORD=111111
+            - ME_CONFIG_MONGODB_PORT=27017
+            - ME_CONFIG_MONGODB_AUTH_DATABASE=admin
+            - ME_CONFIG_OPTIONS_EDITORTHEME=admin
+            - ME_CONFIG_BASICAUTH_USERNAME=111111
+        restart: on-failure
+        logging:
+            driver: 'json-file'
+            options:
+                max-size: '30m'
+                max-file: '1'
+        networks:
+            - mongo_net
+
+networks:
+    mongo_net:
+        name: mongo_net
