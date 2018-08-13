@@ -15,7 +15,7 @@ password: ftp
 
 命令参考
 
-* build  
+* build
 	docker build -t kennylee26/pureftpd .
 * run  
 	docker run -d --net=host --name=pureftpd kennylee26/pureftpd
@@ -27,3 +27,5 @@ password: ftp
 --------
 
 FTP配置信息，参见：http://download.pureftpd.org/pub/pure-ftpd/doc/README
+
+

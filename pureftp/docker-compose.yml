@@ -1,8 +1,0 @@
-app:
-    image: registry.cn-hangzhou.aliyuncs.com/kennylee/pureftp
-    container_name: "pureftpd"
-    net: "host"
-    volumes:
-        - /home/data/ftp/files:/home/ftpusers
-        - /home/data/ftp/pure-ftpd:/etc/pure-ftpd
-    restart: always
