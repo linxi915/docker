@@ -12,8 +12,9 @@ services:
             - ME_CONFIG_MONGODB_ADMINPASSWORD=111111
             - ME_CONFIG_MONGODB_PORT=27017
             - ME_CONFIG_MONGODB_AUTH_DATABASE=admin
-            - ME_CONFIG_OPTIONS_EDITORTHEME=admin
-            - ME_CONFIG_BASICAUTH_USERNAME=111111
+            - ME_CONFIG_OPTIONS_EDITORTHEME=ambiance
+            - ME_CONFIG_BASICAUTH_USERNAME=admin
+            - ME_CONFIG_BASICAUTH_PASSWORD=111111
         restart: on-failure
         logging:
             driver: 'json-file'
