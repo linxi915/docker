@@ -23,47 +23,23 @@
 
     <mirrors>
         <mirror>
-  		    <id>nexus</id>
-            <mirrorOf>*</mirrorOf>
-      		<name>Timekey Nexus</name>
-  	    	<url>http://192.168.1.99:8081/nexus/content/groups/public/</url>
+            <id>aliyun-central</id>
+            <name>aliyun-central</name>
+            <url>https://maven.aliyun.com/repository/central</url>
+            <mirrorOf>central</mirrorOf>
         </mirror>
         <mirror>
-            <id>aliyun-nexus</id>
-            <name>aliyun nexus</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-            <mirrorOf>central</mirrorOf>
+            <id>aliyun-spring</id>
+            <name>aliyun-spring</name>
+            <url>https://maven.aliyun.com/repository/spring</url>
+            <mirrorOf>*</mirrorOf>
+        </mirror>
+        <mirror>
+            <id>aliyun-gradle-plugin</id>
+            <name>aliyun-gradle-plugin</name>
+            <url>https://maven.aliyun.com/repository/gradle-plugin</url>
+            <mirrorOf>*</mirrorOf>
         </mirror>
     </mirrors>
 
-	<profiles>
-        <profile>
-            <repositories>
-                <repository>
-                    <id>nexus</id>
-                    <name>timekey private nexus</name>
-                    <url>http://192.168.1.99:8081/nexus/content/groups/public/</url>
-                    <releases>
-                        <enabled>true</enabled>
-                    </releases>
-                    <snapshots>
-                        <enabled>false</enabled>
-                    </snapshots>
-                </repository>
-            </repositories>
-            <pluginRepositories>
-                <pluginRepository>
-                    <id>nexus</id>
-                    <name>timekey private nexus</name>
-                    <url>http://192.168.1.99:8081/nexus/content/groups/public/</url>
-                    <releases>
-                        <enabled>true</enabled>
-                    </releases>
-                    <snapshots>
-                        <enabled>false</enabled>
-                    </snapshots>
-                </pluginRepository>
-            </pluginRepositories>
-        </profile>        
-	</profiles>
 </settings>

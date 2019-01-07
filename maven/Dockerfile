@@ -1,4 +1,4 @@
-FROM maven:3.5-jdk-8-alpine
+FROM maven:3.6-jdk-8-alpine
 
 ARG LOCAL_MAVEN_MIRROR=http://maven.aliyun.com/nexus/content/groups/public/
 
