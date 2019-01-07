@@ -31,6 +31,10 @@ RUN set -o errexit -o nounset \
     && echo "Symlinking root Gradle cache to gradle Gradle cache" \
     && ln -s /home/gradle/.gradle /root/.gradle
 
+# merge maven docker configuration by kennylee
+ENV USER_HOME_DIR="/home/gradle"
+ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
+
 # Create Gradle volume
 USER gradle
 VOLUME "/home/gradle/.gradle"
@@ -39,6 +43,5 @@ WORKDIR /home/gradle
 RUN set -o errexit -o nounset \
     && echo "Testing Gradle installation" \
     && gradle --version
-
 
 

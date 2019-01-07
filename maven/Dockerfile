@@ -17,6 +17,7 @@ RUN apk --no-cache update && \
     rm -fr /tmp/* /var/cache/apk/*
 
 COPY settings.xml ${MAVEN_SETING_FILE}
-
+# override default maven docker configuration
+RUN cat /usr/share/maven/conf/settings.xml > /usr/share/maven/ref/settings-docker.xml
 
 
