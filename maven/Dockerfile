@@ -19,5 +19,5 @@ RUN apk --no-cache update && \
 COPY settings.xml ${MAVEN_SETING_FILE}
 # override default maven docker configuration
 RUN cat /usr/share/maven/conf/settings.xml > /usr/share/maven/ref/settings-docker.xml
-
+RUN mkdir -p /root/.m2 && cp /usr/share/maven/conf/settings.xml /root/.m2/settings.xml
 
