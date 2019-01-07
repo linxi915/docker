@@ -7,7 +7,7 @@ ENV GRADLE_HOME /opt/gradle
 ARG GRADLE_VERSION=4.6
 ENV GRADLE_VERSION=$GRADLE_VERSION
 
-ARG GRADLE_DOWNLOAD_SHA256=9af7345c199f1731c187c96d3fe3d31f5405192a42046bafa71d846c3d9adacb
+ARG GRADLE_DOWNLOAD_SHA256=98bd5fd2b30e070517e03c51cbb32beee3e2ee1a84003a5a5d748996d4b1b915
 RUN set -o errexit -o nounset \
     && echo "Downloading Gradle" \
     && wget -qO gradle.zip "https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip" \
