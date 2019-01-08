@@ -62,7 +62,8 @@ ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
 VOLUME /var/maven/repository
 
 ENV MAVEN_SETING_FILE=/usr/share/maven/conf/settings.xml
-COPY settings.xml ${MAVEN_SETING_FILE}
+RUN wget https://gitee.com/kennylee/docker/raw/master/maven/settings.xml
+RUN mv settings.xml ${MAVEN_SETING_FILE}
 RUN mkdir -p ${MAVEN_CONFIG} && cp ${MAVEN_SETING_FILE} ${MAVEN_CONFIG}
 
 RUN set -o errexit -o nounset \
