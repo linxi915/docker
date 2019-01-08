@@ -1,72 +1,97 @@
-FROM registry.cn-hangzhou.aliyuncs.com/kennylee/gradle:4.6.0-jdk8-alpine
+# alpine环境下编译node实在太慢，所以以这个为基础镜像比较划算了。
+FROM node:10.15.0-alpine
 
-# ENV VERSION=v8.15.0 NPM_VERSION=6 YARN_VERSION=latest
-ENV VERSION=v10.15.0 NPM_VERSION=6 YARN_VERSION=latest
-# ENV VERSION=v11.6.0 NPM_VERSION=6 YARN_VERSION=latest
+MAINTAINER kennylee26 <kennylee26@gmail.com>
 
-USER root
-
+ENV ALPINE_VERSION 3.8
 # 使用阿里云镜像
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 
 # Install base packages
 RUN apk --no-cache update && \
     apk --no-cache upgrade && \
-    apk --no-cache add curl bash tzdata tar unzip xz && \ 
+    apk --no-cache add curl bash tzdata tar unzip xz procps wget git openssh && \ 
     ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     echo "Asia/Shanghai" > /etc/timezone && \
+    echo -ne "Alpine Linux "+ ${ALPINE_VERSION} + " image. (`uname -rsv`)\n" >> /root/.built && \
     rm -fr /tmp/* /var/cache/apk/*
 
-# For base builds
-ENV CONFIG_FLAGS="--fully-static --without-npm" DEL_PKGS="libstdc++" RM_DIRS=/usr/include
+ENV LANG C.UTF-8
 
-RUN apk add --no-cache curl make gcc g++ python linux-headers binutils-gold gnupg libstdc++ && \
-  for server in ipv4.pool.sks-keyservers.net keyserver.pgp.com ha.pool.sks-keyservers.net; do \
-    gpg --keyserver $server --recv-keys \
-      94AE36675C464D64BAFA68DD7434390BDBE9B9C5 \
-      B9AE9905FFD7803F25714661B63B535A4C206CA9 \
-      77984A986EBC2AA786BC0F66B01FBB92821C587A \
-      71DCFD284A79C3B38668286BC97EC7A07EDE3FC1 \
-      FD3A5288F042B6850C66B31F09FE44734EB7990E \
-      8FCCA13FEF1D0C2E91008E09770F7A9A5AE15600 \
-      C4F0DFFF4E8C1A8236409D08E73BC641CC11F4C8 \
-      DD8F2338BAE7501E3DD5AC78C273792F7D83545D && break; \
-  done && \
-  curl -sfSLO https://nodejs.org/dist/${VERSION}/node-${VERSION}.tar.xz && \
-  curl -sfSL https://nodejs.org/dist/${VERSION}/SHASUMS256.txt.asc | gpg --batch --decrypt | \
-    grep " node-${VERSION}.tar.xz\$" | sha256sum -c | grep ': OK$' && \
-  tar -xf node-${VERSION}.tar.xz && \
-  cd node-${VERSION} && \
-  ./configure --prefix=/usr ${CONFIG_FLAGS} && \
-  make -j$(getconf _NPROCESSORS_ONLN) && \
-  make install && \
-  cd / && \
-  if [ -z "$CONFIG_FLAGS" ]; then \
-    if [ -n "$NPM_VERSION" ]; then \
-      npm install -g npm@${NPM_VERSION}; \
-    fi; \
-    find /usr/lib/node_modules/npm -name test -o -name .bin -type d | xargs rm -rf; \
-    if [ -n "$YARN_VERSION" ]; then \
-      for server in ipv4.pool.sks-keyservers.net keyserver.pgp.com ha.pool.sks-keyservers.net; do \
-        gpg --keyserver $server --recv-keys \
-          6A010C5166006599AA17F08146C2130DFD2497F5 && break; \
-      done && \
-      curl -sfSL -O https://yarnpkg.com/${YARN_VERSION}.tar.gz -O https://yarnpkg.com/${YARN_VERSION}.tar.gz.asc && \
-      gpg --batch --verify ${YARN_VERSION}.tar.gz.asc ${YARN_VERSION}.tar.gz && \
-      mkdir /usr/local/share/yarn && \
-      tar -xf ${YARN_VERSION}.tar.gz -C /usr/local/share/yarn --strip 1 && \
-      ln -s /usr/local/share/yarn/bin/yarn /usr/local/bin/ && \
-      ln -s /usr/local/share/yarn/bin/yarnpkg /usr/local/bin/ && \
-      rm ${YARN_VERSION}.tar.gz*; \
-    fi; \
-  fi && \
-  apk del curl make gcc g++ python linux-headers binutils-gold gnupg ${DEL_PKGS} && \
-  rm -rf ${RM_DIRS} /node-${VERSION}* /usr/share/man /tmp/* /var/cache/apk/* \
-    /root/.npm /root/.node-gyp /root/.gnupg /usr/lib/node_modules/npm/man \
-    /usr/lib/node_modules/npm/doc /usr/lib/node_modules/npm/html /usr/lib/node_modules/npm/scripts
+##############  install openjdk 8 
+RUN { \
+		echo '#!/bin/sh'; \
+		echo 'set -e'; \
+		echo; \
+		echo 'dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"'; \
+	} > /usr/local/bin/docker-java-home \
+	&& chmod +x /usr/local/bin/docker-java-home
+ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
+ENV PATH $PATH:/usr/lib/jvm/java-1.8-openjdk/jre/bin:/usr/lib/jvm/java-1.8-openjdk/bin
 
-# add cnpm for taobao registry
-RUN npm install -g cnpm --registry=https://registry.npm.taobao.org
+ENV JAVA_VERSION 8u181
+ENV JAVA_ALPINE_VERSION 8.181.13-r0
 
-CMD [ "node" ]
+RUN set -x \
+	&& apk add --no-cache \
+		openjdk8="$JAVA_ALPINE_VERSION" \
+	&& [ "$JAVA_HOME" = "$(docker-java-home)" ]
+
+RUN set -o errexit -o nounset \
+    && echo "Testing Java installation" \
+    && java -version
+
+##############  install maven
+
+ARG MAVEN_VERSION=3.6.0
+ARG USER_HOME_DIR="/root"
+ARG SHA=fae9c12b570c3ba18116a4e26ea524b29f7279c17cbaadc3326ca72927368924d9131d11b9e851b8dc9162228b6fdea955446be41207a5cfc61283dd8a561d2f
+ARG BASE_URL=https://apache.osuosl.org/maven/maven-3/${MAVEN_VERSION}/binaries
+
+RUN mkdir -p /usr/share/maven /usr/share/maven/ref \
+  && curl -fsSL -o /tmp/apache-maven.tar.gz ${BASE_URL}/apache-maven-${MAVEN_VERSION}-bin.tar.gz \
+  && echo "${SHA}  /tmp/apache-maven.tar.gz" | sha512sum -c - \
+  && tar -xzf /tmp/apache-maven.tar.gz -C /usr/share/maven --strip-components=1 \
+  && rm -f /tmp/apache-maven.tar.gz \
+  && ln -s /usr/share/maven/bin/mvn /usr/bin/mvn
+
+ENV MAVEN_HOME /usr/share/maven
+ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
+
+# 容器内本地maven库
+VOLUME /var/maven/repository
+
+ENV MAVEN_SETING_FILE=/usr/share/maven/conf/settings.xml
+COPY settings.xml ${MAVEN_SETING_FILE}
+RUN mkdir -p ${MAVEN_CONFIG} && cp ${MAVEN_SETING_FILE} ${MAVEN_CONFIG}
+
+RUN set -o errexit -o nounset \
+    && echo "Testing Maven installation" \
+    && mvn --version
+
+##############  install gradle
+ENV GRADLE_HOME /opt/gradle
+
+ARG GRADLE_VERSION=4.6
+ENV GRADLE_VERSION=$GRADLE_VERSION
+
+ARG GRADLE_DOWNLOAD_SHA256=98bd5fd2b30e070517e03c51cbb32beee3e2ee1a84003a5a5d748996d4b1b915
+RUN set -o errexit -o nounset \
+    && echo "Downloading Gradle" \
+    && wget -qO gradle.zip "https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip" \
+    \
+    && echo "Checking download hash" \
+    && echo "${GRADLE_DOWNLOAD_SHA256} *gradle.zip" | sha256sum -c - \
+    \
+    && echo "Installing Gradle" \
+    && unzip gradle.zip \
+    && rm gradle.zip \
+    && mv "gradle-${GRADLE_VERSION}" "${GRADLE_HOME}/" \
+    && ln -s "${GRADLE_HOME}/bin/gradle" /usr/bin/gradle
+
+VOLUME "/root/.gradle"
+
+RUN set -o errexit -o nounset \
+    && echo "Testing Gradle installation" \
+    && gradle --version
 

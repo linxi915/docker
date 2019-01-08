@@ -11,6 +11,7 @@ Maven本地仓库挂载 `/var/maven/repository`
 
 ## 参考
 
+* [openjdk](https://github.com/docker-library/openjdk)
 * [docker-maven](https://github.com/carlossg/docker-maven)
 * [docker-gradle](https://github.com/keeganwitt/docker-gradle)
 * [docker-node](https://github.com/nodejs/docker-node/)
