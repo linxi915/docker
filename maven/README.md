@@ -9,3 +9,5 @@
 
 maven本地仓库挂载 `/var/maven/repository`
 
+参考: [docker-maven](https://github.com/carlossg/docker-maven)
+
