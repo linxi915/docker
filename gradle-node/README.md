@@ -14,5 +14,6 @@ Maven本地仓库挂载 `/var/maven/repository`
 * [docker-maven](https://github.com/carlossg/docker-maven)
 * [docker-gradle](https://github.com/keeganwitt/docker-gradle)
 * [docker-node](https://github.com/nodejs/docker-node/)
+* [alpine-node](https://github.com/mhart/alpine-node)
 
 
