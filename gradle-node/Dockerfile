@@ -18,6 +18,8 @@ RUN apk --no-cache update && \
 
 ENV LANG C.UTF-8
 
+RUN npm install -g cnpm --registry=https://registry.npm.taobao.org
+
 ##############  install openjdk 8 
 RUN { \
 		echo '#!/bin/sh'; \
