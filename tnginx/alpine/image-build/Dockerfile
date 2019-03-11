@@ -2,7 +2,7 @@ FROM registry.cn-hangzhou.aliyuncs.com/kennylee/alpine:3.4
 
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
-ENV TNGINX_VERSION 2.2.0
+ENV TNGINX_VERSION 2.2.3
 ENV TNGINX_URL=http://tengine.taobao.org/download/tengine-$TNGINX_VERSION.tar.gz
 
 RUN addgroup -S nginx \
