@@ -10,6 +10,13 @@
 2. 可自行修改my.cnf
 3. 去掉默认的 VOLUME /var/lib/mysql 方便备份。
 
+
+#### 阿里云构建的镜像 
+
+```
+docker pull registry.cn-hangzhou.aliyuncs.com/kennylee/mysql
+```
+
 ### 构建命令 
 
 * build
