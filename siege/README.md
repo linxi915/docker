@@ -45,7 +45,7 @@ siege -c5 -r1 www.baidu.com
 
 这个镜像使用docker的 `multi-stage` 特性来构建了，在ubuntu环境下编译包，然后把编译后的文件拷贝到Alpine使用，原因有两点:
 
-1. Apline构建，镜像后的体积偏大，构建完后体积去到170MB.
+1. Apline构建，镜像后的体积偏大，构建完后体积去到170MB（目前这个镜像仅仅20m）。
 2. Apline构建，编译Siege 4.0.4版本失败，实测最高只能构建3.1.4的版本。
 
 Alpine构建脚本可参考 [brainsiq/alpine-siege](https://github.com/brainsiq/alpine-siege)编译失败的问题[无独有偶](https://github.com/JoeDog/siege/issues/124)
