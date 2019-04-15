@@ -12,6 +12,14 @@ Siege是一款开源的压力测试工具，可以根据配置对一个WEB站点
 
 ## 使用
 
+镜像下载
+
+```
+docker pull registry.cn-hangzhou.aliyuncs.com/kennylee/siege
+
+docker pull registry.cn-hangzhou.aliyuncs.com/kennylee/siege:siege-4.0.4_python2
+```
+
 ### 基础命令
 
 ```

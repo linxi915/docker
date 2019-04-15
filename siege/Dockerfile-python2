@@ -117,4 +117,8 @@ RUN set -ex; \
 	rm -f get-pip.py
 
 # -- 
-RUN pip install requests 
+RUN pip install requests
+
+ENTRYPOINT ["python2"]
+
+CMD ["--help"]

@@ -7,6 +7,18 @@
 * 中国时区
 * 默认bash
 
+## 镜像下载
+
+```
+docker pull registry.cn-hangzhou.aliyuncs.com/kennylee/alpine
+
+docker pull registry.cn-hangzhou.aliyuncs.com/kennylee/alpine:3.9
+
+docker pull registry.cn-hangzhou.aliyuncs.com/kennylee/alpine:alpine-3.9_glibc
+
+docker pull registry.cn-hangzhou.aliyuncs.com/kennylee/alpine:3.4
+```
+
 ## 参考构建命令
 
 ```
