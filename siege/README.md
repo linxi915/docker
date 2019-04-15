@@ -26,6 +26,21 @@ docker run --rm registry.cn-hangzhou.aliyuncs.com/kennylee/siege -c5 -r1 www.bai
 docker run --rm registry.cn-hangzhou.aliyuncs.com/kennylee/siege -c10 -r10 -f /opt/urls.txt
 ```
 
+### 命令别名
+
+修改linux环境下的`.bashrc`或`.zshrc`文件，添加别名命令，内容参考如下:
+
+```
+alias siege='docker run --rm -v "/tmp/siege:/tmp" registry.cn-hangzhou.aliyuncs.com/kennylee/siege'
+```
+
+重新打开一个控制台或者 `source .bashrc` 让命令生效，然后就可以直接想在本地安装的一样使用了
+
+```
+siege -c5 -r1 www.baidu.com
+```
+
+
 ## 关于此镜像
 
 这个镜像使用docker的 `multi-stage` 特性来构建了，在ubuntu环境下编译包，然后把编译后的文件拷贝到Alpine使用，原因有两点:
