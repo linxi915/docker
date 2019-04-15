@@ -50,4 +50,10 @@ siege -c5 -r1 www.baidu.com
 
 Alpine构建脚本可参考 [brainsiq/alpine-siege](https://github.com/brainsiq/alpine-siege)编译失败的问题[无独有偶](https://github.com/JoeDog/siege/issues/124)
 
+## 镜像版本
+
+* Dockerfile-python2
+
+	带python2.7的siege运行环境
+
 
