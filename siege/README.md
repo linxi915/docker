@@ -18,11 +18,21 @@ Siege是一款开源的压力测试工具，可以根据配置对一个WEB站点
 docker run --rm registry.cn-hangzhou.aliyuncs.com/kennylee/siege -c5 -r1 www.baidu.com
 ```
 
-## 命令中使用文件
+### 命令中使用文件
 
 由于容器环境，所以，若想在siege命令中使用到文件时，需要在命令中挂载到容器内部，然后把传入内部地址传入到命令中才能正常使用，参考如下：
 
 ```
 docker run --rm registry.cn-hangzhou.aliyuncs.com/kennylee/siege -c10 -r10 -f /opt/urls.txt
 ```
+
+## 关于此镜像
+
+这个镜像使用docker的 `multi-stage` 特性来构建了，在ubuntu环境下编译包，然后把编译后的文件拷贝到Alpine使用，原因有两点:
+
+1. Apline构建，镜像后的体积偏大，构建完后体积去到170MB.
+2. Apline构建，编译Siege 4.0.4版本失败，实测最高只能构建3.1.4的版本。
+
+Alpine构建脚本可参考 [brainsiq/alpine-siege](https://github.com/brainsiq/alpine-siege)编译失败的问题[无独有偶](https://github.com/JoeDog/siege/issues/124)
+
 
