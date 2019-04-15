@@ -13,7 +13,7 @@ RUN apt-get update \
         && make install
 
 # ------------------------- container -------------------------
-FROM kennylee26/alpine:glibc
+FROM registry.cn-hangzhou.aliyuncs.com/kennylee/alpine:alpine-3.9_glibc	
 
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
