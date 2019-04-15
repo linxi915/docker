@@ -11,10 +11,15 @@
 
 ```
 docker build -t kennylee26/alpine .
+
+docker build -t kennylee26/alpine:coreutils -f Dockerfile-coreutils .
+
+docker build -t kennylee26/alpine:glibc -f Dockerfile-glibc .
 ```
 
 ## 版本说明
 
 * `coreutils` 包含coreutils包的镜像，没有coreutils的话，date命令的格式化无法正常使用。
+* `glibc` 包含glibc包的镜像环境。
 
 

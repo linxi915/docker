@@ -1,4 +1,4 @@
-FROM alpine:3.9
+FROM frolvlad/alpine-glibc:alpine-3.9_glibc-2.28
 
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
