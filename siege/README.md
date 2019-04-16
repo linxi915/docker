@@ -62,6 +62,6 @@ Alpine构建脚本可参考 [brainsiq/alpine-siege](https://github.com/brainsiq/
 
 * Dockerfile-python2
 
-	带python2.7的siege运行环境
+	带python2.7的siege运行环境，ENTRYPOINT为python命令，因为这个镜像环境一般是适用于用python来操作siege的情况。
 
 
