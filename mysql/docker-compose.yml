@@ -7,7 +7,7 @@ services:
         ports: 
             - 3306:3306
         container_name: mysql
-        restart: always
+        restart: on-failure
         environment:
             - MYSQL_ROOT_PASSWORD=111111
         volumes:
