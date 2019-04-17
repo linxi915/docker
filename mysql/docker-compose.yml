@@ -13,6 +13,7 @@ services:
         volumes:
             - ./data/standalong:/var/lib/mysql/:z
             #- ./data/standalong-logs:/var/log/mysql/:z
+        command: ["--max_connections=300"]
         logging:
             driver: 'json-file'
             options:

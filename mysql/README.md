@@ -10,6 +10,10 @@
 2. 可自行修改my.cnf进行构建
 3. 去掉默认的 VOLUME /var/lib/mysql 方便备份。
 
+### 配置
+
+* 最大连接数：可参考下docker-compose.yml，启动容器的时候传入`--max_connections=300`参数配置即可。
+
 
 ### 阿里云构建的镜像 
 
