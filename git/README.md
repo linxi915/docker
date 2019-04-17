@@ -4,4 +4,10 @@
 
 详细请参考: https://hub.docker.com/r/alpine/git
 
+## 镜像下载
+
+```
+docker pull registry.cn-hangzhou.aliyuncs.com/kennylee/git
+```
+
 

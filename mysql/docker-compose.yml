@@ -3,6 +3,7 @@ version: '3'
 services:
     app:
         image: registry.cn-hangzhou.aliyuncs.com/kennylee/mysql
+        #build: ./
         ports: 
             - 3306:3306
         container_name: mysql
@@ -10,7 +11,8 @@ services:
         environment:
             - MYSQL_ROOT_PASSWORD=111111
         volumes:
-            - ./data/:/var/lib/mysql/:z
+            - ./data/standalong:/var/lib/mysql/:z
+            #- ./data/standalong-logs:/var/log/mysql/:z
         logging:
             driver: 'json-file'
             options:

@@ -19,7 +19,7 @@ services:
         restart: on-failure
         volumes:
             - ./data/my-master:/var/lib/mysql/:rw
-              #- ./data/my-master-log:/var/log/mysql/:rw
+            #- ./data/my-master-logs:/var/log/mysql/:rw
         networks:
             *network :
                 ipv4_address: 172.16.10.1
@@ -38,7 +38,7 @@ services:
         restart: on-failure
         volumes:
             - ./data/my-slave-backup:/var/lib/mysql/:rw
-            #- ./data/my-slave-backup-log:/var/log/mysql/:rw
+            #- ./data/my-slave-backup-logs:/var/log/mysql/:rw
         networks:
             - *network
         logging:
