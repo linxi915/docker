@@ -12,7 +12,8 @@ services:
             - MYSQL_ROOT_PASSWORD=111111
         volumes:
             - ./data/standalong:/var/lib/mysql/:z
-            #- ./data/standalong-logs:/var/log/mysql/:z
+            - ./conf/:/etc/mysql/mysql-my.conf.d/:z
+            - ./data/standalong-logs:/var/log/mysql/:z            
         command: ["--max_connections=300"]
         logging:
             driver: 'json-file'

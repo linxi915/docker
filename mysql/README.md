@@ -6,16 +6,17 @@
 
 修改：
 
-1. 修改默认mysql默认编码为utf-8
-2. 可自行修改my.cnf进行构建
+1. 修改官网的my.cnf文件，配置编码为utf-8
+2. 增加/etc/mysql/mysql-my.conf.d/的配置目录，方便启动容器的时候映射额外mysql的配置目录。
 3. 去掉默认的 VOLUME /var/lib/mysql 方便备份。
 
-### 配置
+### 自定义配置
 
-* 最大连接数：可参考下docker-compose.yml，启动容器的时候传入`--max_connections=300`参数配置即可。
+1. 在宿主机上映射镜像内部的`/etc/mysql/mysql-my.conf.d/`目录，然后创建cnf文件，再把自定义的配置填写在里面。
+2. 启动容器的时候，通过cmd的方法传入配置。  例如，最大连接数（可参考下docker-compose.yml）启动容器的时候传入`--max_connections=300`参数配置即可。
 
 
-### 阿里云构建的镜像 
+### 镜像下载
 
 ```
 docker pull registry.cn-hangzhou.aliyuncs.com/kennylee/mysql
