@@ -1,0 +1,8 @@
+[mysqld]
+# Instead of skip-networking the default is now to listen only on
+# localhost which is more compatible and is not less secure.
+# bind-address	= 127.0.0.1
+server-id = 2
+relay-log = /var/log/mysql/mysql-relay-bin.log
+slave-skip-errors = 1007,1008,1053,1062,1213,1158,1159
+expire_logs_days = 21

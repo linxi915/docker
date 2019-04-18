@@ -1,0 +1,11 @@
+[mysqld]
+bind-address	= 172.16.10.1
+
+server-id = 1
+log-bin = /var/log/mysql/mysql-bin.log
+binlog_format = MIXED
+
+# 配置同步的数据库，多个写多行，不写全部都备份
+binlog-do-db = test
+#binlog-ignore-db = mysql
+expire_logs_days = 21
