@@ -2,10 +2,9 @@
 # NAME: kennylee26/gitbook
 
 # Pull base image.
-FROM index.alauda.cn/kenny/node
-#FROM kennylee26/node:5.1.1
+FROM registry.cn-hangzhou.aliyuncs.com/kennylee/node
 
-ENV GIT_BOOK_VERSION="2.6.4"
+ENV GIT_BOOK_VERSION="2.6.9"
 ENV BOOKDIR /gitbook
 
 # Basic Requirements
@@ -19,7 +18,7 @@ RUN apt-get install -y fonts-wqy-microhei
 RUN cnpm install gitbook-cli -g && \
     cnpm install svgexport -g
 
-RUN gitbook versions:install  $GIT_BOOK_VERSION
+RUN gitbook versions:install $GIT_BOOK_VERSION
 
 # install recommend plugins
 

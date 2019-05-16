@@ -6,6 +6,6 @@ services:
         ports:
             - 5000:5000
         volumes:
-            - /home/data/registry:/var/lib/registry
-        restart: unless-stopped
+            - ./data/registry:/var/lib/registry
+        restart: on-failure
 
