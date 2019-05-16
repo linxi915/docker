@@ -1,6 +1,6 @@
-# 本地的gitbook创建命令工具。
+# Gitbook
 
-实际上可以把此容器看成的一个gitbook命令行的封装。
+本地的gitbook创建命令工具（gitbook-cli），实际上可以把此容器看成的一个gitbook命令行的封装。
 
 ## 构建命令
 
