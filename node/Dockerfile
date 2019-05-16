@@ -9,6 +9,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # 各大镜像源偶尔抽风，谨慎起见安装时还是从官方吧，如果必需本地构建，再尝试挪到上面，不过就是否抽风了。
+RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak
 COPY jessie.sources.list /etc/apt/sources.list
 
 RUN sed -i 's/# zh_CN.UTF-8 UTF-8/zh_CN.UTF-8 UTF-8/g' /etc/locale.gen
