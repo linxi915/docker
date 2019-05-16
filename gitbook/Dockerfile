@@ -2,23 +2,23 @@
 # NAME: kennylee26/gitbook
 
 # Pull base image.
-FROM registry.cn-hangzhou.aliyuncs.com/kennylee/node
+FROM registry.cn-hangzhou.aliyuncs.com/kennylee/node:12.2-stretch
 
-ENV GIT_BOOK_VERSION="2.6.9"
 ENV BOOKDIR /gitbook
 
 # Basic Requirements
 RUN \
   apt-get update && \
-  apt-get install -y calibre 
+  apt-get install -y calibre apt-utils
 
 # install fonts
 RUN apt-get install -y fonts-wqy-microhei
 
 RUN cnpm install gitbook-cli -g && \
     cnpm install svgexport -g
-
-RUN gitbook versions:install $GIT_BOOK_VERSION
+    
+ENV GIT_BOOK_VERSION="3.2.3"
+RUN gitbook fetch $GIT_BOOK_VERSION
 
 # install recommend plugins
 
