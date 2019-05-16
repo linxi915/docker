@@ -1,4 +1,4 @@
-FROM node:8.16-jessie
+FROM node:12.2-stretch
 
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
@@ -8,9 +8,10 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# 各大镜像源偶尔抽风，谨慎起见安装时还是从官方吧，如果必需本地构建，再尝试挪到上面，不过就是否抽风了。
+# 由于各大镜像源间接性抽风，谨慎起见还是从官方源安装
+# 如果必需本地构建，再尝试挪到上面，不过就得看看当时镜像源是否抽风了。
 RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak
-COPY jessie.sources.list /etc/apt/sources.list
+COPY stretch.sources.list /etc/apt/sources.list
 
 RUN sed -i 's/# zh_CN.UTF-8 UTF-8/zh_CN.UTF-8 UTF-8/g' /etc/locale.gen
 
