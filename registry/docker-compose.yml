@@ -8,4 +8,9 @@ services:
         volumes:
             - ./data/registry:/var/lib/registry
         restart: on-failure
+        logging:
+            driver: 'json-file'
+            options:
+                max-size: '30m'
+                max-file: '1'
 
