@@ -1,5 +1,5 @@
 # alpine环境下编译node实在太慢，所以以这个为基础镜像比较划算了。
-FROM node:10.15.0-alpine
+FROM node:12-alpine
 
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
@@ -75,7 +75,7 @@ RUN set -o errexit -o nounset \
 ##############  install gradle
 ENV GRADLE_HOME /opt/gradle
 
-ARG GRADLE_VERSION=4.6
+ARG GRADLE_VERSION=5.4.1
 ENV GRADLE_VERSION=$GRADLE_VERSION
 
 ARG GRADLE_DOWNLOAD_SHA256=98bd5fd2b30e070517e03c51cbb32beee3e2ee1a84003a5a5d748996d4b1b915
