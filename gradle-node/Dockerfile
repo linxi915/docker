@@ -3,7 +3,7 @@ FROM node:12-alpine
 
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
-ENV ALPINE_VERSION 3.8
+ENV ALPINE_VERSION 3.9
 # 使用阿里云镜像
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 
@@ -31,8 +31,8 @@ RUN { \
 ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
 ENV PATH $PATH:/usr/lib/jvm/java-1.8-openjdk/jre/bin:/usr/lib/jvm/java-1.8-openjdk/bin
 
-ENV JAVA_VERSION 8u181
-ENV JAVA_ALPINE_VERSION 8.181.13-r0
+ENV JAVA_VERSION 8u212
+ENV JAVA_ALPINE_VERSION 8.212.04-r0
 
 RUN set -x \
 	&& apk add --no-cache \
@@ -75,10 +75,11 @@ RUN set -o errexit -o nounset \
 ##############  install gradle
 ENV GRADLE_HOME /opt/gradle
 
+# 注意SHA256要匹配，
 ARG GRADLE_VERSION=5.4.1
+ARG GRADLE_DOWNLOAD_SHA256=7bdbad1e4f54f13c8a78abc00c26d44dd8709d4aedb704d913fb1bb78ac025dc
 ENV GRADLE_VERSION=$GRADLE_VERSION
 
-ARG GRADLE_DOWNLOAD_SHA256=98bd5fd2b30e070517e03c51cbb32beee3e2ee1a84003a5a5d748996d4b1b915
 RUN set -o errexit -o nounset \
     && echo "Downloading Gradle" \
     && wget -qO gradle.zip "https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip" \
