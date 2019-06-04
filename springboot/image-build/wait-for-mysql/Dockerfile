@@ -6,4 +6,7 @@ RUN apk --no-cache update && \
     apk --no-cache add mysql-client && \
     rm -fr /tmp/* /var/cache/apk/*
 
-ENTRYPOINT "/entrypoint.sh"
+COPY wait-for-mysql.sh /wait-for-mysql.sh
+RUN chmod +x /wait-for-mysql.sh
+
+ENTRYPOINT ["/wait-for-mysql.sh"]
