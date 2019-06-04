@@ -28,7 +28,7 @@ RUN ln -fs /usr/share/zoneinfo/$TZ /etc/localtime && \
             dpkg-reconfigure --frontend noninteractive locales
 
 COPY my.cnf /etc/mysql/my.cnf
-mkdir -p /etc/mysql/mysql-my.conf.d/
+RUN mkdir -p /etc/mysql/mysql-my.conf.d/
 
 EXPOSE 3306
 CMD ["mysqld"]
