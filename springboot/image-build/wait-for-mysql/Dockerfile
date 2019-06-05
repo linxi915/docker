@@ -9,4 +9,4 @@ RUN apk --no-cache update && \
 COPY wait-for-mysql.sh /wait-for-mysql.sh
 RUN chmod +x /wait-for-mysql.sh
 
-ENTRYPOINT ["/wait-for-mysql.sh", "sh", "/entrypoint.sh"]
+ENTRYPOINT ["/wait-for-mysql.sh", "bash", "/entrypoint.sh"]
