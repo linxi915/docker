@@ -16,7 +16,7 @@
 	shasum -a 256 jenkins-war-2.164.3.war
 	```
 
-2. 更新jenkins的同时也需要注意`tini`的版本，需要匹配才行，`tini`下载版本查看 https://github.com/krallin/tini/releases/
+2. 更新jenkins的同时最好同时更新下`tini`的版本，不然会弹一个等待2分钟的提示，比较讨厌（当然也可以选择去掉这个判断，不过算了）。`tini`下载版本查看 https://github.com/krallin/tini/releases/
 
 ## 使用
 
