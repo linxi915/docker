@@ -2,15 +2,21 @@
 
 基于官方 https://hub.docker.com/_/jenkins 镜像构建的mirror，做了本地化的一些提速修改。
 
-官方镜像的jenkins版本比较低，所以Dockerfile中指定了比较新的版本，如果想升级的话，自行修改`JENKINS_VERSION`和`JENKINS_SHA`即可。
-
-获取SHA命令例子：
-
-```
-shasum -a 256 jenkins-war-2.164.3.war
-```
+官方镜像的jenkins版本比较低，所以Dockerfile中指定了比较新的版本。
 
 查看全部jenkins的war包地址: https://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-war/
+
+### 更新注意事项:
+
+1. 如果想升级的话，需要修改`JENKINS_VERSION`和`JENKINS_SHA`。
+
+	获取SHA命令例子：
+
+	```
+	shasum -a 256 jenkins-war-2.164.3.war
+	```
+
+2. 更新jenkins的同时也需要注意`tini`的版本，需要匹配才行，`tini`下载版本查看 https://github.com/krallin/tini/releases/
 
 ## 使用
 
