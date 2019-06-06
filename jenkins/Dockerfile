@@ -2,7 +2,7 @@
 FROM registry.cn-hangzhou.aliyuncs.com/kennylee/java:openjdk-8-jdk
 
 RUN apt-get update \
-        && apt-get install -y git curl unzip vim wget ant \
+        && apt-get install -y ant \
         && rm -rf /var/lib/apt/lists/*
 
 ARG user=jenkins

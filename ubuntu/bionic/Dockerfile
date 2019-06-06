@@ -22,7 +22,7 @@ ENV LANG="zh_CN.UTF-8" \
 RUN \
   apt-get update && \
   apt-get -y upgrade && \
-  apt-get install -y apt-utils curl git unzip vim wget iputils-ping && \
+  apt-get install -y apt-utils curl git unzip vim gnupg wget iputils-ping && \
   apt-get install -y language-pack-zh-hans && \ 
   apt-get install -y dialog tzdata && \  
   rm -rf /var/lib/apt/lists/*
