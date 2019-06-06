@@ -8,7 +8,6 @@ services:
         container_name: jenkins
         restart: on-failure
         environment:
-            - TZ=Asia/Shanghai
             - JAVA_OPTS=-server -Xms128m -Xmx1g -Djava.security.egd=file:/dev/./urandom -Djava.awt.headless=true
             - JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
         volumes:
