@@ -10,6 +10,8 @@
 shasum -a 256 jenkins-war-2.164.3.war
 ```
 
+查看全部jenkins的war包地址: https://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-war/
+
 ## 使用
 
 ### 本地构建命令

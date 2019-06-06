@@ -3,13 +3,13 @@ services:
     app:
         image: registry.cn-hangzhou.aliyuncs.com/kennylee/jenkins:2.60.3
         ports: 
-            - 8051:8080
-            - 45000:50000
+            - 8080:8080
+            - 50000:50000
         container_name: jenkins
         restart: on-failure
         environment:
             - TZ=Asia/Shanghai
-            - JAVA_OPTS=-server -Xms128m -Xmx1g -Djava.security.egd=file:/dev/./urandom
+            - JAVA_OPTS=-server -Xms128m -Xmx1g -Djava.security.egd=file:/dev/./urandom -Djava.awt.headless=true
             - JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
         volumes:
             - ./data/:/var/jenkins_home/:z
