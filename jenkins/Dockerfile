@@ -18,7 +18,10 @@ ARG agent_port=50000
 VOLUME /var/jenkins_home
 
 USER root
-RUN sed -i 's/archive.ubuntu.com/mirrors.163.com/g' /etc/apt/sources.list
+
+RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak
+COPY stretch.sources.list /etc/apt/sources.list
+
 RUN apt-get -y update
 # recommend
 RUN apt-get install -y \

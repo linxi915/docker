@@ -1,14 +1,15 @@
 # Jenkins
 
-由于一些极端情况，不能联网，所以默认情况是使用本地的 `image` ，如果非这样的情况，docker-compose文件可改为 `build .`
+基于官方 https://hub.docker.com/_/jenkins 镜像构建的mirror，做了本地化的一些提速修改。
+## 使用
 
-基础镜像构建命令
+本地构建命令
 
 ```
-docker build -t timekey/jenkins:2.19.3 .
+docker build -t kennylee26/jenkins .
 ```
 
 默认管理员账号密码 `admin/111111`
 
-安装其实不是大问题，问题比较大的由于网络问题而导致各种plugin安装不上，最后只能一个一个的下载到本地再进行安装，痛苦。所以如非必要，不建议随便升级，或者除非时间特别充裕吧。
+>注: jenkins安装插件比较痛苦，因为各种网络问题导致lugin安装不上。这时可以一个一个的下载到本地再进行安装。而一般jenkins升级后，插件也需要升级才能使用，所以不建议随便升级，等时间特别充裕再弄吧。
 

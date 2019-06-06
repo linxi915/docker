@@ -1,4 +1,4 @@
-FROM registry.docker:5000/timekey/python
+FROM python
 
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
