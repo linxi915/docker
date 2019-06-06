@@ -1,9 +1,5 @@
 # Jenkins
-FROM openjdk:8-jdk-stretch
-
-# 国内加速
-RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak
-COPY stretch.sources.list /etc/apt/sources.list
+FROM registry.cn-hangzhou.aliyuncs.com/kennylee/java:openjdk-8-jdk
 
 RUN apt-get update \
         && apt-get install -y git curl unzip vim wget ant \

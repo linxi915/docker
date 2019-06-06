@@ -16,10 +16,11 @@ RUN sed -i 's/# zh_CN.UTF-8 UTF-8/zh_CN.UTF-8 UTF-8/g' /etc/locale.gen
 RUN locale && locale-gen "zh_CN.UTF-8"
        
 # Set environment variables.
-ENV LANG=zh_CN.UTF-8\
-    LANGUAGE=zh_CN:zh:en_US:en\
-    LC_ALL=zh_CN.UTF-8\
-    TZ=Asia/Shanghai\
+ENV LANG=zh_CN.UTF-8 \
+    LANGUAGE=zh_CN:zh:en_US:en \
+    LC_ALL=zh_CN.UTF-8 \
+    TZ=Asia/Shanghai \
+    DEBIAN_FRONTEND="noninteractive" \
     TERM=xterm
 
 RUN ln -fs /usr/share/zoneinfo/$TZ /etc/localtime && \
