@@ -6,10 +6,16 @@
 # Command format: Instruction [arguments command] ..
 
 # 第一行必须指定基于的基础镜像
-FROM registry.alauda.cn/kenny/docker-jenkinsci:2.19.3
+FROM jenkins:2.60.3
 
 # 维护者信息
 MAINTAINER kennylee26 <kennylee26@gmail.com>
+
+ARG user=jenkins
+ARG http_port=8080
+ARG agent_port=50000
+
+VOLUME /var/jenkins_home
 
 USER root
 RUN sed -i 's/archive.ubuntu.com/mirrors.163.com/g' /etc/apt/sources.list
@@ -22,12 +28,8 @@ RUN apt-get install -y ant
 # clean
 RUN rm -rf /var/lib/apt/lists/*
 
-# for main web interface:
-EXPOSE 8080
-# will be used by attached slave agents:
-EXPOSE 50000
+USER ${user}
 
-#COPY plugins.txt /usr/share/jenkins/plugins.txt
-#RUN /usr/local/bin/plugins.sh /usr/share/jenkins/plugins.txt
+# from a derived Dockerfile, can use `RUN plugins.sh active.txt` to setup /usr/share/jenkins/ref/plugins from a support bundle
 
 ENTRYPOINT ["/bin/tini", "--", "/usr/local/bin/jenkins.sh"]
