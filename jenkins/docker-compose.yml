@@ -1,7 +1,7 @@
 version: '2.4'
 services:
     app:
-        image: registry.cn-hangzhou.aliyuncs.com/kennylee/jenkins:2.60.3
+        image: registry.cn-hangzhou.aliyuncs.com/kennylee/jenkins:2.164.3
         ports: 
             - 8080:8080
             - 50000:50000

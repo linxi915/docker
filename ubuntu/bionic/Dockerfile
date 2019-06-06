@@ -26,6 +26,7 @@ ENV LANG=zh_CN.UTF-8\
     LANGUAGE=zh_CN:zh:en_US:en\
     LC_ALL=zh_CN.UTF-8\
     TZ=Asia/Shanghai\
+    DEBIAN_FRONTEND=noninteractive\
     TERM=xterm
 
 RUN ln -fs /usr/share/zoneinfo/$TZ /etc/localtime && \
