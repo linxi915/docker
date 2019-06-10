@@ -40,14 +40,14 @@ docker run -d --restart=on-failure \
 		tcp-listen:2375,fork,reuseaddr unix-connect:/var/run/docker.sock
 		
 # 构建镜像
-docker build -t kennylee26/jenkins:with-docker ./with-docker
+docker build -t registry.cn-hangzhou.aliyuncs.com/kennylee/jenkins:lts-with-docker ./with-docker
 
 # 进入容器测试docker命令
 docker run -it --rm \
 	-e "DOCKER_HOST=tcp://socat:2375" \
 	--link=socat \
 	-v /var/run/docker.sock:/var/run/docker.sock \
-	kennylee26/jenkins:with-docker bash
+	registry.cn-hangzhou.aliyuncs.com/kennylee/jenkins:lts-with-docker bash
 	
 # 命令如
 docker version
