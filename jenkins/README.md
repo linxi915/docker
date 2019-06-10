@@ -28,6 +28,31 @@ docker build -t kennylee26/jenkins .
 
 >注: jenkins安装插件比较痛苦，因为各种网络问题导致lugin安装不上。这时可以一个一个的下载到本地再进行安装。而一般jenkins升级后，插件也需要升级才能使用，所以不建议随便升级，等时间特别充裕再弄吧。
 
+### 测试使用宿主docker
+
+```
+# 启动宿主docker的代理容器
+docker run -d --restart=on-failure \
+		--name socat \
+		--expose 2375 \
+		-v /var/run/docker.sock:/var/run/docker.sock \
+		registry.cn-hangzhou.aliyuncs.com/kennylee/socat \
+		tcp-listen:2375,fork,reuseaddr unix-connect:/var/run/docker.sock
+		
+# 构建镜像
+docker build -t kennylee26/jenkins:with-docker ./with-docker
+
+# 进入容器测试docker命令
+docker run -it --rm \
+	-e "DOCKER_HOST=tcp://socat:2375" \
+	--link=socat \
+	-v /var/run/docker.sock:/var/run/docker.sock \
+	kennylee26/jenkins:with-docker bash
+	
+# 命令如
+docker version
+```
+
 ## 参考
 
 [jenkins官方构建文件](https://github.com/jenkinsci/docker)

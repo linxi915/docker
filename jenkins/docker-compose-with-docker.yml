@@ -1,0 +1,37 @@
+version: '2.4'
+
+x-logging:
+    &default-logging
+    options:
+        max-size: '12m'
+        max-file: '5'
+    driver: json-file
+
+services:
+    app:
+        image: kennylee26/jenkins:with-docker
+        ports: 
+            - 8080:8080
+            - 50000:50000
+        container_name: jenkins
+        restart: on-failure
+        environment:
+            - JAVA_OPTS=-server -Xms128m -Xmx1g -Djava.security.egd=file:/dev/./urandom -Djava.awt.headless=true
+            - JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+        volumes:
+            - ./data/jenkins_home:/var/jenkins_home/:z
+            - ./data/share:/var/share:z
+        environment:
+            - DOCKER_HOST=tcp://socat:2375
+        logging: *default-logging
+    socat:
+        image: registry.cn-hangzhou.aliyuncs.com/kennylee/socat
+        container_name: jenkins-docker
+        restart: on-failure
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+        expose:
+            - "2375"
+        command: 'tcp-listen:2375,fork,reuseaddr unix-connect:/var/run/docker.sock'
+        logging: *default-logging
+        

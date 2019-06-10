@@ -10,7 +10,8 @@ RUN apt-get update && \
     apt-get install -y docker-compose && \
     rm -rf /var/lib/apt/lists/*
 
-VOLUME /var/lib/docker/ 
+RUN usermod -aG root ${JENKINS_USER}
+RUN chown ${JENKINS_USER}:docker ~/
 
 USER ${JENKINS_USER}
 
