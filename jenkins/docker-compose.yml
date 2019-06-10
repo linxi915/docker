@@ -11,7 +11,8 @@ services:
             - JAVA_OPTS=-server -Xms128m -Xmx1g -Djava.security.egd=file:/dev/./urandom -Djava.awt.headless=true
             - JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
         volumes:
-            - ./data/:/var/jenkins_home/:z
+            - ./data/jenkins_home:/var/jenkins_home/:z
+            - ./data/share:/var/share:/z
         logging:
             driver: 'json-file'
             options:

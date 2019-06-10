@@ -1,3 +1,3 @@
 #!/bin/bash
 
-rm -rf './data/*' './data/\.*'
+rm -rf './data/jenkins_home/*' './data/jenkins_home/\.*'
