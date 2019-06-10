@@ -12,8 +12,5 @@ RUN apt-get update && \
 
 VOLUME /var/lib/docker/ 
 
-#RUN systemctl start docker
-
 USER ${JENKINS_USER}
-
 
