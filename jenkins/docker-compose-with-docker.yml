@@ -9,7 +9,7 @@ x-logging:
 
 services:
     app:
-        image: kennylee26/jenkins:with-docker
+        image: registry.cn-hangzhou.aliyuncs.com/kennylee/jenkins:lts-with-docker
         ports: 
             - 8080:8080
             - 50000:50000
