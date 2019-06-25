@@ -17,7 +17,7 @@ services:
                 max-size: '30m'
                 max-file: '1'
     registry:
-        image: registry.cn-hangzhou.aliyuncs.com/kennylee/registry
+        image: registry.cn-hangzhou.aliyuncs.com/kennylee/registry:2
         container_name: 'docker_registry'
         ports:
             - 5000:5000

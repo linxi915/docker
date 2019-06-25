@@ -1,7 +1,7 @@
 version: '2.4'
 services:
-    app:
-        image: registry.cn-hangzhou.aliyuncs.com/kennylee/registry
+    registry:
+        image: registry.cn-hangzhou.aliyuncs.com/kennylee/registry:2
         container_name: 'docker-registry'
         ports:
             - 5000:5000
@@ -11,6 +11,6 @@ services:
         logging:
             driver: 'json-file'
             options:
-                max-size: '30m'
-                max-file: '1'
+                max-size: '12m'
+                max-file: '5'
 

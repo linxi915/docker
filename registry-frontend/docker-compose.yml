@@ -1,0 +1,34 @@
+version: '2.4'
+services:
+    webUI:
+        image: registry.cn-hangzhou.aliyuncs.com/kennylee/registry-frontend:v2
+        container_name: 'docker-registry-webUI'
+        ports:
+            - 8080:80
+        restart: on-failure
+        environment:
+            - "ENV_DOCKER_REGISTRY_HOST=registry"
+            - "ENV_DOCKER_REGISTRY_PORT=5000"
+            - "ENV_MODE_BROWSE_ONLY=true"
+            - "ENV_DEFAULT_REPOSITORIES_PER_PAGE=20"
+        depends_on:
+            - registry
+        logging:
+            driver: 'json-file'
+            options:
+                max-size: '12m'
+                max-file: '5'
+    registry:
+        image: registry.cn-hangzhou.aliyuncs.com/kennylee/registry:2
+        container_name: 'docker-registry'
+        ports:
+            - 5000:5000
+        volumes:
+            - ./data/registry:/var/lib/registry
+        restart: on-failure
+        logging:
+            driver: 'json-file'
+            options:
+                max-size: '12m'
+                max-file: '5'
+

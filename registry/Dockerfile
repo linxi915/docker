@@ -1,4 +1,4 @@
-FROM registry
+FROM registry:2
 
 VOLUME ["/var/lib/registry"]
 EXPOSE 5000
@@ -12,5 +12,7 @@ RUN apk --no-cache update && \
     apk --no-cache add curl bash tzdata tar unzip && \ 
     ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     echo "Asia/Shanghai" > /etc/timezone && \
-    echo -ne "Alpine Linux 3.4 image. (`uname -rsv`)\n" >> /root/.built && \
+    echo -ne "Alpine Linux 3.8 image. (`uname -rsv`)\n" >> /root/.built && \
     rm -fr /tmp/* /var/cache/apk/*
+
+
