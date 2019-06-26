@@ -18,7 +18,7 @@ sh gencert.sh
 
 ## 使用
 
-### https模式
+### https模式（SSL）
 
 请确保证书已经生成好，利用docker-compose启动应用：
 
@@ -39,7 +39,7 @@ docker push localhost/hello-world
 curl -k -X GET https://localhost/v2/_catalog
 ```
 
-### 非https模式
+### http模式
 
 非https模式的话，需要修改docker上的配置，添加registry的信息到 `--insecure-registry` 才能正常使用(建议用域名)，例如:
 
