@@ -2,8 +2,8 @@ server:  # Server settings.
   # Address to listen on.
   addr: ":5001"
   # TLS certificate and key.
-  certificate: "/ssl/server.pem"
-  key: "/ssl/server.key"
+  certificate: "/ssl/registry.crt"
+  key: "/ssl/registry.key"
 
 token:  # Settings for the tokens.
   issuer: "Auth Service"  # Must match issuer in the Registry config.
@@ -14,7 +14,7 @@ token:  # Settings for the tokens.
 users:
   # Password is specified as a BCrypt hash. Use htpasswd -B to generate.
   "admin":
-    password: "$2y$05$QH.x7wSgRwX/T9LVKwr41e0djC2/2V5uNWPVaIbdssGInvzg.bd8S"
+    password: "$2y$05$vpPwtp7EQRZddhZwY4qtjObGdnsLipQOUcsdh2cq2DVWNjPJeun5u" # admin
   "": {}  # Allow anonymous (no "docker login") access.
 
 acl:
