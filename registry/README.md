@@ -91,6 +91,8 @@ htpasswd -nbB <账号> <密码>
 
 #### 启动和使用
 
+启动前，请先修改 `.env` 中的 `docker_auth_public_ip` 为当前运行服务器的IP，不然无法完成 `docker login` 。
+
 启动命令
 
 ```
