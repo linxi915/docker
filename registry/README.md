@@ -8,7 +8,11 @@
 
 默认docker镜像存储路径 `/var/lib/registry`
 
-### 生成证书命令
+## 使用
+
+### https模式（SSL）
+
+#### 生成证书
 
 首次运行，请执行生成ssl证书脚本，命令参考如下:
 
@@ -16,9 +20,14 @@
 sh gencert.sh
 ```
 
-## 使用
+>注: 由于证书是自行颁发的，当执行镜像上传或下载时，客户端会报 `x509: certificate signed by unknown authority` 信息，即提示由未知颁发机构签名的证书，所以不能正常连接；
 
-### https模式（SSL）
+解决方法：
+
+1. 把证书`pem`文件下载下来，写入到本地操作系统，使系统信任该办法证书，例如导入到 `/etc/pki/tls/certs/ca-bundle.crt`
+2. 配置docker客户端，把域名添加到 `insecure-registry` 中。
+
+#### 启动容器
 
 请确保证书已经生成好，利用docker-compose启动应用：
 
@@ -26,7 +35,7 @@ sh gencert.sh
 docker-compose up -d
 ```
 
-测试执行下面命令
+#### 测试使用
 
 ```
 # 从公服下载镜像
@@ -41,6 +50,8 @@ curl -k -X GET https://localhost/v2/_catalog
 
 ### http模式
 
+#### 配置docker客户端
+
 非https模式的话，需要修改docker上的配置，添加registry的信息到 `--insecure-registry` 才能正常使用(建议用域名)，例如:
 
 ```
@@ -52,13 +63,13 @@ curl -k -X GET https://localhost/v2/_catalog
 }
 ```
 
-启动非https的registry容器
+#### 启动容器
 
 ```
 docker-compose -f docker-compose-insecure.yml up -d
 ```
 
-测试执行下面命令
+#### 测试使用
 
 ```
 # 从公服下载镜像

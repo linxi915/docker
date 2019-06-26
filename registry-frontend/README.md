@@ -16,6 +16,13 @@ see also: https://github.com/kwk/docker-registry-frontend
 sh gencert.sh
 ```
 
+>注: 由于证书是自行颁发的，当执行镜像上传或下载时，客户端会报 `x509: certificate signed by unknown authority` 信息，即提示由未知颁发机构签名的证书，所以不能正常连接；
+
+解决方法：
+
+1. 把证书`pem`文件下载下来，写入到本地操作系统，使系统信任该办法证书，例如导入到 `/etc/pki/tls/certs/ca-bundle.crt`
+2. 配置docker客户端，把域名添加到 `insecure-registry` 中。
+
 #### 启动
 
 ```
