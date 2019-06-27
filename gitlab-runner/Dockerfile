@@ -3,7 +3,7 @@
 # Authoer: kennylee26
 # Command format: Instruction [arguments command] ..
 
-FROM registry.alauda.cn/kenny/gitlab-ci-multi-runner
+FROM sameersbn/gitlab-ci-multi-runner
 
 # 维护者信息
 MAINTAINER kennylee26 <kennylee26@gmail.com>

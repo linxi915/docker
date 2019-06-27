@@ -4,8 +4,9 @@
 
 1. 注意宿主机的防火墙，会造成runner无法绑定gitlab的问题。
 2. 由于使用 [sameersbn/docker-gitlab-ci-multi-runner](https://github.com/sameersbn/docker-gitlab-ci-multi-runner) 所以，`EXECUTOR=shell` 仅支持是shell。
-3. 请根据实际部署环境修改 `RUNNER_TOKEN` `RUNNER_TOKEN` 和 `extra_hosts` 中的域名。
+3. 请根据实际部署环境修改 `.env` 文件中的配置和docker-compose.yml中的`extra_hosts`。
 4. `docker`环境下的gitlab使用hostname作为域名，不配置网络的情况下会导致构建失败问题。所以设置了gitlab的hostname。runner中也需要对应的设置gitlab访问的ip地址。
+5. 
 
 image主要修改
 

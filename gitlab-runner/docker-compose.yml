@@ -1,17 +1,17 @@
 version: '2'
 services:
     runner:
-        build: .
+        image: registry.cn-hangzhou.aliyuncs.com/kennylee/gitlab-ci-multi-runner
         container_name: gitlab-runner
-        restart: always
+        restart: on-failure
         volumes:
             - ./data:/home/gitlab_ci_multi_runner/data:z
             - /var/run/docker.sock:/var/run/docker.sock
         environment:
             - TZ=Asia/Shanghai
-            - CI_SERVER_URL=http://192.168.3.231:10080/ci
-            - RUNNER_TOKEN=ziz3YmA9fqaQ4K1wVmAU
-            - RUNNER_DESCRIPTION=new-docker-executor
+            - CI_SERVER_URL=${CI_SERVER_URL}
+            - RUNNER_TOKEN=${RUNNER_TOKEN}
+            - RUNNER_DESCRIPTION=${RUNNER_DESCRIPTION}
             - RUNNER_EXECUTOR=shell
         extra_hosts:
             - "gitlab.foo.com:192.168.3.231"
