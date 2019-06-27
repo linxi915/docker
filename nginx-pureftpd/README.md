@@ -6,6 +6,8 @@ ftp镜像基于 [stilliard/pure-ftpd](https://hub.docker.com/r/stilliard/pure-ft
 
 ## 使用
 
+> 注：如果想客户端支持`被动模式`，请修改`.env`配置文件中的`PUBLICHOST`变量；
+
 1. 启动容器镜像
 
 	执行命令
@@ -17,21 +19,9 @@ ftp镜像基于 [stilliard/pure-ftpd](https://hub.docker.com/r/stilliard/pure-ft
 2. Ftp配置
 
 	```
-	# 进入ftp容器
-	docker exec -it ftpd_server /bin/bash
-	# 创建ftp用户，并且制定根目录
-	pure-pw useradd ftp -u ftpuser -d /usr/share/nginx/html
-	# 创建库
-	pure-pw mkdb
+	username: ftp
+	password: ftp
 	```
-
-	其中，用户名为 `ftp` ，密码输入后，重启服务
-	
-	```
-	docker restart ftpd_server
-	```
-
-	> 注：实测对ftp客户端兼容性不太好，并且连接时不要选择被动模式！
 
 3. Nginx
 

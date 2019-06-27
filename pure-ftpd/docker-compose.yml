@@ -1,4 +1,4 @@
-version: '2.4'
+version: '2'
 
 services:
     ftpd:
@@ -7,12 +7,18 @@ services:
         ports:
             - "30000-30059:30000-30059"
             - "21:21"
-        environment:
-            - PUBLICHOST=localhost
         volumes:
-            - ./data/files/:/home/ftpusers/ftp/
+            - ./data/files/:/home/ftpusers/
+            - ./data/pure-ftpd/passwd:/etc/pure-ftpd/passwd
+        environment:
+            PUBLICHOST: ${PUBLICHOST}
+            FTP_USER_NAME: ${FTP_USER_NAME}
+            FTP_USER_PASS: ${FTP_USER_PASS}
+            FTP_USER_HOME: /home/ftpusers/${FTP_USER_NAME}
+            FTP_MAX_CLIENTS: 30
+            FTP_MAX_CONNECTIONS: 10
+            ADDED_FLAGS: "-p 30000:30059 -9 utf8"
         restart: on-failure
-        command: /run.sh --maxclientsnumber 30 --maxclientsperip 30 --clientcharset utf8 --login puredb:/etc/pure-ftpd/pureftpd.pdb --noanonymous -j -R --passiveportrange 30000:30059
         logging:
             driver: 'json-file'
             options:

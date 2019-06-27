@@ -1,4 +1,4 @@
-version: '2.4'
+version: '2'
 services:
     web:
         image: registry.cn-hangzhou.aliyuncs.com/kennylee/nginx:alpine-1.13
@@ -7,27 +7,32 @@ services:
             - "80:80"
         volumes:
             - ./data/html/:/usr/share/nginx/html
-            - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf
-            - ./nginx/conf/conf.d/:/etc/nginx/conf.d/
+            - ./nginx/config/nginx.conf:/etc/nginx/nginx.conf
+            - ./nginx/config/conf.d/:/etc/nginx/conf.d/
         restart: on-failure
         logging:
             driver: 'json-file'
             options:
                 max-size: '12m'
                 max-file: '5'
-    ftp:
-        build: ./ftp
+    ftpd:
+        image: registry.cn-hangzhou.aliyuncs.com/kennylee/pure-ftpd:stretch-without-user
         container_name: "ftpd_server"
         ports:
             - "21:21"
-            - "30000-30009:30000-30009"
+            - "30000-30059:30000-30059"
         volumes:
-            - ./data/html/:/usr/share/nginx/html
-            - ./data/pure-ftpd:/etc/pure-ftpd
-        restart: on-failure
-        privileged: true
+            - ./data/html/:${FTP_USER_HOME}
+            - ./data/pure-ftpd/passwd:/etc/pure-ftpd/passwd
         environment:
-            - TZ=Asia/Shanghai
+            PUBLICHOST: ${PUBLICHOST}
+            FTP_USER_NAME: ${FTP_USER_NAME}
+            FTP_USER_PASS: ${FTP_USER_PASS}
+            FTP_USER_HOME: ${FTP_USER_HOME}
+            FTP_MAX_CLIENTS: 30
+            FTP_MAX_CONNECTIONS: 10
+            ADDED_FLAGS: "-p 30000:30059 -9 utf8"
+        restart: on-failure
         logging:
             driver: 'json-file'
             options:
