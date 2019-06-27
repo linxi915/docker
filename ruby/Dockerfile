@@ -1,13 +1,14 @@
 # Ruby
 #
 # https://github.com/docker-library/ruby
-# NAME: kennylee26/ruby:2.3.3
 
 # Pull base image.
-FROM ruby:2.6.3-stretch
+FROM ruby:2.6-stretch
+
+MAINTAINER kennylee26 <kennylee26@gmail.com>
 
 # FIX APT Resource
-RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak
+RUN mv /etc/apt/sources.list /etc/apt/sources.list
 COPY stretch.sources.list /etc/apt/sources.list
 
 # FIX Ruby RESOURCE
