@@ -38,6 +38,6 @@ password: ftp
 
 镜像内已不内置创建用户，请启动镜像的时候传入FTP_USER_NAME等变量，具体参见[stilliard/pure-ftpd](https://github.com/stilliard/docker-pure-ftpd) 
 
-* stretch-without-user: stilliard/pure-ftpd的镜像，修改本地源，安装基础软件和本地时区设置；
-* latest: 基于 `stretch-without-user` 版本一致；
+* latest: 基于stilliard/pure-ftpd的镜像，修改本地源，安装基础软件和本地时区设置；
+
 

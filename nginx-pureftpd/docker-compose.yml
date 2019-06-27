@@ -16,7 +16,7 @@ services:
                 max-size: '12m'
                 max-file: '5'
     ftpd:
-        image: registry.cn-hangzhou.aliyuncs.com/kennylee/pure-ftpd:stretch-without-user
+        image: registry.cn-hangzhou.aliyuncs.com/kennylee/pure-ftpd:stretch-latest
         container_name: "ftpd_server"
         ports:
             - "21:21"
