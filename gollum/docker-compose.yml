@@ -1,14 +1,18 @@
 version: '2'
 services:
-  app:
-    image: kennylee26/gollum  
-    container_name: gollum
-    ports:
-        - "4567:80"
-    restart: always
-    volumes:
-        - ./data:/wiki:z
-    environment:
-        - TZ=Asia/Shanghai
+    app:
+        image: registry.cn-hangzhou.aliyuncs.com/kennylee/gollum
+        container_name: gollum
+        ports:
+            - "4567:80"
+        volumes:
+            - ./data:/wiki:z
+        restart: on-failure
+        logging:
+            driver: 'json-file'
+            options:
+                max-size: '12m'
+                max-file: '5'
+
 
 
