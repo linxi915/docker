@@ -1,11 +1,11 @@
-FROM registry.cn-hangzhou.aliyuncs.com/kennylee/debian:stretch
+FROM debian:8
 
 # less priviledge user, the id should map the user the downloaded files belongs to
 RUN groupadd -r dummy && useradd -r -g dummy dummy -u 1000
 
 # webui + aria2
 RUN apt-get update \
-	&& apt-get install -y aria2 busybox \
+	&& apt-get install -y aria2 busybox curl unzip \
 	&& rm -rf /var/lib/apt/lists/*
 
 ADD . /webui-aria2
