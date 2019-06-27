@@ -1,0 +1,13 @@
+# see also https://github.com/stilliard/docker-pure-ftpd
+FROM stilliard/pure-ftpd
+
+MAINTAINER kennylee26 <kennylee26@gmail.com>
+
+RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak
+COPY stretch.sources.list /etc/apt/sources.list
+
+RUN apt-get -y update && \
+        apt-get -y install vim curl wget && \
+        apt-get clean && \
+        rm -rf /var/lib/apt/lists/*
+
