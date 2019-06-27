@@ -1,6 +1,5 @@
-FROM mysql:5.7.25
+FROM debian:stretch
 
-# 维护者信息
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
 RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak
@@ -15,7 +14,8 @@ RUN apt-get update && \
 RUN sed -i 's/# zh_CN.UTF-8 UTF-8/zh_CN.UTF-8 UTF-8/g' /etc/locale.gen
 
 RUN locale && locale-gen "zh_CN.UTF-8"
-       
+
+ENV HOME /root
 # Set environment variables.
 ENV LANG=zh_CN.UTF-8 \
     LANGUAGE=zh_CN:zh:en_US:en \
@@ -29,8 +29,7 @@ RUN ln -fs /usr/share/zoneinfo/$TZ /etc/localtime && \
             dpkg-reconfigure --frontend noninteractive tzdata && \
             dpkg-reconfigure --frontend noninteractive locales
 
-COPY my.cnf /etc/mysql/my.cnf
-RUN mkdir -p /etc/mysql/mysql-my.conf.d/
+# Define working directory.
+WORKDIR $HOME
 
-EXPOSE 3306
-CMD ["mysqld"]
+CMD ["/bin/bash"]
