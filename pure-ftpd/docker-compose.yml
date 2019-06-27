@@ -11,6 +11,7 @@ services:
             - ./data/files/:/home/ftpusers/
             - ./data/pure-ftpd/passwd:/etc/pure-ftpd/passwd
         environment:
+            # 注意修改.env中的PUBLICHOST变量为服务器外网地址（默认是docker私有网络IP），不然被动模式无法使用            
             PUBLICHOST: ${PUBLICHOST}
             FTP_USER_NAME: ${FTP_USER_NAME}
             FTP_USER_PASS: ${FTP_USER_PASS}

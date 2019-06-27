@@ -3,7 +3,6 @@ FROM registry.cn-hangzhou.aliyuncs.com/kennylee/ruby:2.6-stretch
 
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
-# recommend lib
 RUN apt-get update && \
         apt-get -y install libicu-dev && \
         apt-get clean && \
