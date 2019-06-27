@@ -8,7 +8,7 @@ FROM ruby:2.6-stretch
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
 # FIX APT Resource
-RUN mv /etc/apt/sources.list /etc/apt/sources.list
+RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak
 COPY stretch.sources.list /etc/apt/sources.list
 
 RUN apt-get update && \
@@ -35,9 +35,9 @@ RUN ln -fs /usr/share/zoneinfo/$TZ /etc/localtime && \
             dpkg-reconfigure --frontend noninteractive locales
 
 # FIX Ruby RESOURCE
-RUN bundle config mirror.https://rubygems.org https://ruby.taobao.org
-RUN gem sources --remove https://rubygems.org/
-RUN gem sources -a https://ruby.taobao.org/
+RUN bundle config mirror.https://rubygems.org https://gems.ruby-china.com
+RUN gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/
+RUN gem sources -l
 
 # Define default command.
 CMD [ "irb" ]
