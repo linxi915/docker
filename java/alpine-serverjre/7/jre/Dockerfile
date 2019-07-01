@@ -2,6 +2,9 @@ FROM anapsix/alpine-java:7_server-jre
 
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
+# 使用阿里云镜像
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
+
 # Install base packages
 RUN apk --no-cache update && \
     apk --no-cache upgrade && \
