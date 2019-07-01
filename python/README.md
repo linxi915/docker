@@ -1,6 +1,10 @@
 # Python3
 
-说明:
+## 说明
+
+Python3的镜像，并配置pip使用国内镜像。
+
+### 镜像文件
 
 * Dockerfile
 

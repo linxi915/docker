@@ -11,8 +11,8 @@ RUN \
   apt-get install -y python3 python-dev python-pip python-virtualenv && \
   rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p ~/.pip/
-COPY pip.conf ~/.pip/
+RUN mkdir -p $HOME/.config/pip/
+COPY pip.conf ~/.config/pip/
 
 RUN pip install pydns
 
