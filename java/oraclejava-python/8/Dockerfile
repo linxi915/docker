@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/kennylee/python:python-ppa
+FROM registry.cn-hangzhou.aliyuncs.com/kennylee/python:python3-ppa
 
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 

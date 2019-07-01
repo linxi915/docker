@@ -8,7 +8,12 @@ services:
             - ./app/webapps/:/opt/tomcat/webapps/:z
             #- ./config/server.xml:/opt/tomcat/conf/server.xml:ro
             - ./data/logs/:/opt/tomcat/logs/:z
-        restart: always
         environment:
             - JAVA_OPTS=-server -Xms128m -Xmx1024m
+        restart: on-failure
+        logging:
+            driver: 'json-file'
+            options:
+                max-size: '12m'
+                max-file: '5'
 

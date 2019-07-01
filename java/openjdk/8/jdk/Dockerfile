@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/kennylee/ubuntu:bionic
+FROM registry.cn-hangzhou.aliyuncs.com/kennylee/ubuntu
 
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
