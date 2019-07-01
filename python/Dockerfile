@@ -12,7 +12,8 @@ RUN \
   rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p $HOME/.config/pip/
-COPY pip.conf ~/.config/pip/
+COPY pip.conf /tmp
+RUN mv /tmp/pip.conf $HOME/.config/pip/
 
 RUN pip install pydns
 
