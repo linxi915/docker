@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/kennylee/springboot:jre8-alpine
+FROM registry.cn-hangzhou.aliyuncs.com/kennylee/springboot:alpine-serverjre8
 
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 

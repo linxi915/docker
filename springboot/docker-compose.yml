@@ -12,8 +12,9 @@ services:
         entrypoint:
             - /entrypoint.sh
             - --spring.config.location=/data/config/application.yml
+        restart: on-failure
         logging:
             driver: 'json-file'
             options:
-                max-size: '30m'
-                max-file: '20'
+                max-size: '12m'
+                max-file: '5'

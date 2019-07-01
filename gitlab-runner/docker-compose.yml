@@ -3,7 +3,6 @@ services:
     runner:
         image: registry.cn-hangzhou.aliyuncs.com/kennylee/gitlab-ci-multi-runner
         container_name: gitlab-runner
-        restart: on-failure
         volumes:
             - ./data:/home/gitlab_ci_multi_runner/data:z
             - /var/run/docker.sock:/var/run/docker.sock
@@ -15,6 +14,7 @@ services:
             - RUNNER_EXECUTOR=shell
         extra_hosts:
             - "gitlab.foo.com:192.168.3.231"
+        restart: on-failure
         logging:
             driver: 'json-file'
             options:
