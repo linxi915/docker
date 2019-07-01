@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/kennylee/java:ubuntu-serverjre8
+FROM registry.cn-hangzhou.aliyuncs.com/kennylee/java
 
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
