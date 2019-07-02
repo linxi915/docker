@@ -1,0 +1,37 @@
+# Ubuntu+python3
+#
+# Authoer: kennylee26
+
+FROM registry.cn-hangzhou.aliyuncs.com/kennylee/ubuntu
+
+MAINTAINER kennylee26 <kennylee26@gmail.com>
+
+ENV PYTHON_VERSION 3.7
+
+RUN \
+  apt-get update -qq && \
+  apt-get install -y python$PYTHON_VERSION \
+                    python$PYTHON_VERSION-dev \
+                    python${PYTHON_VERSION%%.*}-pip \
+                    python-virtualenv && \
+    apt-get autoclean autoremove && \
+    # Re link the latest python
+    rm /usr/bin/python${PYTHON_VERSION%%.*} && ln -s /usr/bin/python${PYTHON_VERSION} /usr/bin/python${PYTHON_VERSION%%.*} &&\
+    rm /usr/bin/python && ln -s /usr/bin/python${PYTHON_VERSION%%.*} /usr/bin/python && \
+    ln -s /usr/bin/pip3 /usr/bin/pip && \
+    rm -rf /var/lib/apt/lists/* 
+
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 10
+RUN python --version
+
+RUN mkdir -p $HOME/.config/pip/
+COPY pip.conf /tmp
+RUN mv /tmp/pip.conf $HOME/.config/pip/
+
+RUN pip install py3dns
+
+# Define working directory.
+WORKDIR /data
+
+# Define default command.
+CMD ["bash"]
