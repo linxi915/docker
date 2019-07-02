@@ -7,6 +7,9 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV OPENCV_VERSION 4.1.0
 ENV NUM_CORES 7
 
+ARG OPENCV_GIT_URL=https://github.com/opencv/opencv.git
+ARG OPENCV_CONTRIB_GIT_URL=https://github.com/opencv/opencv_contrib
+
 # Install OpenCV
 RUN apt-get -y update && \
     apt-get -y install build-essential \
@@ -34,21 +37,16 @@ RUN apt-get -y update && \
     
 RUN pip install --no-cache-dir numpy matplotlib scipy
 
+RUN echo $OPENCV_GIT_URL
+RUN echo $OPENCV_CONTRIB_GIT_URL
+
 # Get OpenCV src
-RUN cd /
-RUN git clone https://github.com/opencv/opencv.git &&\
-    cd opencv &&\
-    git checkout $OPENCV_VERSION &&\
-    cd / &&\
-    # Get OpenCV contrib modules
-    git clone https://github.com/opencv/opencv_contrib &&\
-    cd opencv_contrib &&\
-    git checkout $OPENCV_VERSION
+RUN cd / && git clone -b $OPENCV_VERSION --single-branch --depth 1 ${OPENCV_GIT_URL} opencv && \
+    cd / && git clone -b $OPENCV_VERSION --single-branch --depth 1 ${OPENCV_CONTRIB_GIT_URL} opencv_contrib
 
 # build 
-RUN mkdir -p /opencv/build &&\
-    cd /opencv/build &&\
-
+RUN mkdir -p /opencv/build && \
+    cd /opencv/build && \
     # Lets build OpenCV
     cmake \
       -D CMAKE_BUILD_TYPE=RELEASE \
@@ -74,12 +72,12 @@ RUN mkdir -p /opencv/build &&\
       -D WITH_V4L=ON \
       -D WITH_VTK=ON \
       .. &&\
-    make -j$NUM_CORES &&\
-    make install &&\
-    ldconfig &&\
+    make -j$NUM_CORES && \
+    make install && \
+    ldconfig && \
     # Clean the install from sources
-    cd / &&\
-    rm -r /opencv &&\
+    cd / && \
+    rm -r /opencv && \
     rm -r /opencv_contrib
 
 # Define default command.
