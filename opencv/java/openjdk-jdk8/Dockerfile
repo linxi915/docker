@@ -31,11 +31,12 @@ RUN apt-get -y update && \
                        imagemagick \
                        && \
     # Openjdk-jdk
-    apt-get install -y openjdk-8-jdk --fix-missing && \    
+    apt-get install -y openjdk-8-jdk ant --fix-missing && \    
     apt-get autoclean autoremove 
     
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 ENV JAVA_OPTS "-server -Xms128m -Xmx1024m"
+ENV ANT_HOME=/usr/bin/ant
 
 RUN pip install --no-cache-dir numpy matplotlib scipy
 
@@ -66,7 +67,8 @@ RUN mkdir -p /opencv/build && \
       -D BUILD_NEW_PYTHON_SUPPORT=ON \
 
       # Building java
-      -D BUILD_SHARED_LIBS=OFF \
+      -D BUILD_SHARED_LIBRARY=OFF \
+      -D BUILD_opencv_python=OFF \
       -D BUILD_DOCS=OFF \
       -D BUILD_TESTS=OFF \
       -D BUILD_PERF_TESTS=OFF \
