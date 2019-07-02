@@ -29,9 +29,9 @@ RUN apt-get -y update && \
                        libvtk6-dev \
                        # Tools
                        imagemagick \
-                       # Openjdk-jre
-                       openjdk-8-jre \
                        && \
+    # Openjdk-jdk
+    apt-get install -y openjdk-8-jdk --fix-missing && \    
     apt-get autoclean autoremove 
     
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
@@ -39,8 +39,10 @@ ENV JAVA_OPTS "-server -Xms128m -Xmx1024m"
 
 RUN pip install --no-cache-dir numpy matplotlib scipy
 
-ARG OPENCV_GIT_URL=https://github.com/opencv/opencv.git
-ARG OPENCV_CONTRIB_GIT_URL=https://github.com/opencv/opencv_contrib
+#ARG OPENCV_GIT_URL=https://github.com/opencv/opencv.git
+#ARG OPENCV_CONTRIB_GIT_URL=https://github.com/opencv/opencv_contrib
+ENV OPENCV_GIT_URL=https://gitee.com/kennylee/opencv
+ENV OPENCV_CONTRIB_GIT_URL=https://gitee.com/kennylee/opencv_contrib
 
 # Get OpenCV src
 RUN cd / && git clone -b $OPENCV_VERSION --single-branch --depth 1 ${OPENCV_GIT_URL} opencv && \
@@ -79,6 +81,7 @@ RUN mkdir -p /opencv/build && \
     make -j$NUM_CORES && \
     make install && \
     ldconfig && \
+    cp /opencv/samples/java/opencv_version.java /tmp && \
     # Clean the install from sources
     cd / && \
     rm -r /opencv && \
