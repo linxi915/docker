@@ -37,9 +37,6 @@ RUN apt-get -y update && \
     
 RUN pip install --no-cache-dir numpy matplotlib scipy
 
-RUN echo $OPENCV_GIT_URL
-RUN echo $OPENCV_CONTRIB_GIT_URL
-
 # Get OpenCV src
 RUN cd / && git clone -b $OPENCV_VERSION --single-branch --depth 1 ${OPENCV_GIT_URL} opencv && \
     cd / && git clone -b $OPENCV_VERSION --single-branch --depth 1 ${OPENCV_CONTRIB_GIT_URL} opencv_contrib
