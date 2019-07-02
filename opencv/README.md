@@ -2,16 +2,11 @@
 
 [OpenCV](https://opencv.org/) 各种运行环境镜像。
 
-## 构建
-
-由于github过于慢，所以构建时使用镜像源码进行：
+## 检查OpenCV-Java环境
 
 ```
-docker build \
-	--build-arg OPENCV_GIT_URL=https://gitee.com/kennylee/opencv \
-	--build-arg  OPENCV_CONTRIB_GIT_URL=https://gitee.com/kennylee/opencv_contrib \
-	-t kennylee26/opencv \
-	./base/
+docker run --rm \
+	registry.cn-hangzhou.aliyuncs.com/kennylee/opencv:openjdk-jdk8 check.sh
 ```
 
 ## 参考

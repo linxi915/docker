@@ -40,10 +40,8 @@ ENV ANT_HOME=/usr/bin/ant
 
 RUN pip install --no-cache-dir numpy matplotlib scipy
 
-#ARG OPENCV_GIT_URL=https://github.com/opencv/opencv.git
-#ARG OPENCV_CONTRIB_GIT_URL=https://github.com/opencv/opencv_contrib
-ENV OPENCV_GIT_URL=https://gitee.com/kennylee/opencv
-ENV OPENCV_CONTRIB_GIT_URL=https://gitee.com/kennylee/opencv_contrib
+ENV OPENCV_GIT_URL=https://github.com/opencv/opencv.git
+ENV OPENCV_CONTRIB_GIT_URL=https://github.com/opencv/opencv_contrib
 
 # Get OpenCV src
 RUN cd / && git clone -b $OPENCV_VERSION --single-branch --depth 1 ${OPENCV_GIT_URL} opencv && \
@@ -83,12 +81,17 @@ RUN mkdir -p /opencv/build && \
     make -j$NUM_CORES && \
     make install && \
     ldconfig && \
+    # copy opencv_javaXXX.so
+    cp /usr/local/share/java/opencv*/libopencv_java*.so /usr/lib && \
     cp /opencv/samples/java/opencv_version.java /tmp && \
     # Clean the install from sources
     cd / && \
     rm -r /opencv && \
     rm -r /opencv_contrib
-    
+
+COPY check.sh /check.sh
+RUN chmod +x /check.sh
+
 # Define default command.
 CMD ["bash"]
 

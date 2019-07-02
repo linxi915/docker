@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/kennylee/opencv:openjdk-jre8	
+FROM registry.cn-hangzhou.aliyuncs.com/kennylee/opencv:openjdk-jdk8	
 
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
