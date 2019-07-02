@@ -60,6 +60,7 @@ RUN mkdir -p /opencv/build && \
 
       -D BUILD_NEW_PYTHON_SUPPORT=ON \
 
+      # Building java
       -D BUILD_SHARED_LIBS=OFF \
       -D BUILD_DOCS=OFF \
       -D BUILD_TESTS=OFF \
@@ -74,7 +75,11 @@ RUN mkdir -p /opencv/build && \
       .. &&\
     make -j$NUM_CORES && \
     make install && \
-    ldconfig
+    ldconfig && \
+    # Clean the install from sources
+    cd / && \
+    rm -r /opencv && \
+    rm -r /opencv_contrib
     
 # Define default command.
 CMD ["bash"]
