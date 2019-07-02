@@ -5,7 +5,7 @@ MAINTAINER kennylee26 <kennylee26@gmail.com>
 ENV DEBIAN_FRONTEND=noninteractive
 
 ENV OPENCV_VERSION 4.1.0
-ENV NUM_CORES 7
+ENV NUM_CORES 8
 
 ARG OPENCV_GIT_URL=https://github.com/opencv/opencv.git
 ARG OPENCV_CONTRIB_GIT_URL=https://github.com/opencv/opencv_contrib
