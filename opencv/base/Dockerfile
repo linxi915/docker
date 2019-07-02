@@ -8,7 +8,7 @@ ENV OPENCV_VERSION 4.1.0
 ENV NUM_CORES 7
 
 # Install OpenCV
-RUN apt-get -y update -qq && \
+RUN apt-get -y update && \
     apt-get -y install build-essential \
                        cmake \
                        git \
@@ -18,7 +18,6 @@ RUN apt-get -y update -qq && \
                        libavformat-dev \
                        libgtk2.0-dev \
                        libswscale-dev \
-
                        # Optional
                        libdc1394-22-dev \
                        libjpeg-dev \
@@ -28,17 +27,14 @@ RUN apt-get -y update -qq && \
                        libtiff-dev \
                        libv4l-dev \
                        libvtk6-dev \
-
                        # Tools
                        imagemagick \
-
-                       &&\
-
+                       && \
     apt-get autoclean autoremove 
     
 RUN pip install --no-cache-dir numpy matplotlib scipy
 
-# Get OpenCV
+# Get OpenCV src
 RUN cd /
 RUN git clone https://github.com/opencv/opencv.git &&\
     cd opencv &&\
@@ -47,8 +43,10 @@ RUN git clone https://github.com/opencv/opencv.git &&\
     # Get OpenCV contrib modules
     git clone https://github.com/opencv/opencv_contrib &&\
     cd opencv_contrib &&\
-    git checkout $OPENCV_VERSION &&\
-    mkdir /opencv/build &&\
+    git checkout $OPENCV_VERSION
+
+# build 
+RUN mkdir -p /opencv/build &&\
     cd /opencv/build &&\
 
     # Lets build OpenCV
@@ -79,7 +77,6 @@ RUN git clone https://github.com/opencv/opencv.git &&\
     make -j$NUM_CORES &&\
     make install &&\
     ldconfig &&\
-
     # Clean the install from sources
     cd / &&\
     rm -r /opencv &&\
