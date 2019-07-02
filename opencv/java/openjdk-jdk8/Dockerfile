@@ -36,7 +36,7 @@ RUN apt-get -y update && \
     
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 ENV JAVA_OPTS "-server -Xms128m -Xmx1024m"
-ENV ANT_HOME=/usr/bin/ant
+ENV ANT_HOME /usr/bin/ant
 
 RUN pip install --no-cache-dir numpy matplotlib scipy
 
