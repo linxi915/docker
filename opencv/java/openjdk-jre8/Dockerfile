@@ -60,6 +60,7 @@ RUN mkdir -p /opencv/build && \
 
       -D BUILD_NEW_PYTHON_SUPPORT=ON \
 
+      -D BUILD_SHARED_LIBS=OFF \
       -D BUILD_DOCS=OFF \
       -D BUILD_TESTS=OFF \
       -D BUILD_PERF_TESTS=OFF \
