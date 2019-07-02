@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/kennylee/java
+FROM registry.cn-hangzhou.aliyuncs.com/kennylee/python:python3
 
 MAINTAINER kennylee26 <kennylee26@gmail.com>
 
@@ -6,11 +6,6 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 ENV OPENCV_VERSION 4.1.0
 ENV NUM_CORES 8
-
-ARG OPENCV_GIT_URL=https://github.com/opencv/opencv.git
-ARG OPENCV_CONTRIB_GIT_URL=https://github.com/opencv/opencv_contrib
-ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
-ENV JAVA_OPTS "-server -Xms128m -Xmx1024m"
 
 # Install OpenCV
 RUN apt-get -y update && \
@@ -34,10 +29,18 @@ RUN apt-get -y update && \
                        libvtk6-dev \
                        # Tools
                        imagemagick \
+                       # Openjdk-jre
+                       openjdk-8-jre \
                        && \
     apt-get autoclean autoremove 
     
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
+ENV JAVA_OPTS "-server -Xms128m -Xmx1024m"
+
 RUN pip install --no-cache-dir numpy matplotlib scipy
+
+ARG OPENCV_GIT_URL=https://github.com/opencv/opencv.git
+ARG OPENCV_CONTRIB_GIT_URL=https://github.com/opencv/opencv_contrib
 
 # Get OpenCV src
 RUN cd / && git clone -b $OPENCV_VERSION --single-branch --depth 1 ${OPENCV_GIT_URL} opencv && \
