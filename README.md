@@ -37,7 +37,7 @@
 
 ### [OpenCV](./opencv/)
 
-[OpenCV](https://opencv.org/) 的一些运行环境镜像，编译比较麻烦和耗费时间（由于网络和电脑硬件等因素）；
+[OpenCV](https://opencv.org/) 的一些运行环境镜像。由于没有安装包，`只能编译安装`，所以比较麻烦和耗费时间（由于网络和电脑硬件等因素）；
 
 阿里云镜像地址 `registry.cn-hangzhou.aliyuncs.com/kennylee/opencv`
 
@@ -45,5 +45,5 @@
 
 * [latest](./opencv/base/) - 最后编译的opencv版本，带python3环境；
 * [openjdk-jdk8](./opencv/java/openjdk-jdk8/)  - opencv+java8运行环境；
-* [tomcat8](./opencv/tomcat)  - 基于 `openjdk-jdk8` 再安装好tomcat的运行环境；
+* [tomcat8](./opencv/tomcat8/)  - 基于 `openjdk-jdk8` 镜像再安装好tomcat的运行环境；
 
