@@ -31,3 +31,19 @@
 
 ![](assets/images-list-1.png)
 
+## 镜像说明
+
+*有必要还是列一些比较有用的构建好的镜像，但只是会列部分重要的，其他细节的镜像版本，请到阿里云镜像市场自行查看了。*
+
+### [OpenCV](./opencv/)
+
+[OpenCV](https://opencv.org/) 的一些运行环境镜像，编译比较麻烦和耗费时间（由于网络和电脑硬件等因素）；
+
+阿里云镜像地址 `registry.cn-hangzhou.aliyuncs.com/kennylee/opencv`
+
+#### 镜像版本
+
+* [latest](./opencv/base/) - 最后编译的opencv版本，带python3环境；
+* [openjdk-jdk8](./opencv/java/openjdk-jdk8/)  - opencv+java8运行环境；
+* [tomcat8](./opencv/tomcat)  - 基于 `openjdk-jdk8` 再安装好tomcat的运行环境；
+

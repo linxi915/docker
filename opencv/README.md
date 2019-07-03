@@ -10,10 +10,11 @@
 
 ```
 docker run --rm \
-	registry.cn-hangzhou.aliyuncs.com/kennylee/opencv:openjdk-jdk8 check.sh
+	registry.cn-hangzhou.aliyuncs.com/kennylee/opencv:openjdk-jdk8 /check.sh
 ```
 
 ## 参考
 
-* [Dockerized OpenCV](https://gitlab.com/docker-hub/opencv)
+* [adnrv/opencv](https://hub.docker.com/r/adnrv/opencv)
+
 
