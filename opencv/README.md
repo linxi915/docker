@@ -13,6 +13,8 @@ docker run --rm \
 	registry.cn-hangzhou.aliyuncs.com/kennylee/opencv:openjdk-jdk8 /check.sh
 ```
 
+成功的话，会显示当前opencv的版本；
+
 ## 参考
 
 * [adnrv/opencv](https://hub.docker.com/r/adnrv/opencv)
