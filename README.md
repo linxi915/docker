@@ -46,5 +46,5 @@
 * [latest](./opencv/base/) - 最后编译的opencv版本，带python3环境；
 * [openjdk-jdk8](./opencv/java/openjdk-jdk8/)  - opencv+java8运行环境；
 * [tomcat8](./opencv/tomcat8/)  - 基于 `openjdk-jdk8` 镜像再安装好tomcat的运行环境；
-* [dlib](./opencv/dlib/) - 基于latest镜像，再安装了python和dlib下的支持，shape_predictor_68_face_landmarks.dat文件在`/var/dlib-data/`
+* [python-dlib](./opencv/python-dlib/) - 基于latest镜像，再安装了python和dlib下的支持，shape_predictor_68_face_landmarks.dat文件在`/var/dlib-data/`
 
