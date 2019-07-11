@@ -7,7 +7,7 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install --no-cache-dir dlib imutils && \
+RUN pip3 install --no-cache-dir numpy opencv_python opencv-contrib-python dlib imutils && \
         mkdir -p /var/dlib-data/ && cd /var/dlib-data/ && \
         wget -q http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2 \
         -O shape_predictor_68_face_landmarks.dat.bz2 && \
