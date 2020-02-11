@@ -6,7 +6,7 @@
 
 查看全部jenkins的war包地址: https://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-war/
 
-### 更新注意事项:
+### 更新注意事项
 
 1. 如果想升级的话，需要修改`JENKINS_VERSION`和`JENKINS_SHA`。
 
@@ -52,6 +52,10 @@ docker run -it --rm \
 # 命令如
 docker version
 ```
+
+## 镜像版本
+
+* lts-with-docker	: lts版本+安装docker环境，便于在持续集成的时候使用宿主机的docker
 
 ## 参考
 
