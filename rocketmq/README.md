@@ -10,8 +10,6 @@
 
 ### docker-compose.yml
 
-* [cluster](./cluster): 集群节点环境。
+* [cluster](./cluster): 集群节点环境。`docker-compose.yml` 使用了 `ROCKETMQ_VERSION` 动态变量，修改使用的RocketMQ版本时，需要对应修改同目录下的`.env`文件中的`ROCKETMQ_VERSION`对应的值。
 * [standalone](./standalone): 单节点环境。
-
->注：两个环境下的 `docker-compose.yml` 使用了 `ROCKETMQ_VERSION` 动态变量，修改使用的RocketMQ版本时，需要对应修改同目录下的`.env`文件中的`ROCKETMQ_VERSION`对应的值。
 
