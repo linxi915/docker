@@ -14,5 +14,7 @@ RUN apk --no-cache update && \
     echo -ne "Alpine Linux 3.9 image. (`uname -rsv`)\n" >> /root/.built && \
     rm -fr /tmp/* /var/cache/apk/*
 
+ENV JAVA_OPTS "-server -Xms128m -Xmx1024m"
+
 # Define bash as default command
 CMD ["/bin/bash"]
