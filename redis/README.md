@@ -10,5 +10,13 @@ fork for https://github.com/docker-library/redis
 
 应用机器，只要设置 `sentinel` 的服务器集群来发现可用redis服务器即可。
 
+## 镜像更新
+
+1. 更新变量 `REDIS_VERSION` 为最新版本
+2. 下载具体 `redis-${REDIS_VERSION}.tar.gz` 文件。
+3. 获取`SHA`，如命令 `shasum -a 256 ~/Downloads/redis-3.2.13.tar.gz`
+4. 更新 `REDIS_DOWNLOAD_SHA` 为刚获取到的SHA值。
+
+
 
 
