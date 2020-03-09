@@ -25,5 +25,8 @@ services:
     volumes:
       - ./data/broker/logs:/home/rocketmq/logs
       - ./data/broker/store:/home/rocketmq/store
-    command: sh mqbroker
+      - ./conf/broker.conf:/home/rocketmq/rocketmq-4.6.0/conf/broker.conf
+    command: sh mqbroker -n namesrv:9876 -c ../conf/broker.conf
+    depends_on:
+      - namesrv
 

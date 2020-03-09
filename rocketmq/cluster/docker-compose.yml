@@ -27,6 +27,8 @@ services:
       - ./data/broker/store:/home/rocketmq/store
       - ./broker1/conf/broker.conf:/opt/rocketmq-${ROCKETMQ_VERSION}/conf/broker.conf
     command: sh mqbroker -c /opt/rocketmq-${ROCKETMQ_VERSION}/conf/broker.conf
+    depends_on:
+      - namesrv
 
   #Service for another broker -- broker1
   broker1:
@@ -45,3 +47,5 @@ services:
       - ./data1/broker/store:/home/rocketmq/store
       - ./broker2/conf/broker.conf:/opt/rocketmq-${ROCKETMQ_VERSION}/conf/broker.conf
     command: sh mqbroker -c /opt/rocketmq-${ROCKETMQ_VERSION}/conf/broker.conf
+    depends_on:
+      - namesrv
