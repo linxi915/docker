@@ -30,5 +30,3 @@ RUN ln -fs /usr/share/zoneinfo/$TZ /etc/localtime && \
             dpkg-reconfigure --frontend noninteractive locales
 
 USER 1001
-
-CMD ["/bin/bash"]

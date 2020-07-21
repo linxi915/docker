@@ -19,3 +19,5 @@
 ```
 docker build -t kennylee26/debian .
 ```
+
+see also: https://hub.docker.com/r/bitnami/mariadb
