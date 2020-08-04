@@ -7,7 +7,8 @@ services:
     ports:
       - '5432:5432'
     volumes:
-      - './data:/bitnami/postgresql'
+      - './data/data:/bitnami/postgresql'
+      - './data/conf:/bitnami/postgresql/conf/'
     environment:
       - POSTGRESQL_PASSWORD=password123456
     restart: on-failure
