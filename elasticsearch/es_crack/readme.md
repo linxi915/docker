@@ -2,6 +2,8 @@
 
 简要说明：直接构建即可把破解包传入到容器内，然后把修改后的合法License传入到es服务器即可。
 
+> 注：破解文件需要对应版本。
+
 ## License问题说明
 
 目前license分为 _OPEN SOURCE(trial)_ 、 _BASIC_ 、 _GOLD_ 、 _PLATINUM_ 和 _ENTERPRISE_ ，其中免费的是前两个。[see also](https://www.elastic.co/subscriptions)

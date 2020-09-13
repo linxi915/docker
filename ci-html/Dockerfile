@@ -1,6 +1,6 @@
 FROM registry.cn-hangzhou.aliyuncs.com/kennylee/alpine
 
-MAINTAINER kennylee26 <kennylee26@gmail.com>
+MAINTAINER kennylee <kennylee26@gmail.com>
 
 RUN apk update && apk upgrade && \
     apk add --no-cache git openssh

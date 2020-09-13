@@ -1,13 +1,13 @@
 # Redmine for advanced git integration
 #
-# Authoer: kennylee26
+# Authoer: kennylee
 # Command format: Instruction [arguments command] ..
 
 # 第一行必须指定基于的基础镜像
-FROM kennylee26/ubuntu
+FROM kennylee/ubuntu
 
 # 维护者信息
-MAINTAINER kennylee26 <kennylee26@gmail.com>
+MAINTAINER kennylee <kennylee26@gmail.com>
 
 ENV GIT_HOME /home/git/
 

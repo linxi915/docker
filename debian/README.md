@@ -13,6 +13,6 @@
 参考构建命令
 
 ```
-docker build -t kennylee26/debian .
+docker build -t kennylee/debian .
 ```
 

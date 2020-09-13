@@ -5,7 +5,7 @@
 # Pull base image.
 FROM ruby:2.6-stretch
 
-MAINTAINER kennylee26 <kennylee26@gmail.com>
+MAINTAINER kennylee <kennylee26@gmail.com>
 
 # FIX APT Resource
 RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak

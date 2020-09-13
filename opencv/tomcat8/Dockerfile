@@ -1,6 +1,6 @@
 FROM registry.cn-hangzhou.aliyuncs.com/kennylee/opencv:openjdk-jdk8
 
-MAINTAINER kennylee26 <kennylee26@gmail.com>
+MAINTAINER kennylee <kennylee26@gmail.com>
 
 RUN apt-get update && \
     apt-get install -yq --no-install-recommends pwgen ca-certificates && \

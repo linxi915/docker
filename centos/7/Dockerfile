@@ -1,6 +1,6 @@
 FROM centos:7
 
-MAINTAINER kennylee26 <kennylee26@gmail.com>
+MAINTAINER kennylee <kennylee26@gmail.com>
 
 RUN curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.163.com/.help/CentOS7-Base-163.repo
 

@@ -1,6 +1,6 @@
 FROM python
 
-MAINTAINER kennylee26 <kennylee26@gmail.com>
+MAINTAINER kennylee <kennylee26@gmail.com>
 
 COPY docker-entrypoint.py /
 COPY heath_check.py /

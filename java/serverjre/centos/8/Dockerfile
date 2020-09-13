@@ -1,6 +1,6 @@
 FROM registry.cn-hangzhou.aliyuncs.com/kennylee/centos:7
 
-MAINTAINER kennylee26 <kennylee26@gmail.com>
+MAINTAINER kennylee <kennylee26@gmail.com>
 
 # Java Version and other ENV
 ENV JAVA_VERSION_MAJOR=8 \

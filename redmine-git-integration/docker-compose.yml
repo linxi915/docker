@@ -1,5 +1,5 @@
 app:
-    image: kennylee26/redmine-git
+    image: kennylee/redmine-git
     container_name: 'redmine-git'
     ports:
         - "8001:80"

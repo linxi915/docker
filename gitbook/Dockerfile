@@ -1,5 +1,5 @@
 # Gitbook
-# NAME: kennylee26/gitbook
+# NAME: kennylee/gitbook
 
 # Pull base image.
 FROM registry.cn-hangzhou.aliyuncs.com/kennylee/node:12.2-stretch

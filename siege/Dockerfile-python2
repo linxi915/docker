@@ -1,6 +1,6 @@
 FROM registry.cn-hangzhou.aliyuncs.com/kennylee/siege
 
-MAINTAINER kennylee26 <kennylee26@gmail.com>
+MAINTAINER kennylee <kennylee26@gmail.com>
 
 # --- install python, see also https://github.com/docker-library/python/tree/master/2.7/alpine3.9
 

@@ -1,6 +1,6 @@
 FROM registry.cn-hangzhou.aliyuncs.com/kennylee/node:alpine
 
-MAINTAINER kennylee26 <kennylee26@gmail.com>
+MAINTAINER kennylee <kennylee26@gmail.com>
 
 RUN mkdir /src
 RUN cnpm install express-generator nodemon -g

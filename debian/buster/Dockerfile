@@ -1,6 +1,6 @@
 FROM debian:buster
 
-MAINTAINER kennylee26 <kennylee26@gmail.com>
+MAINTAINER kennylee <kennylee26@gmail.com>
 
 RUN cp /etc/apt/sources.list /etc/apt/sources.list.bak
 RUN sed -i 's#http://deb.debian.org#http://mirrors.163.com#g' /etc/apt/sources.list && \

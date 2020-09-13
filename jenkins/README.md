@@ -23,7 +23,7 @@
 ### 本地构建命令
 
 ```
-docker build -t kennylee26/jenkins .
+docker build -t kennylee/jenkins .
 ```
 
 >注: jenkins安装插件比较痛苦，因为各种网络问题导致lugin安装不上。这时可以一个一个的下载到本地再进行安装。而一般jenkins升级后，插件也需要升级才能使用，所以不建议随便升级，等时间特别充裕再弄吧。

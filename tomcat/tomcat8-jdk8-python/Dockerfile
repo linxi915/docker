@@ -1,7 +1,7 @@
 FROM registry.cn-hangzhou.aliyuncs.com/kennylee/java:oracle-java8-python
 
 # 维护者信息
-MAINTAINER kennylee26 <kennylee26@gmail.com>
+MAINTAINER kennylee <kennylee26@gmail.com>
 
 RUN apt-get update && \
     apt-get install -yq --no-install-recommends pwgen ca-certificates && \

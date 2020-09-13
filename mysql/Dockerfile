@@ -1,7 +1,7 @@
 FROM mysql:5.7.25
 
 # 维护者信息
-MAINTAINER kennylee26 <kennylee26@gmail.com>
+MAINTAINER kennylee <kennylee26@gmail.com>
 
 RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak
 COPY stretch.sources.list /etc/apt/sources.list

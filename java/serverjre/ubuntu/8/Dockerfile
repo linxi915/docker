@@ -1,6 +1,6 @@
 FROM registry.cn-hangzhou.aliyuncs.com/kennylee/ubuntu
 
-MAINTAINER kennylee26 <kennylee26@gmail.com>
+MAINTAINER kennylee <kennylee26@gmail.com>
 
 # 想要更新版本，需要手动去 Server JRE (Java SE Runtime Environment) 8 Downloads 下载页面下载一次才能知道URL
 # https://www.oracle.com/technetwork/java/javase/downloads/server-jre8-downloads-2133154.html

@@ -1,7 +1,7 @@
 # alpine环境下编译node实在太慢，所以以这个为基础镜像比较划算了。
 FROM node:12-alpine
 
-MAINTAINER kennylee26 <kennylee26@gmail.com>
+MAINTAINER kennylee <kennylee26@gmail.com>
 
 ENV ALPINE_VERSION 3.9
 # 使用阿里云镜像

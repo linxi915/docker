@@ -1,7 +1,7 @@
 # see also: https://github.com/docker-library/mongo/blob/21869963911a74ccc13697c3ad50cdc23cc79b15/4.1/Dockerfil
 FROM mongo:4.1.1-xenial
 
-MAINTAINER kennylee26 <kennylee26@gmail.com>
+MAINTAINER kennylee <kennylee26@gmail.com>
 
 RUN sed -i 's/archive.ubuntu.com/mirrors.163.com/g' /etc/apt/sources.list
 

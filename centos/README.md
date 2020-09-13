@@ -11,6 +11,6 @@
 参考构建命令
 
 ```
-docker build -t kennylee26/centos .
+docker build -t kennylee/centos .
 ```
 

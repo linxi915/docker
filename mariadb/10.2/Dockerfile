@@ -1,5 +1,5 @@
 FROM bitnami/mariadb:10.2
-MAINTAINER kennylee26 <kennylee26@gmail.com>
+MAINTAINER kennylee <kennylee26@gmail.com>
 
 USER root
 

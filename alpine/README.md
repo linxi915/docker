@@ -22,11 +22,11 @@ docker pull registry.cn-hangzhou.aliyuncs.com/kennylee/alpine:3.4
 ## 参考构建命令
 
 ```
-docker build -t kennylee26/alpine .
+docker build -t kennylee/alpine .
 
-docker build -t kennylee26/alpine:coreutils -f Dockerfile-coreutils .
+docker build -t kennylee/alpine:coreutils -f Dockerfile-coreutils .
 
-docker build -t kennylee26/alpine:glibc -f Dockerfile-glibc .
+docker build -t kennylee/alpine:glibc -f Dockerfile-glibc .
 ```
 
 ## 版本说明

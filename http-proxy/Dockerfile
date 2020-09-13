@@ -9,7 +9,7 @@
 FROM nginx:1.9.8
 
 # 维护者信息
-MAINTAINER kennylee26 <kennylee26@gmail.com>
+MAINTAINER kennylee <kennylee26@gmail.com>
 
 ENV EGINX_HOME=/etc/nginx
 

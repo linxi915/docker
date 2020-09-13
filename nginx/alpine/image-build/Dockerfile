@@ -3,7 +3,7 @@
 # #####
 FROM registry.cn-hangzhou.aliyuncs.com/kennylee/alpine:3.4
 
-MAINTAINER kennylee26 <kennylee26@gmail.com>
+MAINTAINER kennylee <kennylee26@gmail.com>
 
 ENV NGINX_VERSION 1.13.0
 

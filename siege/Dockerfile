@@ -15,7 +15,7 @@ RUN apt-get update \
 # ------------------------- container -------------------------
 FROM registry.cn-hangzhou.aliyuncs.com/kennylee/alpine:alpine-3.9_glibc	
 
-MAINTAINER kennylee26 <kennylee26@gmail.com>
+MAINTAINER kennylee <kennylee26@gmail.com>
 
 COPY --from=builder /usr/local/bin/siege /usr/bin/siege
 COPY --from=builder /usr/local/bin/bombardment /usr/bin/bombardment

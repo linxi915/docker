@@ -13,13 +13,13 @@ fork for https://github.com/playniuniu/docker-weblogic-domain
 
 ```
 # 构建基础镜像
-docker build -t kennylee26/weblogic-domain .
+docker build -t kennylee/weblogic-domain .
 # 启动 AdminServer
-docker run -d -p 8001:8001 --name=wlsadmin kennylee26/weblogic-domain startWebLogic.sh
+docker run -d -p 8001:8001 --name=wlsadmin kennylee/weblogic-domain startWebLogic.sh
 
-docker run -d --link wlsadmin:wlsadmin kennylee26/weblogic-domain startNodeManager.sh
-docker run -d --link wlsadmin:wlsadmin kennylee26/weblogic-domain createMachine.sh
-docker run -d --link wlsadmin:wlsadmin kennylee26/weblogic-domain createServer.sh
+docker run -d --link wlsadmin:wlsadmin kennylee/weblogic-domain startNodeManager.sh
+docker run -d --link wlsadmin:wlsadmin kennylee/weblogic-domain createMachine.sh
+docker run -d --link wlsadmin:wlsadmin kennylee/weblogic-domain createServer.sh
 ```
 
 访问 http://127.0.0.1:8001/console

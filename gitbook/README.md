@@ -4,7 +4,7 @@
 
 ## 构建命令
 
-docker build -t kennylee26/gitbook .
+docker build -t kennylee/gitbook .
 
 ### GIT_BOOK_VERSION 
 
@@ -41,20 +41,20 @@ GIT_BOOK_VERSION指的是gitbook版本，`latest` 为官网定义的稳定版本
 ## 使用教程
 
 首先下载镜像
-docker pull kennylee26/gitbook
+docker pull kennylee/gitbook
 
 ### init
-docker run --rm -v "$PWD:/gitbook" -p 4000:4000 kennylee26/gitbook init
+docker run --rm -v "$PWD:/gitbook" -p 4000:4000 kennylee/gitbook init
 
 ### serve
-docker run --rm -v "$PWD:/gitbook" -p 4000:4000 kennylee26/gitbook serve
+docker run --rm -v "$PWD:/gitbook" -p 4000:4000 kennylee/gitbook serve
 
 ### build
-docker run --rm -v "$PWD:/gitbook" -p 4000:4000 kennylee26/gitbook build
+docker run --rm -v "$PWD:/gitbook" -p 4000:4000 kennylee/gitbook build
 
 For short, you can use alias for the long command line text. Just place the alias statement in your .bashrc or .zshrc.
 
-alias gitbook='docker run --rm -v "$PWD:/gitbook" -p 4000:4000 kennylee26/gitbook'
+alias gitbook='docker run --rm -v "$PWD:/gitbook" -p 4000:4000 kennylee/gitbook'
 
 设置别名后，直接 `gitbook build` 即可
 

@@ -3,7 +3,7 @@
 # #####
 FROM registry.cn-hangzhou.aliyuncs.com/kennylee/debian:jessie
 
-MAINTAINER kennylee26 <kennylee26@gmail.com>
+MAINTAINER kennylee <kennylee26@gmail.com>
 
 ENV NGINX_VERSION 1.13.0-1~jessie
 ENV NJS_VERSION   1.13.0.0.1.10-1~jessie

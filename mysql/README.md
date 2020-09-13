@@ -27,7 +27,7 @@ docker pull registry.cn-hangzhou.aliyuncs.com/kennylee/mysql
 * build
 
 ```
-docker build -t kennylee26/mysql ./
+docker build -t kennylee/mysql ./
 ```
 
 ## MySQL主从同步（单向同步）实例

@@ -1,11 +1,11 @@
 # shadowsocks-libev
-# NAME: kennylee26/shadowsocks-libev
+# NAME: kennylee/shadowsocks-libev
 
 # Pull base image.
 FROM ubuntu:14.04
 
 # 维护者信息
-MAINTAINER kennylee26 <kennylee26@gmail.com>
+MAINTAINER kennylee <kennylee26@gmail.com>
 
 # resp
 RUN sed -i 's/archive.ubuntu.com/mirrors.163.com/g' /etc/apt/sources.list

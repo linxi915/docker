@@ -2,7 +2,7 @@
 # NAME: kennylee26/fs-server
 
 # Pull base image.
-FROM kennylee26/java7
+FROM kennylee/java7
 
 # Basic Requirements
 RUN \

@@ -24,6 +24,6 @@ Github: https://github.com/coreos/etcd
 参考构建命令
 
 ```
-docker build -t kennylee26/etcd .
+docker build -t kennylee/etcd .
 ```
 

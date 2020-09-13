@@ -1,7 +1,7 @@
 # Gollum
 FROM registry.cn-hangzhou.aliyuncs.com/kennylee/ruby:2.6-stretch	
 
-MAINTAINER kennylee26 <kennylee26@gmail.com>
+MAINTAINER kennylee <kennylee26@gmail.com>
 
 RUN apt-get update && \
         apt-get -y install libicu-dev && \

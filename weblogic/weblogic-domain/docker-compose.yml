@@ -6,7 +6,7 @@ networks:
 
 services:
     &admin adminserver:
-        image: &image kennylee26/weblogic-domain
+        image: &image kennylee/weblogic-domain
         container_name: wlsadmin
         ports:
             - "8001:8001"

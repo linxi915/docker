@@ -2,4 +2,4 @@
 
 https://github.com/shadowsocks/shadowsocks-libev
 
-docker build -t kennylee26/shadowsocks-libev .
+docker build -t kennylee/shadowsocks-libev .

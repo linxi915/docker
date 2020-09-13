@@ -1,6 +1,6 @@
 build
 
-docker build -t kennylee26/redmine-git .
+docker build -t kennylee/redmine-git .
 
 说明：
 与redmine集成，根据git/<项目名>这样的约定redmine项目中的Identifier进行匹配，并通过校验输入的用户与redmine上的用户组是否一致来判断下载用户是否有权限进行下载和上传。
