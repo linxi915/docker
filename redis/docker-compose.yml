@@ -2,7 +2,7 @@ version: '2'
 
 services:
     redis:
-        image: registry.cn-hangzhou.aliyuncs.com/kennylee/redis:3.2
+        image: registry.cn-hangzhou.aliyuncs.com/kennylee/redis
         container_name: "redis-server"
         ports:
             - "6379:6379"
