@@ -1,4 +1,4 @@
-FROM gitlab/gitlab-ce:10.8.3-ce.0
+FROM gitlab/gitlab-ce
 
 MAINTAINER kennylee <kennylee26@gmail.com>
 
