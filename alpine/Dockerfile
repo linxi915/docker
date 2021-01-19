@@ -1,4 +1,4 @@
-FROM alpine:3.9
+FROM alpine:3.12
 
 MAINTAINER kennylee <kennylee26@gmail.com>
 
@@ -11,7 +11,7 @@ RUN apk --no-cache update && \
     apk --no-cache add curl bash tzdata tar unzip && \ 
     ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     echo "Asia/Shanghai" > /etc/timezone && \
-    echo -ne "Alpine Linux 3.9 image. (`uname -rsv`)\n" >> /root/.built && \
+    echo -ne "Alpine Linux 3.12 image. (`uname -rsv`)\n" >> /root/.built && \
     rm -fr /tmp/* /var/cache/apk/*
 
 # Define bash as default command
