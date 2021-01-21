@@ -2,7 +2,7 @@ version: '2'
 
 services:
   postgresql:
-    image: 'registry.cn-hangzhou.aliyuncs.com/kennylee/postgresql:10.7'
+    image: 'registry.cn-hangzhou.aliyuncs.com/kennylee/postgresql:12.4'
     container_name: "postgresql"
     ports:
       - '5432:5432'

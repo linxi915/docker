@@ -1,13 +1,21 @@
-bind:
-    image: sameersbn/bind:latest
-    container_name: bind
-    dns: 127.0.0.1
-    environment:
-        - ROOT_PASSWORD=8aso2QQUDTpz
-        - TZ=Asia/Shanghai
-    ports:
-        - 10000:10000
-        - 53:53/udp
-    volumes:
-        - /srv/docker/bind:/data
-    restart: always
+version: '2'
+services:
+    bind:
+        image: registry.cn-hangzhou.aliyuncs.com/kennylee/bind:9.16.1-20200524
+        container_name: bind
+        dns: 127.0.0.1
+        environment:
+            - ROOT_PASSWORD=8aso2QQUDTpz
+            - TZ=Asia/Shanghai
+        ports:
+            - 10000:10000
+            - 53:53
+            - 53:53/udp
+        volumes:
+            - ./data/bind:/data
+        restart: on-failure
+        logging:
+            driver: 'json-file'
+            options:
+                max-size: '30m'
+                max-file: '1'

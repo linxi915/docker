@@ -6,9 +6,25 @@
 2. 执行 _env.sh_ 脚本，生成docker-compose的配置文件(`.env`文件)。
 3. 执行 `docker-compose up -d` 命令，启动容器。
 
-依赖应用参考:
+### 外部PostgreSQL
 
-[PostgreSQL versions](https://docs.gitlab.com/omnibus/package-information/postgresql_versions.html)
+> 注：目前仅支持使用PostgreSQL数据库
+
+官方不建议使用外部数据库，而实际上使用外部数据库时也会遇到不少问题，免于不必要的时间花费吧。
+
+* [PostgreSQL versions](https://docs.gitlab.com/omnibus/package-information/postgresql_versions.html)
+* [Database settings](https://docs.gitlab.com/13.7/omnibus/settings/database.html#gitlab-137-and-later)
+* [External PostgreSQL database](https://docs.gitlab.com/13.7/charts/advanced/external-db/index.html)
+
+创建gitlab数据库
+
+```
+CREATE DATABASE gitlabhq_production;
+```
+
+### 外部nginx
+
+* [NGINX settings](https://docs.gitlab.com/omnibus/settings/nginx.html)
 
 ## 注意事项
 
@@ -18,8 +34,9 @@
 
 ## 文档参考
 
+* [GitLab Docker images](https://docs.gitlab.com/13.7/omnibus/docker/README.html)
+* [Configuring Omnibus GitLab](https://docs.gitlab.com/omnibus/settings/README.html)
 * [gitlab官方dockerfile](https://hub.docker.com/r/gitlab/gitlab-ce/~/dockerfile/)
 * [git官方帮助文档](https://about.gitlab.com/getting-help/)
-* [GitLab Docker images](https://docs.gitlab.com/13.7/omnibus/docker/README.html)
 
 

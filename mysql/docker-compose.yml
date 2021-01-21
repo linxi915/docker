@@ -1,10 +1,10 @@
 version: '3'
-    
+
 services:
     app:
         image: registry.cn-hangzhou.aliyuncs.com/kennylee/mysql
         #build: ./
-        ports: 
+        ports:
             - 3306:3306
         container_name: mysql
         restart: on-failure
@@ -13,8 +13,8 @@ services:
         volumes:
             - ./data/standalong:/var/lib/mysql/:z
             - ./conf/:/etc/mysql/mysql-my.conf.d/:z
-            - ./data/standalong-logs:/var/log/mysql/:z            
-        command: ["--max_connections=300"]
+            - ./data/standalong-logs:/var/log/mysql/:z
+        command: [ "--max_connections=300" ]
         logging:
             driver: 'json-file'
             options:

@@ -1,12 +1,17 @@
 version: '2'
 services:
-    app:
-        image: registry.cn-hangzhou.aliyuncs.com/kennylee/nexus3:3.28.1
-        ports: 
-            - 8081:8081
-        container_name: nexus3
-        restart: on-failure
-        environment:
-            - TZ=Asia/Shanghai
-        volumes:
-            - ./data/:/nexus-data/:z
+  app:
+    image: registry.cn-hangzhou.aliyuncs.com/kennylee/nexus3:3.29.2
+    ports:
+      - 8081:8081
+    container_name: nexus3
+    restart: on-failure
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./data/:/nexus-data/:z
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '30m'
+        max-file: '1'

@@ -2,7 +2,7 @@ version: '2.4'
 services:
     app:
         image: registry.cn-hangzhou.aliyuncs.com/kennylee/jenkins:2.164.3
-        ports: 
+        ports:
             - 8080:8080
             - 50000:50000
         container_name: jenkins
