@@ -4,7 +4,7 @@ FROM mysql:5.7.33
 MAINTAINER kennylee <kennylee26@gmail.com>
 
 RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak
-COPY stretch.sources.list /etc/apt/sources.list
+COPY buster.sources.list /etc/apt/sources.list
 
 RUN apt-get update && \
     apt-get install -y curl git unzip vim wget && \
