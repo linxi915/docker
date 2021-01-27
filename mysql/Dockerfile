@@ -1,4 +1,4 @@
-FROM mysql:5.7.25
+FROM mysql:5.7.33
 
 # 维护者信息
 MAINTAINER kennylee <kennylee26@gmail.com>
