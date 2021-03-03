@@ -12,6 +12,12 @@ slow_query_log_file = /var/log/mysql/mysql-slow-queries.log
 # 超过定义为慢查询
 long_query_time = 4
 
+explicit_defaults_for_timestamp
+init_connect = 'SET collation_connection = utf8_unicode_ci'
+init_connect = 'SET NAMES utf8'
+character-set-server = utf8
+collation-server = utf8_unicode_ci
+
 # 日志输出方式
 #log_output = FILE,TABLE
 #
