@@ -1,0 +1,19 @@
+version: '2'
+services:
+    app:
+        image: registry.timekey.com.cn:5000/timekey/finebi:v5.1.10
+        ports:
+            - "8080:8080"
+        environment:
+            - JAVA_OPTS=-Djava.security.egd=file:///dev/urandom -server -Xms128m -Xmx1536m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/var/findbi/findbi_heapdump
+        volumes:
+            - ./data/app:/opt/tomcat/webapps:z
+            - ./data/logs/:/opt/tomcat/logs/:z
+            - ./data/data/:/var/findbi/data/:z
+        restart: on-failure
+        logging:
+            driver: 'json-file'
+            options:
+                max-size: '12m'
+                max-file: '3'
+
