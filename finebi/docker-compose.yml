@@ -1,7 +1,7 @@
 version: '2'
 services:
     app:
-        image: registry.cn-hangzhou.aliyuncs.com/kennylee/finebi
+        image: registry.timekey.com.cn:5000/timekey/finebi:v5.1.10
         ports:
             - "8080:8080"
         environment:

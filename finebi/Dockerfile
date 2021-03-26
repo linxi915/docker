@@ -9,6 +9,7 @@ RUN \
   rm -rf /var/lib/apt/lists/*
 
 ENV CATALINA_HOME /opt/tomcat
+ENV EXTAR_JAR_DIR /libs
 
 WORKDIR ${CATALINA_HOME}
 ENV JAVA_OPTS="-Djava.security.egd=file:///dev/urandom -server -Xms128m -Xmx1532m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/var/findbi/finebi_heapdump"
@@ -20,6 +21,9 @@ COPY app/webroot.zip /tmp/
 
 COPY run.sh /run.sh
 RUN chmod +x /*.sh
+
+RUN mkdir -p ${EXTAR_JAR_DIR}
+COPY ./libs/*.jar ${EXTAR_JAR_DIR}
 
 VOLUME ${CATALINA_HOME}/webapps/
 
