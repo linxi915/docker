@@ -10,9 +10,9 @@ RUN apk add --no-cache \
 # add tzdata for https://github.com/docker-library/redis/issues/138
 		tzdata
 
-ENV REDIS_VERSION 6.0.10
-ENV REDIS_DOWNLOAD_URL http://download.redis.io/releases/redis-6.0.10.tar.gz
-ENV REDIS_DOWNLOAD_SHA 79bbb894f9dceb33ca699ee3ca4a4e1228be7fb5547aeb2f99d921e86c1285bd
+ENV REDIS_VERSION 6.2.1
+ENV REDIS_DOWNLOAD_URL http://download.redis.io/releases/redis-${REDIS_VERSION}.tar.gz
+ENV REDIS_DOWNLOAD_SHA cd222505012cce20b25682fca931ec93bd21ae92cb4abfe742cf7b76aa907520
 
 RUN set -eux; \
 	\
@@ -95,8 +95,9 @@ RUN mkdir /data && chown redis:redis /data
 VOLUME /data
 WORKDIR /data
 
-COPY docker-entrypoint.sh /usr/local/bin/
-ENTRYPOINT ["docker-entrypoint.sh"]
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /*.sh
+ENTRYPOINT ["/docker-entrypoint.sh"]
 
 EXPOSE 6379
 CMD ["redis-server"]
