@@ -35,6 +35,8 @@ services:
             - MYSQL_HOST=zipkin-mysql
             - MYSQL_USER=zipkin
             - MYSQL_PASS=zipkin
+            # 部署到k8s报错的话，设置此环境变量。注意跟mysql一致
+            # - ZIPKIN_STORAGE_MYSQL_PORT=3306
             # Uncomment to enable scribe
             # - SCRIBE_ENABLED=true
             # Uncomment to enable self-tracing
