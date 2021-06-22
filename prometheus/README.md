@@ -1,6 +1,6 @@
 # Prometheus
 
-基于镜像 [bitnami/prometheus](https://hub.docker.com/r/bitnami/prometheus) 构建
+基于镜像 [bitnami/prometheus](https://hub.docker.com/r/bitnami/prometheus) 构建。
 
 > 注：non-root容器
 
