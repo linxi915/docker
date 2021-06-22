@@ -1,0 +1,16 @@
+version: '2.4'
+services:
+    promtail:
+        image: registry.cn-hangzhou.aliyuncs.com/kennylee/promtail:2.2.1
+        container_name: promtail
+        restart: on-failure
+        command: '-config.file=/promtail/config/promtail-config.yaml'
+        volumes:
+            - ./config:/promtail/config:z
+            # 用于测试，读取的日志
+            - ./logs:/tmp/logs
+        logging:
+            driver: 'json-file'
+            options:
+                max-size: '10m'
+                max-file: '1'

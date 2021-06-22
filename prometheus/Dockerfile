@@ -1,6 +1,8 @@
-FROM grafana/promtail:2.2.1
+FROM bitnami/prometheus:2.28.0
 
 MAINTAINER kennylee <kennylee26@gmail.com>
+
+USER root
 
 RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak
 COPY buster.sources.list /etc/apt/sources.list
@@ -28,6 +30,6 @@ RUN ln -fs /usr/share/zoneinfo/$TZ /etc/localtime && \
             dpkg-reconfigure --frontend noninteractive tzdata && \
             dpkg-reconfigure --frontend noninteractive locales
 
-ENTRYPOINT ["/usr/bin/promtail"]
+USER 1001
 
-CMD ["-config.file=/etc/promtail/config.yml"]
+EXPOSE 9090

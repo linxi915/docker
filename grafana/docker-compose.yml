@@ -1,0 +1,15 @@
+version: '2'
+services:
+    app:
+        image: registry.cn-hangzhou.aliyuncs.com/kennylee/grafana:8.0.0
+        ports:
+            - 3000:3000
+        container_name: grafana
+        restart: on-failure
+        volumes:
+            - ./data/lib:/var/lib/grafana/:z
+        logging:
+            driver: 'json-file'
+            options:
+                max-size: '10m'
+                max-file: '1'

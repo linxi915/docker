@@ -1,0 +1,17 @@
+version: '2'
+services:
+    app:
+        image: registry.cn-hangzhou.aliyuncs.com/kennylee/loki:2.2.1
+        ports:
+            - 3100:3100
+        container_name: loki
+        restart: on-failure
+        command: '-config.file=/loki/config/loki-local-config.yaml'
+        volumes:
+            - ./config:/loki/config:z
+            - ./data/loki:/tmp/loki
+        logging:
+            driver: 'json-file'
+            options:
+                max-size: '10m'
+                max-file: '1'

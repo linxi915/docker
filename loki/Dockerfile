@@ -1,5 +1,7 @@
 FROM grafana/loki:2.2.1
 
+MAINTAINER kennylee <kennylee26@gmail.com>
+
 USER root
 
 # 使用阿里云镜像

@@ -1,5 +1,7 @@
 FROM grafana/grafana:8.0.0
 
+MAINTAINER kennylee <kennylee26@gmail.com>
+
 USER root
 
 # 使用阿里云镜像
