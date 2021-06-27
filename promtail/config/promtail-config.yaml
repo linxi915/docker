@@ -6,12 +6,33 @@ positions:
   filename: /tmp/positions.yaml
 
 clients:
-  - url: http://192.168.1.96:30191/loki/api/v1/push
+  - url: http://k8s.foo.com:30191/loki/api/v1/push
 
 scrape_configs:
-  - job_name: promtail-test-logs
+  - job_name: test-nginx-logs
     static_configs:
       - labels:
-          app: 'test-logs'
+          job: 'test-nginx-logs'
           __path__: /tmp/logs/*.log
-
+  - job_name: test-app-logs
+    static_configs:
+      - labels:
+          job: 'test-app-logs'
+          __path__: /tmp/logs/app-*/*.log
+    pipeline_stages:
+      - match:
+          selector: '{job="test-app-logs"}'
+          stages:
+            - regex:
+                source: filename
+                expression: '(?:logs)/(?P<pod_name>\S+?)/'
+            - labels:
+                pod_name:
+      - match:
+          selector: '{job="test-app-logs"}'
+          stages:
+            - regex:
+                source: pod_name
+                expression: '^(?P<pod_collection>.+)-[^-]+$'
+            - labels:
+                pod_collection:
