@@ -2,3 +2,19 @@
 2021-06-24 00:54:19.438 ERROR [tksite-dev,,,] 11 --- [main] c.c.t.c.w.a.h.LoggingHealthIndicator     : LoggingHealthIndicator hello: 1
 2021-06-26 17:33:39.045  INFO [tksite-dev,,,] 11 --- [main] io.lettuce.core.KqueueProvider           : Starting without optional kqueue library
 2021-06-24 03:54:19.438 ERROR [tksite-dev,,,] 11 --- [main] c.c.t.c.w.a.h.LoggingHealthIndicator     : Test Error
+2021-06-24 05:54:19.438 ERROR [tksite-dev,,,] 11 --- [main] c.c.t.c.w.a.h.TestController     : ERROR in app: Exception on /error [GET]
+Traceback (most recent call last):
+  File "/home/pallets/.pyenv/versions/3.8.5/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pallets/.pyenv/versions/3.8.5/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pallets/.pyenv/versions/3.8.5/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/pallets/.pyenv/versions/3.8.5/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/pallets/.pyenv/versions/3.8.5/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pallets/.pyenv/versions/3.8.5/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/pallets/src/deployment_tools/hello.py", line 10, in error
+    raise Exception("Sorry, this route always breaks")

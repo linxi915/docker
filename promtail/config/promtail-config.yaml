@@ -26,20 +26,24 @@ scrape_configs:
             - regex:
                 source: filename
                 expression: '(?:logs)/(?P<pod_name>\S+?)/'
-            - labels:
-                pod_name:
-      - match: # for k8s Deployment Pods
-          selector: '{job="test-app-logs"}'
-          stages:
-            - regex:
+            - regex: # for k8s Deployment Pods
                 source: pod_name
                 expression: '^(?P<pod_collection>.+)-[^-]+$'
-            - labels:
-                pod_collection:
-      - match: # for SpringBoot log
-          selector: '{job="test-app-logs"}'
-          stages:
             - regex:
                 expression: '^(?P<year_month>\S+?)-(?P<days>[\d]{1,2})\s+(?P<time>[0-9:.]+?)\s+(?P<level>[A-Z]+?)\s+'
             - labels:
+                pod_name:
                 level:
+                pod_collection:
+            - multiline: # 多行阶段将多行日志进行合并
+                # 识别时间戳作为多行日志的第一行，注意这里字符串应该使用单引号。
+                firstline: '^\d{4}-\d{2}-\d{2}\s+\d{1,2}:\d{2}:\d{2}'
+                max_wait_time: 3s
+            - drop:
+                expression: ".*hello:.*"
+            # 删除24小时以前的DEBUG和TRACE日志
+            - drop:
+                older_than: 24h
+                source: "level"
+                value: "(TRACE|trace|DEBUG|debug)"
+                drop_counter_reason: "debug_line_too_old"
