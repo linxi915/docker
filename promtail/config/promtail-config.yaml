@@ -28,7 +28,7 @@ scrape_configs:
                 expression: '(?:logs)/(?P<pod_name>\S+?)/'
             - labels:
                 pod_name:
-      - match:
+      - match: # for k8s Deployment Pods
           selector: '{job="test-app-logs"}'
           stages:
             - regex:
@@ -36,3 +36,10 @@ scrape_configs:
                 expression: '^(?P<pod_collection>.+)-[^-]+$'
             - labels:
                 pod_collection:
+      - match: # for SpringBoot log
+          selector: '{job="test-app-logs"}'
+          stages:
+            - regex:
+                expression: '^(?P<year_month>\S+?)-(?P<days>[\d]{1,2})\s+(?P<time>[0-9:.]+?)\s+(?P<level>[A-Z]+?)\s+'
+            - labels:
+                level:

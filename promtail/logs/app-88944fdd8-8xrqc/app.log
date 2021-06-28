@@ -1,3 +1,4 @@
 2021-06-26 18:18:35.165  WARN [tksite-dev,e4838a12138a7943,e4838a12138a7943,true] 11 --- [http-nio-8080-exec-9] c.a.druid.pool.DruidAbstractDataSource   : discard long time none received connection. , jdbcUrl : jdbc:mysql://db-mysql:3306/tksite?useUnicode=true&characterEncoding=UTF-8, version : 1.2.4, lastPacketReceivedIdleMillis : 1877901
 2021-06-24 00:54:19.438 ERROR [tksite-dev,,,] 11 --- [main] c.c.t.c.w.a.h.LoggingHealthIndicator     : LoggingHealthIndicator hello: 1
 2021-06-26 17:33:39.045  INFO [tksite-dev,,,] 11 --- [main] io.lettuce.core.KqueueProvider           : Starting without optional kqueue library
+2021-06-24 03:54:19.438 ERROR [tksite-dev,,,] 11 --- [main] c.c.t.c.w.a.h.LoggingHealthIndicator     : Test Error

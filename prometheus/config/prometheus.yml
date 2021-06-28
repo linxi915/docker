@@ -1,0 +1,22 @@
+global:
+  scrape_interval: 15s # 设置抓取间隔，默认为1分钟
+  evaluation_interval: 15s #估算规则的默认周期，每15秒计算一次规则。默认1分钟
+  # scrape_timeout  #默认抓取超时，默认为10s
+
+# Alertmanager相关配置
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+        # - alertmanager:9093
+
+# 规则文件列表，使用'evaluation_interval' 参数去抓取
+rule_files:
+# - "first_rules.yml"
+# - "second_rules.yml"
+
+#  抓取配置列表
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: [ 'localhost:9090' ]
