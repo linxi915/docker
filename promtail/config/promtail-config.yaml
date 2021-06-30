@@ -47,3 +47,22 @@ scrape_configs:
                 source: "level"
                 value: "(TRACE|trace|DEBUG|debug)"
                 drop_counter_reason: "debug_line_too_old"
+            - metrics:
+                # 定义错误日志指标
+                total_error_logs:
+                  prefix: 'promtail_custom_'
+                  source: level
+                  config:
+                    action: inc
+                    value: 'ERROR'
+                  description: 'Total error logs'
+                  type: Counter
+                # 定义警告日志指标
+                total_warn_logs:
+                  prefix: 'promtail_custom_'
+                  source: level
+                  config:
+                    action: inc
+                    value: 'WARN'
+                  description: 'Total warning logs'
+                  type: Counter

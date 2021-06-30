@@ -1,3 +1,4 @@
+# see also: https://github.com/prometheus/blackbox_exporter
 FROM prom/blackbox-exporter
 
 EXPOSE      9115
