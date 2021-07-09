@@ -1,0 +1,12 @@
+groups:
+  - name: app-error-logs
+    rules:
+      - alert: '应用发生错误日志'
+        expr: promtail_custom_total_error_logs > 0
+        for: 1m
+        labels:
+          serverity: critical
+        annotations:
+          summary: '错误日志量5分钟内大于0'
+          description: "Total error logs over {{ $value }}"
+          value: "{{ $value }}"

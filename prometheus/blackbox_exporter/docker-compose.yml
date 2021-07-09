@@ -1,0 +1,15 @@
+version: '2'
+services:
+  blackbox_exporter:
+    image: registry.cn-hangzhou.aliyuncs.com/kennylee/blackbox_exporter
+    container_name: blackbox_exporter
+    restart: on-failure
+    ports:
+      - '9115:9115'
+    volumes:
+      - ./blackbox_exporter.yml:/opt/bitnami/prometheus/conf/prometheus.yml
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '10m'
+        max-file: '1'

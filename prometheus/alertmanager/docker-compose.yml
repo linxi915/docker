@@ -1,0 +1,17 @@
+version: '2'
+services:
+  alertmanager:
+    image: registry.cn-hangzhou.aliyuncs.com/kennylee/alertmanager:0.22.2
+    container_name: alertmanager
+    ports:
+      - '9093:9093'
+    restart: on-failure
+    volumes:
+      - ./config/alertmanager.yml:/opt/bitnami/alertmanager/conf/config.yml
+      - ./config/email.gohtml:/etc/alertmanager-tmpl/email.gohtml
+      - ./data:/opt/bitnami/data
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '10m'
+        max-file: '1'

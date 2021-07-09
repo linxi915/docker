@@ -1,4 +1,4 @@
-version: '2.4'
+version: '2'
 services:
   promtail:
     image: registry.cn-hangzhou.aliyuncs.com/kennylee/promtail:2.2.1

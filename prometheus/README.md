@@ -4,7 +4,7 @@
 
 相关构建镜像
 
-* [prom/alertmanager](https://hub.docker.com/r/prom/alertmanager)
+* [bitnami/alertmanager](https://hub.docker.com/r/bitnami/alertmanager)
 * [prom/blackbox-exporter](https://hub.docker.com/r/prom/blackbox-exporter)
 * [prom/pushgateway](https://hub.docker.com/r/prom/pushgateway)
 
